@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { SERVICES } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { siteContainer } from '@/lib/site-layout'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -134,8 +135,8 @@ export default function ServicesPage() {
     <>
       <Header />
       <main>
-        <section className="relative border-b border-border/40 bg-muted/25 py-16 md:py-24">
-          <div className="mx-auto max-w-6xl px-4">
+        <section className="relative border-b border-border/40 bg-muted/25 py-12 md:py-14">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -154,8 +155,8 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="py-16 md:py-20">
-          <div className="mx-auto max-w-6xl px-4">
+        <section className="py-12 md:py-14">
+          <div className={siteContainer}>
             <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-20">
               {SERVICES.map((service, index) => {
                 const IconComponent = service.icon
@@ -201,7 +202,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="border-t border-border/40 bg-primary py-16 text-primary-foreground md:py-20">
+        <section className="border-t border-border/40 bg-primary py-12 text-primary-foreground md:py-14">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Choose the entry point that matches reality</h2>

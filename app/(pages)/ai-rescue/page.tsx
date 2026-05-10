@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { COMMON_PROBLEMS } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight, AlertCircle } from 'lucide-react'
+import { siteContainer } from '@/lib/site-layout'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,8 +33,8 @@ export default function AIRescuePage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center py-20 bg-muted/25 border-b border-border/40">
-          <div className="max-w-6xl mx-auto px-4 w-full">
+        <section className="relative flex items-center py-12 md:py-16 bg-muted/25 border-b border-border/40">
+          <div className={`${siteContainer} w-full`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,8 +57,8 @@ export default function AIRescuePage() {
         </section>
 
         {/* Problems & Solutions */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-12 md:py-14">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -106,8 +107,8 @@ export default function AIRescuePage() {
         </section>
 
         {/* Assessment Process */}
-        <section className="py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-12 md:py-14 bg-secondary/5">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -162,8 +163,8 @@ export default function AIRescuePage() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-12 md:py-14">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +208,7 @@ export default function AIRescuePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-12 md:py-14 bg-primary text-primary-foreground">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

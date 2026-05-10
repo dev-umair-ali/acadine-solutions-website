@@ -5,6 +5,7 @@ import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import { CalendarClock, Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
+import { siteContainer } from '@/lib/site-layout'
 import Link from 'next/link'
 
 export default function ContactPage() {
@@ -35,8 +36,8 @@ export default function ContactPage() {
     <>
       <Header />
       <main>
-        <section className="border-b border-border/40 bg-muted/25 py-16 md:py-20">
-          <div className="mx-auto max-w-6xl px-4">
+        <section className="border-b border-border/40 bg-muted/25 py-10 md:py-12">
+          <div className={siteContainer}>
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">Contact</p>
               <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">Start with context — not a sales script</h1>
@@ -47,8 +48,8 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="py-16 md:py-20">
-          <div className="mx-auto max-w-6xl px-4">
+        <section className="py-10 md:py-12">
+          <div className={siteContainer}>
             <div className="grid gap-12 lg:grid-cols-3">
               <motion.div initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
                 <h2 className="text-lg font-semibold text-foreground">Direct lines</h2>
@@ -200,8 +201,8 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section id="booking" className="border-t border-border/40 bg-muted/20 py-16 md:py-20">
-          <div className="mx-auto max-w-6xl px-4">
+        <section id="booking" className="border-t border-border/40 bg-muted/20 py-10 md:py-12">
+          <div className={siteContainer}>
             <div className="grid gap-8 rounded-3xl border border-border/60 bg-background p-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:p-10">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-foreground/55">

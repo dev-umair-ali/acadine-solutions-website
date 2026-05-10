@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import { Mail, Phone } from 'lucide-react'
+import { siteContainer } from '@/lib/site-layout'
 
 export function Footer() {
   const year = new Date().getFullYear()
 
   return (
     <footer className="border-t border-border/60 bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className={`${siteContainer} py-10 md:py-12`}>
+        <div className="grid gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-foreground text-sm font-bold text-primary">
@@ -88,7 +89,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-6 border-t border-primary-foreground/15 pt-10 md:flex-row md:items-center md:justify-between">
+        <div className="mt-8 flex flex-col gap-5 border-t border-primary-foreground/15 pt-8 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-sm font-semibold text-primary-foreground">Discuss priorities with a practitioner — not a pitch deck.</p>
             <p className="mt-1 text-sm text-primary-foreground/70">Share context on workflows, constraints, and outcomes.</p>
@@ -101,7 +102,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-primary-foreground/15 pt-8 text-sm text-primary-foreground/55 md:flex-row md:items-center">
+        <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-primary-foreground/15 pt-6 text-sm text-primary-foreground/55 md:flex-row md:items-center">
           <p>&copy; {year} Acadine Solutions. All rights reserved.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/contact" className="hover:text-primary-foreground/85">

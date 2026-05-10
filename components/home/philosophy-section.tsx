@@ -1,54 +1,63 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { siteContainer } from '@/lib/site-layout'
+import { SectionHeader } from '@/components/section/section-header'
 
 export function PhilosophySection() {
   return (
-    <section className="border-b border-border/40 py-20 md:py-28">
-      <div className="mx-auto max-w-6xl px-4">
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.55 }}
-            className="lg:col-span-7"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">Core philosophy</p>
-            <blockquote className="mt-4 text-balance text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]">
-              We don&apos;t start with AI.
-              <span className="block text-foreground/75">We start with your business.</span>
-            </blockquote>
-            <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-foreground/60">
-              AI is a lever — not a strategy. We establish facts about workflows, constraints, and outcomes first, then
-              introduce automation and intelligent systems where they reduce risk, cost, or cycle time with clear owners
-              and measurable targets.
-            </p>
-          </motion.div>
+    <section className="relative border-y border-white/10 bg-primary text-primary-foreground">
+      <div className="pointer-events-none absolute inset-0 texture-grain opacity-[0.2]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_80%_20%,rgba(56,189,198,0.14),transparent_55%)]" aria-hidden />
+
+      <div className={`relative py-14 md:py-16 lg:py-18 ${siteContainer}`}>
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16 xl:gap-24">
+          <div>
+            <SectionHeader
+              index="03"
+              eyebrow="Positioning"
+              title="We don’t start with AI. We start with your business."
+              description="Intelligent systems only matter when workflows, ownership, and measurement are credible — otherwise you automate confusion faster."
+              dark
+              className="text-left!"
+            />
+
+            <motion.blockquote
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mt-10 border-l-2 border-accent pl-6 font-serif text-[1.35rem] italic leading-snug text-primary-foreground/85 sm:text-[1.5rem] lg:text-[1.65rem]"
+            >
+              “Executives don’t need more AI slides — they need operating truth and a delivery path they can defend.”
+            </motion.blockquote>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.55, delay: 0.06 }}
-            className="lg:col-span-5"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="rounded-2xl border border-white/10 bg-white/6 p-6 shadow-2xl backdrop-blur-md md:p-8"
           >
-            <div className="rounded-2xl border border-border/60 bg-muted/20 p-8">
-              <ul className="space-y-5 text-sm leading-relaxed text-foreground/70">
-                <li className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
-                  Practical implementations your operators can run — not experiments disconnected from P&amp;L.
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-primary-foreground/45">
+              Delivery criteria
+            </p>
+            <ul className="mt-6 space-y-5 border-t border-white/10 pt-6">
+              {[
+                { t: 'Operational baseline', d: 'Measured cycle-time, exceptions, and rework — before tooling debates.' },
+                { t: 'Decision logs', d: 'Explicit trade-offs for procurement, IT security, and finance.' },
+                { t: 'Adoption cadence', d: 'Training and monitoring treated as scope — not an afterthought.' },
+              ].map((row) => (
+                <li key={row.t} className="flex gap-4">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_12px_rgba(56,189,198,0.55)]" />
+                  <div>
+                    <p className="text-[13px] font-semibold tracking-tight">{row.t}</p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-primary-foreground/65">{row.d}</p>
+                  </div>
                 </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
-                  Decisions documented so procurement, IT, and finance can support delivery without ambiguity.
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
-                  A cadence for measurement: baselines, milestones, and honest review when reality diverges from plan.
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </motion.div>
         </div>
       </div>

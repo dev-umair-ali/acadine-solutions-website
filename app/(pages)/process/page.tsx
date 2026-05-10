@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { PROCESS_STEPS } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { siteContainer } from '@/lib/site-layout'
 
 export default function ProcessPage() {
   return (
@@ -13,8 +14,8 @@ export default function ProcessPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4 w-full">
+        <section className="relative flex items-center py-12 md:py-16 bg-secondary/5">
+          <div className={`${siteContainer} w-full`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -32,7 +33,7 @@ export default function ProcessPage() {
         </section>
 
         {/* Main Process Section */}
-        <section className="py-20">
+        <section className="py-12 md:py-14">
           <div className="max-w-4xl mx-auto px-4">
             {PROCESS_STEPS.map((step, index) => (
               <motion.div
@@ -178,8 +179,8 @@ export default function ProcessPage() {
         </section>
 
         {/* Why This Process Works */}
-        <section className="py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-12 md:py-14 bg-secondary/5">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -239,7 +240,7 @@ export default function ProcessPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-12 md:py-14 bg-primary text-primary-foreground">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

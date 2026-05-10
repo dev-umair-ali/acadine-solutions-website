@@ -5,6 +5,7 @@ import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { siteContainer } from '@/lib/site-layout'
 
 export default function AboutPage() {
   return (
@@ -12,8 +13,8 @@ export default function AboutPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4 w-full">
+        <section className="relative flex items-center py-12 md:py-16 bg-secondary/5">
+          <div className={`${siteContainer} w-full`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -31,7 +32,7 @@ export default function AboutPage() {
         </section>
 
         {/* Our Story */}
-        <section className="py-20">
+        <section className="py-12 md:py-14">
           <div className="max-w-4xl mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -61,8 +62,8 @@ export default function AboutPage() {
         </section>
 
         {/* Our Approach */}
-        <section className="py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-12 md:py-14 bg-secondary/5">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -121,8 +122,8 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-12 md:py-14">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -167,8 +168,8 @@ export default function AboutPage() {
         </section>
 
         {/* Engagement model */}
-        <section className="py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-12 md:py-14 bg-secondary/5">
+          <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -217,7 +218,7 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
+        <section className="py-12 md:py-14 bg-primary text-primary-foreground">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
