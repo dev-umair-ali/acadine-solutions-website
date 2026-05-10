@@ -1,21 +1,11 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import { COMMON_PROBLEMS } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight, AlertCircle } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'AI Rescue Service | Fix Failed AI Projects | Acadine Solutions',
-  description: 'Salvage failing AI implementations. We diagnose root causes and rebuild AI projects for success.',
-  openGraph: {
-    title: 'AI Rescue Service | Fix Failed AI Projects',
-    description: 'Turn around struggling AI projects with our rescue service.',
-  },
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -42,7 +32,7 @@ export default function AIRescuePage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center py-20 bg-destructive/5">
+        <section className="relative min-h-[500px] flex items-center py-20 bg-muted/25 border-b border-border/40">
           <div className="max-w-6xl mx-auto px-4 w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -50,9 +40,9 @@ export default function AIRescuePage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-destructive/10 text-destructive mb-4">
-                <AlertCircle className="w-4 h-4" />
-                <span className="text-sm font-semibold">Salvage Struggling AI Projects</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-foreground mb-4 border border-accent/20">
+                <AlertCircle className="w-4 h-4 text-accent" aria-hidden />
+                <span className="text-sm font-semibold">Recovery &amp; rework</span>
               </div>
 
               <h1 className="text-5xl md:text-6xl font-bold mb-6">

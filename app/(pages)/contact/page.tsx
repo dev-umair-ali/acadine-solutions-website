@@ -1,20 +1,11 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { CalendarClock, Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
-
-export const metadata: Metadata = {
-  title: 'Contact Acadine Solutions | AI Consulting',
-  description: 'Get in touch with our AI consulting team. Schedule a consultation to discuss your business transformation needs.',
-  openGraph: {
-    title: 'Contact Acadine Solutions | AI Consulting',
-    description: 'Ready to transform your operations? Let&apos;s start a conversation.',
-  },
-}
+import Link from 'next/link'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -22,233 +13,185 @@ export default function ContactPage() {
     email: '',
     company: '',
     challenge: '',
-    message: '',
   })
 
   const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real application, this would send the form data to a server
-    console.log('Form submitted:', formData)
     setSubmitted(true)
     setTimeout(() => {
       setSubmitted(false)
-      setFormData({ name: '', email: '', company: '', challenge: '', message: '' })
-    }, 3000)
+      setFormData({ name: '', email: '', company: '', challenge: '' })
+    }, 3200)
   }
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[400px] flex items-center py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4 w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Get in Touch
-              </h1>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                Ready to transform your operations? Let&apos;s start a conversation.
+        <section className="border-b border-border/40 bg-muted/25 py-16 md:py-20">
+          <div className="mx-auto max-w-6xl px-4">
+            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">Contact</p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">Start with context — not a sales script</h1>
+              <p className="mt-5 text-pretty text-lg leading-relaxed text-foreground/65">
+                Share the operational problem, constraints, and what success would look like for your leadership team. We respond within one business day.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Contact Content */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-12">
-              {/* Contact Information */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="text-2xl font-bold mb-8">Contact Information</h2>
-
-                <div className="space-y-8">
+        <section className="py-16 md:py-20">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="grid gap-12 lg:grid-cols-3">
+              <motion.div initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
+                <h2 className="text-lg font-semibold text-foreground">Direct lines</h2>
+                <div className="mt-8 space-y-8 text-sm">
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-accent" />
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
+                      <Mail className="h-5 w-5 text-accent" aria-hidden />
                     </div>
                     <div>
-                      <p className="text-sm text-foreground/60 mb-1">Email</p>
-                      <a
-                        href="mailto:hello@acadine.com"
-                        className="text-lg font-semibold text-foreground hover:text-accent transition-colors"
-                      >
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-foreground/45">Email</p>
+                      <a href="mailto:hello@acadine.com" className="mt-1 block text-base font-semibold text-foreground hover:text-accent">
                         hello@acadine.com
                       </a>
                     </div>
                   </div>
-
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-accent" />
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
+                      <Phone className="h-5 w-5 text-accent" aria-hidden />
                     </div>
                     <div>
-                      <p className="text-sm text-foreground/60 mb-1">Phone</p>
-                      <a
-                        href="tel:+14155551234"
-                        className="text-lg font-semibold text-foreground hover:text-accent transition-colors"
-                      >
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-foreground/45">Phone</p>
+                      <a href="tel:+14155551234" className="mt-1 block text-base font-semibold text-foreground hover:text-accent">
                         +1 (415) 555-1234
                       </a>
                     </div>
                   </div>
-
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-6 h-6 text-accent" />
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
+                      <MapPin className="h-5 w-5 text-accent" aria-hidden />
                     </div>
                     <div>
-                      <p className="text-sm text-foreground/60 mb-1">Office</p>
-                      <p className="text-lg font-semibold text-foreground">
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-foreground/45">Office</p>
+                      <p className="mt-1 text-base font-semibold text-foreground">
                         San Francisco, CA
-                        <br />
-                        USA
+                        <span className="block text-sm font-normal text-foreground/60">United States</span>
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Response time */}
-                <div className="mt-12 p-6 rounded-xl border border-border/40 bg-accent/5">
-                  <p className="text-sm text-foreground/60 mb-2">Response Time</p>
-                  <p className="font-semibold text-foreground">Within 24 hours</p>
-                  <p className="text-sm text-foreground/60 mt-2">
-                    We respond to all inquiries within one business day.
-                  </p>
+                <div className="mt-10 rounded-2xl border border-border/60 bg-muted/15 p-6">
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-foreground/45">What to include</p>
+                  <ul className="mt-3 space-y-2 text-sm text-foreground/65">
+                    <li>Current workflow and where it breaks</li>
+                    <li>Systems involved + owners</li>
+                    <li>Timeline pressures and risk sensitivities</li>
+                  </ul>
                 </div>
               </motion.div>
 
-              {/* Contact Form */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="md:col-span-2"
+                transition={{ duration: 0.45 }}
+                className="rounded-2xl border border-border/60 bg-muted/15 p-8 lg:col-span-2"
               >
-                <h2 className="text-2xl font-bold mb-8">Send us a Message</h2>
+                <h2 className="text-lg font-semibold text-foreground">Send a brief</h2>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/60">
+                  Fields marked below map directly to how we triage inquiries internally — no gimmicky lead scoring.
+                </p>
 
                 {submitted ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="p-8 rounded-xl bg-accent/10 border border-accent/20 text-center"
-                  >
-                    <div className="text-5xl mb-4">✓</div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">Thank You!</h3>
-                    <p className="text-foreground/70">
-                      We&apos;ve received your message and will be in touch within 24 hours.
-                    </p>
+                  <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="mt-10 rounded-2xl border border-accent/25 bg-background p-8 text-center">
+                    <p className="text-lg font-semibold text-foreground">Received.</p>
+                    <p className="mt-2 text-sm text-foreground/65">We&apos;ll reply within one business day with next steps.</p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+                    <div className="grid gap-6 md:grid-cols-2">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                          Full Name
+                        <label htmlFor="name" className="block text-sm font-semibold text-foreground">
+                          Name
                         </label>
                         <input
-                          type="text"
                           id="name"
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-border/40 bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:border-accent/60 transition-colors"
-                          placeholder="John Doe"
+                          autoComplete="name"
+                          className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                          placeholder="Jordan Lee"
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-sm font-semibold mb-2">
+                        <label htmlFor="email" className="block text-sm font-semibold text-foreground">
                           Email
                         </label>
                         <input
-                          type="email"
                           id="email"
                           name="email"
+                          type="email"
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-border/40 bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:border-accent/60 transition-colors"
-                          placeholder="john@company.com"
+                          autoComplete="email"
+                          className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                          placeholder="jordan@company.com"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="company" className="block text-sm font-semibold mb-2">
+                      <label htmlFor="company" className="block text-sm font-semibold text-foreground">
                         Company
                       </label>
                       <input
-                        type="text"
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-border/40 bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:border-accent/60 transition-colors"
-                        placeholder="Acme Corp"
+                        autoComplete="organization"
+                        className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                        placeholder="Northwind Operations"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="challenge" className="block text-sm font-semibold mb-2">
-                        What&apos;s Your Main Challenge?
+                      <label htmlFor="challenge" className="block text-sm font-semibold text-foreground">
+                        Business challenge
                       </label>
-                      <input
-                        type="text"
+                      <textarea
                         id="challenge"
                         name="challenge"
                         value={formData.challenge}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg border border-border/40 bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:border-accent/60 transition-colors"
-                        placeholder="e.g., Manual workflows, data silos, operational bottlenecks"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-semibold mb-2">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
+                        required
                         rows={6}
-                        className="w-full px-4 py-3 rounded-lg border border-border/40 bg-background text-foreground placeholder-foreground/40 focus:outline-none focus:border-accent/60 transition-colors resize-none"
-                        placeholder="Tell us more about your situation and what you&apos;re hoping to achieve..."
+                        className="mt-2 w-full resize-y rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                        placeholder="Describe the operational issue, scope, stakeholders, and what a successful outcome looks like."
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
+                      className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-95 md:w-auto"
                     >
-                      Send Message
+                      Submit inquiry
                     </button>
 
-                    <p className="text-xs text-foreground/50 text-center">
-                      We&apos;ll respond within 24 hours. Your information is secure and won&apos;t be shared.
+                    <p className="text-xs text-foreground/50">
+                      For procurement security reviews, use email — we will route documents appropriately.
                     </p>
                   </form>
                 )}
@@ -257,20 +200,38 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl font-bold mb-6">Ready to Start Your Transformation?</h2>
-              <p className="text-lg text-primary-foreground/80 mb-2">
-                Whether you&apos;re in early exploration or ready to move forward, we&apos;re here to help.
-              </p>
-            </motion.div>
+        <section id="booking" className="border-t border-border/40 bg-muted/20 py-16 md:py-20">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="grid gap-8 rounded-3xl border border-border/60 bg-background p-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:p-10">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-foreground/55">
+                  <CalendarClock className="h-4 w-4 text-accent" aria-hidden />
+                  Calendar briefing
+                </div>
+                <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Prefer to align live?</h2>
+                <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-foreground/65">
+                  After we review your brief, we typically schedule a focused 45-minute session with decision-makers and operators
+                  — agenda-driven, no generic product tour.
+                </p>
+                <p className="mt-4 text-sm text-foreground/55">
+                  If your organization uses a standard scheduler (Calendly, Cal.com, Microsoft Bookings), share it in your email
+                  — we will coordinate without adding another tool unless you prefer it.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-dashed border-border/70 bg-muted/10 p-6 text-sm text-foreground/65">
+                <p className="font-semibold text-foreground">Enterprise scheduling</p>
+                <p className="mt-2 leading-relaxed">
+                  For teams with procurement or vendor onboarding steps, we follow your process — including NDAs and security
+                  questionnaires — before calendar holds.
+                </p>
+                <Link
+                  href="mailto:hello@acadine.com?subject=Calendar%20briefing%20request"
+                  className="mt-5 inline-flex rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-95"
+                >
+                  Email to schedule
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
       </main>

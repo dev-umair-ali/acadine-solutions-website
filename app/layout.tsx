@@ -1,16 +1,31 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { Manrope } from 'next/font/google'
 import './globals.css'
+import { cn } from '@/lib/utils'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://acadine.com'),
-  title: 'Acadine Solutions | AI Consulting & Business Transformation',
-  description: 'Transform your business with practical AI consulting. We diagnose workflows, design solutions, and implement systems that drive real operational improvement across healthcare, finance, logistics, and more.',
-  keywords: ['AI consulting', 'business transformation', 'operational improvement', 'AI implementation', 'digital transformation'],
+  title: {
+    default: 'Acadine Solutions | Practical AI & Operations Consulting',
+    template: '%s | Acadine Solutions',
+  },
+  description:
+    'Practical AI consulting and operational improvement — assessments, process redesign, disciplined adoption, and measurable automation.',
+  keywords: [
+    'AI consulting',
+    'business operations',
+    'process improvement',
+    'workflow automation',
+    'AI implementation',
+    'AI rescue',
+    'enterprise consulting',
+  ],
   authors: [{ name: 'Acadine Solutions' }],
   creator: 'Acadine Solutions',
   publisher: 'Acadine Solutions',
@@ -23,8 +38,9 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://acadine.com',
     siteName: 'Acadine Solutions',
-    title: 'Acadine Solutions | AI Consulting & Business Transformation',
-    description: 'Transform your business with practical AI consulting that delivers real operational improvement.',
+    title: 'Acadine Solutions | Practical AI & Operations Consulting',
+    description:
+      'Identify where AI creates value, strengthen workflows, and implement systems leadership can trust.',
     images: [
       {
         url: '/og-image.png',
@@ -36,35 +52,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Acadine Solutions | AI Consulting & Business Transformation',
-    description: 'Transform your business with practical AI consulting that delivers real operational improvement.',
+    title: 'Acadine Solutions | Practical AI & Operations Consulting',
+    description: 'Business-first consulting for AI readiness, automation, and recovery.',
   },
-  generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
   },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: true,
-  themeColor: '#0f1929',
+  themeColor: '#0f172a',
 }
 
 export default function RootLayout({
@@ -73,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
+    <html lang="en" className={cn(geist.variable, geistMono.variable, manrope.variable, 'bg-background')}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

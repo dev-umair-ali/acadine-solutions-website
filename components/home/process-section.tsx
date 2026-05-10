@@ -9,37 +9,32 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.12 },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.5 },
-  },
+  hidden: { opacity: 0, x: -12 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
 }
 
 export function ProcessSection() {
   return (
-    <section className="py-20 bg-secondary/5">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="border-b border-border/40 bg-muted/25 py-20 md:py-28">
+      <div className="mx-auto max-w-6xl px-4">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            How We Work
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-[2.5rem]">
+            A simple operating rhythm — built for clarity
           </h2>
-          <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-            A proven three-step approach to diagnosing challenges and delivering AI solutions that drive real business value.
+          <p className="mt-4 text-pretty text-lg text-foreground/60">
+            Three phases your teams can explain back: diagnose reality, design what fits, implement what holds up under
+            pressure.
           </p>
         </motion.div>
 
@@ -47,37 +42,29 @@ export function ProcessSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-8 max-w-3xl mx-auto"
+          viewport={{ once: true, margin: '-60px' }}
+          className="mx-auto mt-16 max-w-3xl space-y-10"
         >
           {PROCESS_STEPS.map((step, index) => (
-            <motion.div
-              key={step.number}
-              variants={itemVariants}
-              className="relative"
-            >
-              {/* Timeline connector */}
+            <motion.div key={step.number} variants={itemVariants} className="relative">
               {index < PROCESS_STEPS.length - 1 && (
-                <div className="absolute left-8 top-24 w-1 h-16 bg-gradient-to-b from-accent to-transparent" />
+                <div
+                  aria-hidden
+                  className="absolute left-[31px] top-[52px] hidden h-[calc(100%+2.25rem)] w-px bg-gradient-to-b from-accent/55 to-transparent md:block"
+                />
               )}
-
-              <div className="flex gap-8 items-start">
-                {/* Step number circle */}
-                <div className="relative z-10 flex-shrink-0">
-                  <motion.div
-                    whileInView={{ scale: 1.1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: 'spring', stiffness: 200 }}
-                    className="w-16 h-16 rounded-full bg-accent text-background flex items-center justify-center font-bold text-2xl"
-                  >
-                    {step.number}
-                  </motion.div>
+              <div className="flex gap-6 md:gap-8">
+                <div className="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-border/60 bg-background text-lg font-semibold text-foreground shadow-sm">
+                  {step.number}
                 </div>
-
-                {/* Step content */}
-                <div className="flex-1 pt-2">
-                  <h3 className="text-2xl font-semibold mb-3 text-foreground">{step.title}</h3>
-                  <p className="text-foreground/70 leading-relaxed">{step.description}</p>
+                <div className="pt-1">
+                  <h3 className="text-xl font-semibold text-foreground">{step.title}</h3>
+                  <p className="mt-2 leading-relaxed text-foreground/65">{step.description}</p>
+                  <p className="mt-3 text-sm text-foreground/50">
+                    {step.number === 1 && 'Interviews, systems mapping, and baseline metrics.'}
+                    {step.number === 2 && 'Prioritized roadmap with explicit trade-offs and owners.'}
+                    {step.number === 3 && 'Delivery, training, monitoring, and iteration tied to KPIs.'}
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -85,18 +72,18 @@ export function ProcessSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-16"
+          transition={{ duration: 0.45, delay: 0.05 }}
+          className="mt-14 text-center"
         >
           <Link
             href="/process"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary text-primary font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
+            className="inline-flex items-center gap-2 rounded-xl border border-border/70 px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-background"
           >
-            Dive Deeper Into Our Process
-            <ArrowRight className="w-4 h-4" />
+            Read the full process
+            <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
         </motion.div>
       </div>

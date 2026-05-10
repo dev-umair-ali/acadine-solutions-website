@@ -1,20 +1,10 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, TrendingUp } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'Case Studies | AI Implementation Results | Acadine Solutions',
-  description: 'Real-world case studies showing measurable business impact from our AI consulting and implementation services.',
-  openGraph: {
-    title: 'Case Studies | AI Implementation Results | Acadine Solutions',
-    description: 'Proven results: cost savings, efficiency gains, and operational improvements.',
-  },
-}
 
 const caseStudies = [
   {
@@ -119,10 +109,10 @@ export default function CaseExamplesPage() {
               className="text-center"
             >
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Case Studies
+                Case examples
               </h1>
               <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                Real implementations delivering measurable business results across industries.
+                Illustrative engagements structured as problem, solution, and outcome — representative of how we report internally.
               </p>
             </motion.div>
           </div>
@@ -235,6 +225,7 @@ export default function CaseExamplesPage() {
                 {
                   title: 'Scalability',
                   description: 'Systems designed to grow with your business without proportional cost increases.',
+                },
               ].map((item, index) => (
                 <motion.div
                   key={index}

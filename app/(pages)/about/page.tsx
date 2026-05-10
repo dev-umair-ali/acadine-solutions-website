@@ -1,20 +1,10 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'About Acadine Solutions | AI Consulting Experts',
-  description: 'Learn about our team, approach, and commitment to delivering practical AI solutions that drive real business value.',
-  openGraph: {
-    title: 'About Acadine Solutions | AI Consulting Experts',
-    description: 'Practical AI consulting focused on business outcomes and operational transformation.',
-  },
-}
 
 export default function AboutPage() {
   return (
@@ -34,7 +24,7 @@ export default function AboutPage() {
                 About Acadine Solutions
               </h1>
               <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                We're practical AI consultants focused on delivering real business value through proven implementation expertise.
+                We are practitioners first: operators, integrators, and advisors focused on measurable outcomes — not slides about outcomes.
               </p>
             </motion.div>
           </div>
@@ -94,7 +84,8 @@ export default function AboutPage() {
                 },
                 {
                   title: 'Business-Driven Design',
-                  description: 'Every decision flows from your business context and operational needs, not from what&apos;s technically possible.',
+                  description:
+                    "Every decision flows from your business context and operational needs, not from what's technically possible.",
                 },
                 {
                   title: 'Practical Implementation',
@@ -146,7 +137,8 @@ export default function AboutPage() {
               {[
                 {
                   value: 'Integrity',
-                  description: 'We&apos;re honest about what AI can and can&apos;t do. We say no when a project isn&apos;t right for you.',
+                  description:
+                    "We're honest about what AI can and can't do. We say no when a project isn't right for you.",
                 },
                 {
                   value: 'Excellence',
@@ -154,7 +146,8 @@ export default function AboutPage() {
                 },
                 {
                   value: 'Partnership',
-                  description: 'Your success is our success. We&apos;re invested in your long-term outcomes, not just project completion.',
+                  description:
+                    "Your success is our success. We're invested in your long-term outcomes, not just project completion.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -173,7 +166,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Trust Builders */}
+        {/* Engagement model */}
         <section className="py-20 bg-secondary/5">
           <div className="max-w-6xl mx-auto px-4">
             <motion.div
@@ -183,36 +176,39 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h2 className="text-4xl font-bold mb-4">Why Companies Trust Us</h2>
+              <h2 className="text-4xl font-bold mb-4">How leadership teams engage us</h2>
               <p className="text-foreground/60 text-lg max-w-2xl mx-auto mb-12">
-                We bring together the expertise, methodology, and commitment that organizations need for successful AI transformation.
+                No inflated metrics — just a delivery model designed for governance-heavy environments.
               </p>
 
               <div className="grid md:grid-cols-3 gap-8 text-left">
                 {[
                   {
-                    metric: '100+',
-                    description: 'Successful AI implementations across industries',
+                    title: 'Executive clarity',
+                    description:
+                      'Direct access to senior practitioners who can speak CFO, CIO, and COO — with traceable assumptions.',
                   },
                   {
-                    metric: '500M+',
-                    description: 'In quantified business impact for our clients',
+                    title: 'Operational truth-telling',
+                    description:
+                      'We document trade-offs explicitly: what must change in process before tools can help — and what should not be automated.',
                   },
                   {
-                    metric: '98%',
-                    description: 'Client satisfaction rate post-implementation',
+                    title: 'Measured adoption',
+                    description:
+                      'Training, monitoring, and iteration are part of scope — not an afterthought purchased separately.',
                   },
                 ].map((item, index) => (
                   <motion.div
-                    key={index}
+                    key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-8 rounded-xl border border-border/40 bg-background text-center"
+                    className="p-8 rounded-xl border border-border/40 bg-background text-left"
                   >
-                    <p className="text-4xl font-bold text-accent mb-2">{item.metric}</p>
-                    <p className="text-foreground/70">{item.description}</p>
+                    <p className="text-lg font-semibold text-foreground mb-2">{item.title}</p>
+                    <p className="text-foreground/70 leading-relaxed">{item.description}</p>
                   </motion.div>
                 ))}
               </div>

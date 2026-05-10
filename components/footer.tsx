@@ -1,115 +1,114 @@
 import Link from 'next/link'
+import { Mail, Phone } from 'lucide-react'
 
 export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-primary text-primary-foreground border-t border-border">
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          {/* Brand */}
+    <footer className="border-t border-border/60 bg-primary text-primary-foreground">
+      <div className="mx-auto max-w-6xl px-4 py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded bg-primary-foreground flex items-center justify-center text-primary font-bold text-sm">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-foreground text-sm font-bold text-primary">
                 A
-              </div>
-              <span className="font-semibold">Acadine</span>
+              </span>
+              <span className="text-sm font-semibold">Acadine Solutions</span>
             </div>
-            <p className="text-sm opacity-80">
-              Practical AI consulting that transforms business operations through proven implementation expertise.
+            <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">
+              Business-first consulting: diagnose workflows, improve operations, and implement intelligent automation where
+              it earns measurable outcomes.
             </p>
+            <div className="mt-6 space-y-3 text-sm">
+              <a href="mailto:hello@acadine.com" className="flex items-center gap-2 text-primary-foreground/85 hover:text-primary-foreground">
+                <Mail className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
+                hello@acadine.com
+              </a>
+              <a href="tel:+14155551234" className="flex items-center gap-2 text-primary-foreground/85 hover:text-primary-foreground">
+                <Phone className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
+                +1 (415) 555-1234
+              </a>
+            </div>
           </div>
 
-          {/* Company */}
           <div>
-            <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide">Company</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/55">Company</h3>
+            <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/about" className="opacity-80 hover:opacity-100 transition-opacity">
+                <Link href="/about" className="text-primary-foreground/75 hover:text-primary-foreground">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="opacity-80 hover:opacity-100 transition-opacity">
+                <Link href="/contact" className="text-primary-foreground/75 hover:text-primary-foreground">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/case-examples" className="opacity-80 hover:opacity-100 transition-opacity">
-                  Case Studies
+                <Link href="/case-examples" className="text-primary-foreground/75 hover:text-primary-foreground">
+                  Case examples
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide">Services</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/55">Services</h3>
+            <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/services" className="opacity-80 hover:opacity-100 transition-opacity">
-                  All Services
+                <Link href="/services" className="text-primary-foreground/75 hover:text-primary-foreground">
+                  All services
                 </Link>
               </li>
               <li>
-                <Link href="/ai-rescue" className="opacity-80 hover:opacity-100 transition-opacity">
+                <Link href="/ai-rescue" className="text-primary-foreground/75 hover:text-primary-foreground">
                   AI Rescue
                 </Link>
               </li>
               <li>
-                <Link href="/process" className="opacity-80 hover:opacity-100 transition-opacity">
-                  Our Process
+                <Link href="/process" className="text-primary-foreground/75 hover:text-primary-foreground">
+                  Process
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Industries */}
           <div>
-            <h3 className="font-semibold mb-4 text-sm uppercase tracking-wide">Industries</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/55">Industries</h3>
+            <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link href="/industries" className="opacity-80 hover:opacity-100 transition-opacity">
-                  View All
+                <Link href="/industries" className="text-primary-foreground/75 hover:text-primary-foreground">
+                  Overview
                 </Link>
               </li>
-              <li>
-                <span className="opacity-60 text-xs">Healthcare • Finance • Logistics • Operations • Support</span>
+              <li className="text-primary-foreground/55">
+                Healthcare · Finance · Logistics · Operations · Support · Professional services
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-primary-foreground/20 py-8">
-          {/* CTA Section */}
-          <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-6">
-            <div>
-              <h3 className="text-lg font-semibold mb-2">Ready to transform your operations?</h3>
-              <p className="opacity-80">Let&apos;s discuss how AI can drive real business value.</p>
-            </div>
-            <Link
-              href="/contact"
-              className="px-6 py-2 rounded-lg bg-primary-foreground text-primary font-medium hover:opacity-90 transition-opacity whitespace-nowrap"
-            >
-              Start a Conversation
-            </Link>
+        <div className="mt-12 flex flex-col gap-6 border-t border-primary-foreground/15 pt-10 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-sm font-semibold text-primary-foreground">Discuss priorities with a practitioner — not a pitch deck.</p>
+            <p className="mt-1 text-sm text-primary-foreground/70">Share context on workflows, constraints, and outcomes.</p>
           </div>
+          <Link
+            href="/contact"
+            className="inline-flex shrink-0 items-center justify-center rounded-xl bg-primary-foreground px-6 py-3 text-sm font-semibold text-primary hover:opacity-95"
+          >
+            Book a Consultation
+          </Link>
         </div>
 
-        {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm opacity-70">
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-primary-foreground/15 pt-8 text-sm text-primary-foreground/55 md:flex-row md:items-center">
           <p>&copy; {year} Acadine Solutions. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="#" className="hover:opacity-100 transition-opacity">
-              Privacy
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/contact" className="hover:text-primary-foreground/85">
+              Privacy request
             </Link>
-            <Link href="#" className="hover:opacity-100 transition-opacity">
-              Terms
-            </Link>
-            <Link href="#" className="hover:opacity-100 transition-opacity">
-              Contact
+            <Link href="/contact" className="hover:text-primary-foreground/85">
+              Terms inquiry
             </Link>
           </div>
         </div>

@@ -1,21 +1,11 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import { PROCESS_STEPS } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'Our AI Consulting Process | Diagnose Design Implement | Acadine Solutions',
-  description: 'Learn our proven three-step process: Diagnose your challenges, Design practical solutions, Implement lasting change.',
-  openGraph: {
-    title: 'Our AI Consulting Process | Acadine Solutions',
-    description: 'Our proven approach to AI consulting and business transformation.',
-  },
-}
 
 export default function ProcessPage() {
   return (

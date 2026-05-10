@@ -1,21 +1,11 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
 import { INDUSTRIES } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'Industry Solutions | Healthcare Finance Logistics Operations | Acadine Solutions',
-  description: 'AI consulting solutions tailored to healthcare, finance, logistics, operations, support, and professional services.',
-  openGraph: {
-    title: 'Industry-Specific AI Solutions | Acadine Solutions',
-    description: 'AI consulting for healthcare, finance, logistics, operations, support, and professional services.',
-  },
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },

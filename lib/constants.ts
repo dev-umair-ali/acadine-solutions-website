@@ -1,228 +1,307 @@
-import { BarChart3, Zap, SearchCheck, Map, Cpu, Rocket } from 'lucide-react'
+import {
+  SearchCheck,
+  Workflow,
+  ScanSearch,
+  Map,
+  LayoutDashboard,
+  Layers,
+  Wrench,
+} from 'lucide-react'
 
-// Services offered by Acadine Solutions
 export const SERVICES = [
   {
     id: 'assessment',
     title: 'Business & Workflow Assessment',
-    description: 'We diagnose your current workflows, data flows, pain points, and opportunities for AI integration.',
+    description:
+      'Evaluate operations, workflows, tools, and data to identify inefficiencies.',
     icon: SearchCheck,
-    longDescription: 'A comprehensive analysis of your existing business processes, identifying inefficiencies and areas where AI can create value.',
+    longDescription:
+      'We map how work actually happens — systems, handoffs, approvals, and information flows — so recommendations are grounded in reality rather than slides.',
+    highlights: [
+      'Workflow and stakeholder interviews with operational metrics',
+      'Systems inventory, integration points, and constraint analysis',
+      'Prioritized inefficiencies with effort–impact framing',
+    ],
   },
   {
     id: 'improvement',
     title: 'Process Improvement & Operational Design',
-    description: 'Design optimized workflows and operational structures that support AI implementation and business growth.',
-    icon: BarChart3,
-    longDescription: 'Strategic redesign of your business processes to maximize efficiency and prepare for digital transformation.',
+    description:
+      'Fix broken or inefficient processes before recommending technology.',
+    icon: Workflow,
+    longDescription:
+      'Technology amplifies process quality: strong processes get stronger; weak processes fail faster. We redesign workflows for clarity, accountability, and throughput.',
+    highlights: [
+      'Standard operating models with measurable cycle-time targets',
+      'Controls and exception paths that reduce rework',
+      'Change readiness checkpoints before any automation spend',
+    ],
   },
   {
     id: 'discovery',
     title: 'AI Opportunity Discovery',
-    description: 'Identify specific use cases where AI can deliver measurable business value and competitive advantage.',
-    icon: Zap,
-    longDescription: 'Deep analysis to uncover high-impact AI applications tailored to your industry and operational context.',
+    description:
+      'Identify where AI creates value — and where it should not be used.',
+    icon: ScanSearch,
+    longDescription:
+      'We separate viable AI use cases from organizational theater: fit to data, risk, maintenance burden, and expected ROI — including explicit “do not automate” recommendations.',
+    highlights: [
+      'Use-case scoring tied to business KPIs and governance constraints',
+      'Explicit trade-offs between rules-based automation and ML approaches',
+      'Executive-ready findings your leadership team can defend',
+    ],
   },
   {
     id: 'roadmap',
     title: 'AI Readiness Roadmap',
-    description: 'Create a phased implementation strategy aligned with your business goals, budget, and technical capacity.',
+    description:
+      'Prepare the business, data, and team for successful AI adoption.',
     icon: Map,
-    longDescription: 'A structured plan for implementing AI solutions with clear milestones, resource requirements, and expected outcomes.',
+    longDescription:
+      'A phased plan covering data foundations, roles, operating cadence, and evaluation metrics — sized to your capacity so adoption is sustainable.',
+    highlights: [
+      'Phased milestones with owners, dependencies, and decision gates',
+      'Data quality and access prerequisites spelled out plainly',
+      'Training and operating model changes embedded in the plan',
+    ],
   },
   {
     id: 'automation',
     title: 'Automation & Systems Implementation',
-    description: 'Build and deploy AI-powered systems that automate workflows and improve decision-making.',
-    icon: Cpu,
-    longDescription: 'End-to-end implementation of AI solutions including system architecture, integration, and staff training.',
+    description:
+      'Build workflows, dashboards, and systems that reduce manual work.',
+    icon: LayoutDashboard,
+    longDescription:
+      'We implement practical orchestration, integrations, and reporting so teams spend less time reconciling and more time deciding — without unnecessary complexity.',
+    highlights: [
+      'Integration patterns chosen for maintainability and observability',
+      'Dashboards aligned to leadership decisions — not vanity charts',
+      'Runbooks, monitoring, and handover so teams can operate confidently',
+    ],
   },
   {
     id: 'implementation',
-    title: 'AI Implementation & Optimization',
-    description: 'Deploy AI solutions and continuously optimize performance to ensure sustained business value.',
-    icon: Rocket,
-    longDescription: 'From deployment through ongoing optimization, we ensure your AI systems deliver maximum impact.',
+    title: 'AI Implementation',
+    description:
+      'Implement AI solutions only where they create measurable value.',
+    icon: Layers,
+    longDescription:
+      'When AI is the right tool, we deliver models and applications with clear evaluation, guardrails, and ownership — focused on measured outcomes, not demos.',
+    highlights: [
+      'Evaluation harnesses and production monitoring suited to the risk profile',
+      'Human-in-the-loop designs where judgment still matters',
+      'Documentation that auditors, IT, and operators can actually use',
+    ],
+  },
+  {
+    id: 'rescue',
+    title: 'AI Rescue & Rework',
+    description:
+      'Fix AI solutions that were poorly implemented or not delivering results.',
+    icon: Wrench,
+    longDescription:
+      'We diagnose failure modes — misaligned objectives, data gaps, brittle integrations, or adoption issues — and rework delivery plans so investments produce business impact.',
+    highlights: [
+      'Honest assessment of what should be retired versus rebuilt',
+      'Recovery roadmap with near-term stabilization and longer-term correction',
+      'Governance and ownership changes that prevent repeat failures',
+    ],
   },
 ]
 
-// Three-step process
 export const PROCESS_STEPS = [
   {
     number: 1,
     title: 'Diagnose',
-    description: 'We deeply understand your workflows, data landscape, operational challenges, and current systems.',
+    description: 'Understand workflows, data, and problems.',
   },
   {
     number: 2,
     title: 'Design',
-    description: 'We design AI solutions and operational improvements specifically tailored to your business context.',
+    description: 'Define the right solutions.',
   },
   {
     number: 3,
     title: 'Implement',
-    description: 'We build, deploy, and optimize AI systems that drive measurable business results.',
+    description: 'Build and deploy what works.',
   },
 ]
 
-// Industries we serve
 export const INDUSTRIES = [
   {
     id: 'healthcare',
     title: 'Healthcare',
-    description: 'Improve patient outcomes, optimize operations, and enhance care quality through intelligent systems.',
+    description:
+      'Operational clarity where accuracy, compliance, and patient throughput intersect.',
     painPoints: [
-      'Administrative burden overwhelming clinical staff',
-      'Fragmented patient data across systems',
-      'Inefficient scheduling and resource allocation',
-      'Manual documentation consuming provider time',
+      'Administrative load competing with clinical time',
+      'Fragmented patient and operational data',
+      'Scheduling and capacity constraints',
+      'Documentation overhead across care settings',
     ],
     improvements: [
-      'AI-assisted diagnosis and clinical decision support',
-      'Automated administrative workflows',
-      'Predictive analytics for patient outcomes',
-      'Optimized staff scheduling and resource planning',
+      'Workflow automation for repeatable administrative tasks',
+      'Operational dashboards with accountable metrics',
+      'Triage and routing improvements grounded in policy',
+      'Measured pilots before broad ML deployment',
     ],
   },
   {
     id: 'finance',
     title: 'Finance',
-    description: 'Strengthen risk management, automate compliance, and accelerate financial analysis.',
+    description:
+      'Controls-first modernization for reporting speed and operational resilience.',
     painPoints: [
-      'Manual reconciliation and data entry',
-      'Regulatory compliance burden',
-      'Slow financial reporting cycles',
-      'Limited real-time visibility into operations',
+      'Manual reconciliation and exception handling',
+      'Heavy compliance reporting cycles',
+      'Limited end-to-end visibility across systems',
+      'Fragile spreadsheet-driven processes',
     ],
     improvements: [
-      'Automated transaction processing and reconciliation',
-      'AI-powered risk detection and fraud prevention',
-      'Real-time financial dashboards',
-      'Intelligent forecasting and planning',
+      'Structured workflows with audit trails and approvals',
+      'Automation where rules are stable; analytics where variance matters',
+      'Executive reporting packs that reconcile to source systems',
+      'Monitoring for operational and model risk where applicable',
     ],
   },
   {
     id: 'logistics',
     title: 'Logistics',
-    description: 'Optimize supply chains, reduce costs, and improve delivery performance.',
+    description:
+      'End-to-end visibility and disciplined execution across the network.',
     painPoints: [
-      'Inefficient route planning and fleet management',
-      'Supply chain visibility gaps',
-      'Demand forecasting inaccuracy',
-      'High operational costs',
+      'Planning latency and exception-driven firefighting',
+      'Incomplete shipment or inventory signals',
+      'Cost pressure without transparent trade-offs',
+      'Tool sprawl across carriers and partners',
     ],
     improvements: [
-      'AI-optimized routing and fleet management',
-      'End-to-end supply chain visibility',
-      'Predictive demand forecasting',
-      'Cost reduction through intelligent optimization',
+      'Integrated operational dashboards and exception workflows',
+      'Forecasting and planning improvements with clear assumptions',
+      'Automation for repetitive coordination tasks',
+      'Measurement frameworks tied to service levels and margin',
     ],
   },
   {
     id: 'operations',
     title: 'Operations',
-    description: 'Streamline processes, reduce waste, and improve productivity across all operations.',
+    description:
+      'Productivity, quality, and throughput improvements that scale.',
     painPoints: [
-      'Manual process management',
-      'Quality control inconsistencies',
-      'Production inefficiencies',
-      'Poor inventory management',
+      'Manual coordination across shifts and sites',
+      'Inconsistent quality checks and rework',
+      'Inventory and production inefficiencies',
+      'Limited standard work and training reinforcement',
     ],
     improvements: [
-      'Automated workflow orchestration',
-      'AI-powered quality assurance',
-      'Predictive maintenance systems',
-      'Intelligent inventory optimization',
+      'Standard work digitization with performance visibility',
+      'Quality workflows with traceability and root-cause habits',
+      'Automation for repetitive measurement and scheduling tasks',
+      'Continuous improvement cadence leadership can run monthly',
     ],
   },
   {
     id: 'support',
     title: 'Customer Support',
-    description: 'Deliver faster, more accurate support while reducing operational costs.',
+    description:
+      'Faster resolution with consistent quality and sustainable staffing models.',
     painPoints: [
-      'High support ticket volume',
-      'Inconsistent response quality',
-      'Long resolution times',
-      'Staff burnout and turnover',
+      'Ticket volume exceeding capacity planning',
+      'Inconsistent responses across channels',
+      'Knowledge scattered across tools',
+      'Agent burnout from repetitive inquiries',
     ],
     improvements: [
-      'Intelligent ticket routing and prioritization',
-      'AI-assisted response generation',
-      'Predictive issue resolution',
-      'Automated knowledge base management',
+      'Routing and prioritization tied to customer outcomes',
+      'Knowledge workflows that stay current',
+      'Automation where policies are clear; assistance where judgment matters',
+      'Metrics that reflect resolution quality — not just handle time',
     ],
   },
   {
     id: 'professional',
     title: 'Professional Services',
-    description: 'Improve project delivery, enhance resource allocation, and increase profitability.',
+    description:
+      'Delivery discipline: utilization, margin, and client outcomes aligned.',
     painPoints: [
-      'Resource allocation inefficiencies',
-      'Project delays and cost overruns',
-      'Knowledge silos across teams',
-      'Time tracking and billing challenges',
+      'Forecasting gaps across pipeline and staffing',
+      'Project leakage from scope and change management',
+      'Knowledge silos between teams',
+      'Billing and time-entry friction',
     ],
     improvements: [
-      'Intelligent project planning and resource optimization',
-      'Predictive risk management',
-      'Knowledge sharing and automation platforms',
-      'AI-assisted time tracking and billing',
+      'Operating cadence for staffing and delivery risk',
+      'Structured templates for proposals and delivery artifacts',
+      'Workflow automation for routine reporting and scheduling tasks',
+      'Dashboards that tie delivery metrics to financial outcomes',
     ],
   },
 ]
 
-// Common problems solved by AI Rescue
 export const COMMON_PROBLEMS = [
   {
     id: 'misalignment',
-    title: 'Strategy-Implementation Misalignment',
-    description: 'AI projects started without clear business context or operational integration.',
-    solution: 'Align AI initiatives with core business workflows and operational reality.',
+    title: 'Business–Technology Misalignment',
+    description:
+      'Initiatives launched without a crisp operational problem statement or measurable owner.',
+    solution:
+      'Re-anchor scope to workflows and KPIs; retire features that do not map to outcomes.',
   },
   {
     id: 'data-quality',
-    title: 'Data Quality Issues',
-    description: 'Poor data governance, fragmented systems, or unreliable training data.',
-    solution: 'Build data infrastructure and governance frameworks to support AI deployment.',
+    title: 'Data Readiness Gaps',
+    description:
+      'Fragmented sources, weak definitions, and unclear ownership undermine reliability.',
+    solution:
+      'Establish definitions, access patterns, and quality checks before scaling automation.',
   },
   {
     id: 'adoption',
-    title: 'Poor AI Adoption',
-    description: 'Staff resistance, unclear value proposition, or inadequate training.',
-    solution: 'Create change management plans and train teams to maximize AI value.',
+    title: 'Adoption and Change Risk',
+    description:
+      'Teams bypass tools when workflows are harder than the old way.',
+    solution:
+      'Redesign incentives, training, and support so new operating habits stick.',
   },
   {
     id: 'scalability',
-    title: 'Scalability & Maintenance',
-    description: 'AI systems that work in pilots but fail at scale or require constant firefighting.',
-    solution: 'Rebuild systems for production-grade reliability and continuous improvement.',
+    title: 'Operational Fragility',
+    description:
+      'Pilot success that breaks under production volume, exceptions, or audits.',
+    solution:
+      'Harden integrations, monitoring, and governance for steady-state operations.',
   },
 ]
 
-// Use cases and example scenarios
-export const USE_CASES = [
+export type UseCasePreview = 'reporting' | 'workflow' | 'customer' | 'data'
+
+export const USE_CASES: {
+  title: string
+  description: string
+  preview: UseCasePreview
+}[] = [
   {
-    title: 'Document Processing Automation',
-    description: 'Automate extraction and classification of documents at scale, reducing manual data entry by 80%.',
+    title: 'Reporting automation',
+    description:
+      'Close cycles accelerate when recurring packs reconcile automatically and exceptions surface early.',
+    preview: 'reporting',
   },
   {
-    title: 'Intelligent Workflow Routing',
-    description: 'Route tasks to the right people based on skills, workload, and priority using AI insights.',
+    title: 'Workflow improvement',
+    description:
+      'Approvals, routing, and handoffs become traceable — reducing cycle time and rework.',
+    preview: 'workflow',
   },
   {
-    title: 'Predictive Analytics',
-    description: 'Forecast demand, identify risks, and optimize planning with machine learning models.',
+    title: 'Customer processes',
+    description:
+      'Front-office journeys tighten with consistent policies and measurable service standards.',
+    preview: 'customer',
   },
   {
-    title: 'Customer Behavior Analysis',
-    description: 'Understand customer patterns and predict behavior to improve engagement and retention.',
-  },
-  {
-    title: 'Quality Assurance Automation',
-    description: 'Detect defects and quality issues in real-time using computer vision and AI.',
-  },
-  {
-    title: 'Chatbots & Virtual Agents',
-    description: 'Deploy AI-powered assistants that handle routine inquiries and escalate appropriately.',
+    title: 'Data insights',
+    description:
+      'Leaders move from static spreadsheets to governed metrics that teams trust enough to act on.',
+    preview: 'data',
   },
 ]

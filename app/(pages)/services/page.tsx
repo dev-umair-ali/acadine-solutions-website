@@ -1,6 +1,5 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
@@ -8,32 +7,126 @@ import { SERVICES } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
-export const metadata: Metadata = {
-  title: 'AI Consulting Services | Acadine Solutions',
-  description: 'End-to-end AI consulting services including assessment, design, implementation, and optimization. From business assessment to AI deployment.',
-  openGraph: {
-    title: 'AI Consulting Services | Acadine Solutions',
-    description: 'End-to-end AI consulting services tailored to your business needs.',
-  },
-}
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.08 },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
+}
+
+function ServiceVisual({ serviceId }: { serviceId: string }) {
+  return (
+    <div className="rounded-2xl border border-border/60 bg-muted/15 p-6 shadow-[0_22px_70px_-34px_rgba(15,25,41,0.35)]">
+      <div className="mb-4 flex items-center justify-between border-b border-border/50 pb-3">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/45">Workflow view</span>
+        <span className="text-[10px] text-foreground/40">{serviceId}</span>
+      </div>
+
+      {serviceId === 'assessment' && (
+        <div className="space-y-3">
+          {['Systems map', 'Stakeholder interviews', 'Baseline KPIs'].map((row, i) => (
+            <div key={row} className="flex items-center gap-3 rounded-xl border border-border/50 bg-background/80 px-3 py-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent/12 text-[11px] font-semibold text-accent">
+                {i + 1}
+              </span>
+              <span className="text-xs font-medium text-foreground/75">{row}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {serviceId === 'improvement' && (
+        <div className="grid grid-cols-3 gap-2">
+          {['As-is', 'Design', 'Controls'].map((c) => (
+            <div key={c} className="rounded-lg border border-border/50 bg-background/70 px-2 py-6 text-center text-[10px] font-semibold text-foreground/65">
+              {c}
+            </div>
+          ))}
+          <div className="col-span-3 mt-2 rounded-xl border border-dashed border-border/60 p-3 text-[11px] text-foreground/55">
+            Target cycle-time and exception paths agreed before tooling discussions.
+          </div>
+        </div>
+      )}
+
+      {serviceId === 'discovery' && (
+        <div className="space-y-2">
+          {[
+            { label: 'Rules-first candidates', w: '78%' },
+            { label: 'ML-fit candidates', w: '46%' },
+            { label: 'Do not automate', w: '22%' },
+          ].map((row) => (
+            <div key={row.label}>
+              <div className="mb-1 flex justify-between text-[10px] text-foreground/55">
+                <span>{row.label}</span>
+              </div>
+              <div className="h-2 rounded-full bg-primary/10">
+                <div className="h-full rounded-full bg-accent/45" style={{ width: row.w }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {serviceId === 'roadmap' && (
+        <div className="space-y-3">
+          {[
+            { t: 'Phase 1 — Foundations', d: 'Data access + owners' },
+            { t: 'Phase 2 — Pilots', d: 'Measured adoption gates' },
+            { t: 'Phase 3 — Scale', d: 'Operate + improve' },
+          ].map((p) => (
+            <div key={p.t} className="rounded-xl border border-border/50 bg-background/75 p-3">
+              <p className="text-[11px] font-semibold text-foreground">{p.t}</p>
+              <p className="mt-1 text-[10px] text-foreground/55">{p.d}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {serviceId === 'automation' && (
+        <div className="rounded-xl border border-border/50 bg-background/75 p-4">
+          <div className="flex gap-2">
+            {[42, 58, 52, 70, 66, 74].map((h, i) => (
+              <div key={i} className="flex-1 rounded-sm bg-linear-to-t from-primary/15 to-accent/45" style={{ height: `${h}px` }} />
+            ))}
+          </div>
+          <p className="mt-3 text-[11px] text-foreground/55">Dashboards tied to decisions — weekly operating review.</p>
+        </div>
+      )}
+
+      {serviceId === 'implementation' && (
+        <div className="space-y-3">
+          <div className="rounded-xl border border-border/50 bg-background/75 p-3">
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-foreground/45">Evaluation</p>
+            <div className="mt-2 grid grid-cols-3 gap-2 text-center text-[10px] text-foreground/65">
+              <span className="rounded-lg bg-muted/40 px-2 py-2">Precision</span>
+              <span className="rounded-lg bg-muted/40 px-2 py-2">Drift</span>
+              <span className="rounded-lg bg-muted/40 px-2 py-2">Escalation</span>
+            </div>
+          </div>
+          <p className="text-[11px] text-foreground/55">Guardrails + ownership documented for audit and IT review.</p>
+        </div>
+      )}
+
+      {serviceId === 'rescue' && (
+        <div className="space-y-3">
+          <div className="rounded-xl border border-amber-500/25 bg-background/75 p-3">
+            <p className="text-[11px] font-semibold text-foreground">Stabilize</p>
+            <p className="mt-1 text-[10px] text-foreground/55">Contain defects, restore trust, clarify outcomes.</p>
+          </div>
+          <div className="rounded-xl border border-border/50 bg-background/75 p-3">
+            <p className="text-[11px] font-semibold text-foreground">Rebuild plan</p>
+            <p className="mt-1 text-[10px] text-foreground/55">What ships next — and what stops shipping.</p>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default function ServicesPage() {
@@ -41,137 +134,87 @@ export default function ServicesPage() {
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[500px] flex items-center py-20 bg-secondary/5">
-          <div className="max-w-6xl mx-auto px-4 w-full">
+        <section className="relative border-b border-border/40 bg-muted/25 py-16 md:py-24">
+          <div className="mx-auto max-w-6xl px-4">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
+              transition={{ duration: 0.55 }}
+              className="max-w-3xl"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                AI Consulting Services
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">Services</p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                From assessment to implementation — and recovery when needed
               </h1>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                End-to-end AI solutions tailored to your business needs, from assessment through implementation.
+              <p className="mt-5 text-pretty text-lg leading-relaxed text-foreground/65">
+                Each section below expands what we deliver, how decisions are made, and what “done” looks like in operating
+                terms — not slide terms.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-16"
-            >
+        <section className="py-16 md:py-20">
+          <div className="mx-auto max-w-6xl px-4">
+            <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-20">
               {SERVICES.map((service, index) => {
                 const IconComponent = service.icon
                 const isEven = index % 2 === 0
-
                 return (
-                  <motion.div
+                  <motion.article
                     key={service.id}
                     variants={itemVariants}
-                    className={`grid md:grid-cols-2 gap-12 items-center ${
-                      !isEven ? 'md:auto-cols-reverse' : ''
-                    }`}
+                    className="grid gap-10 border-t border-border/40 pt-16 first:border-t-0 first:pt-0 md:grid-cols-2 md:items-start md:gap-14"
                   >
-                    {/* Content */}
-                    <div className={isEven ? 'order-1' : 'order-2'}>
-                      <div className="mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                          <IconComponent className="w-6 h-6 text-accent" />
-                        </div>
+                    <div className={isEven ? 'md:order-1' : 'md:order-2'}>
+                      <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border/60 bg-muted/30">
+                        <IconComponent className="h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden />
                       </div>
+                      <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">{service.title}</h2>
+                      <p className="mt-4 leading-relaxed text-foreground/65">{service.longDescription}</p>
 
-                      <h2 className="text-3xl font-bold mb-4">{service.title}</h2>
-                      <p className="text-foreground/70 mb-6 leading-relaxed">
-                        {service.longDescription}
-                      </p>
-
-                      <ul className="space-y-3 mb-8">
-                        <li className="flex items-start gap-3">
-                          <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <div className="w-2 h-2 rounded-full bg-accent" />
-                          </div>
-                          <span className="text-foreground/70">Comprehensive analysis and recommendations</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <div className="w-2 h-2 rounded-full bg-accent" />
-                          </div>
-                          <span className="text-foreground/70">Business-focused implementation approach</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <div className="w-2 h-2 rounded-full bg-accent" />
-                          </div>
-                          <span className="text-foreground/70">Measurable outcomes and ROI tracking</span>
-                        </li>
+                      <ul className="mt-8 space-y-4">
+                        {service.highlights.map((line) => (
+                          <li key={line} className="flex gap-3 text-foreground/70">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
+                            <span className="leading-relaxed">{line}</span>
+                          </li>
+                        ))}
                       </ul>
 
                       <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
+                        className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-95"
                       >
-                        Get Started
-                        <ArrowRight className="w-4 h-4" />
+                        Book a Consultation
+                        <ArrowRight className="h-4 w-4" aria-hidden />
                       </Link>
                     </div>
 
-                    {/* Visual */}
-                    <div className={`order-2 md:order-none ${isEven ? '' : 'md:order-1'}`}>
-                      <div className="relative h-80 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 flex items-center justify-center">
-                        <div className="relative w-40 h-40">
-                          <motion.div
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                            className="absolute inset-0 rounded-full border border-accent/30"
-                          />
-                          <motion.div
-                            animate={{ rotate: -360 }}
-                            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                            className="absolute inset-4 rounded-full border border-accent/20"
-                          />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <IconComponent className="w-20 h-20 text-accent opacity-40" />
-                          </div>
-                        </div>
-                      </div>
+                    <div className={isEven ? 'md:order-2' : 'md:order-1'}>
+                      <ServiceVisual serviceId={service.id} />
                     </div>
-                  </motion.div>
+                  </motion.article>
                 )
               })}
             </motion.div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl font-bold mb-6">Ready to Explore Our Services?</h2>
-              <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-                Schedule a consultation to discuss your specific challenges and how our services can drive business value.
+        <section className="border-t border-border/40 bg-primary py-16 text-primary-foreground md:py-20">
+          <div className="mx-auto max-w-4xl px-4 text-center">
+            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
+              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Choose the entry point that matches reality</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-primary-foreground/75">
+                If you are unsure where to start, we typically begin with diagnosis — even for implementation-heavy asks —
+                so scope stays anchored to measurable outcomes.
               </p>
-
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary-foreground text-primary font-semibold hover:shadow-lg transition-all"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary-foreground px-8 py-3.5 text-sm font-semibold text-primary transition hover:opacity-95"
               >
-                Schedule a Consultation
-                <ArrowRight className="w-5 h-5" />
+                Book a Consultation
+                <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </motion.div>
           </div>
