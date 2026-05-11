@@ -53,29 +53,20 @@ export default function AboutPage() {
       <Header />
       <main>
         {/* ── Hero ── */}
-        <section className="relative overflow-hidden border-b border-border/40 bg-muted/20">
-          <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-50" aria-hidden />
-
-          <div className={`relative ${siteContainer} py-16 md:py-20 lg:py-24`}>
+        <section className="relative border-b border-border/40 bg-muted/20 py-14 md:py-18 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
+          <div className={`relative ${siteContainer}`}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <div className="inline-flex items-baseline gap-3">
-                <span className="font-mono text-[11px] font-medium tabular-nums text-accent">01</span>
-                <span className="h-px w-10 bg-border" aria-hidden />
-                <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-foreground/42">
-                  Company
-                </span>
-              </div>
-
-              <h1 className="mt-5 text-balance text-[2rem] font-bold leading-[1.08] tracking-[-0.03em] text-foreground sm:text-[2.5rem] lg:text-[3rem] xl:text-[3.35rem]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-foreground/45">About</p>
+              <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">
                 About Acadine Solutions
               </h1>
-
-              <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-[1.7] text-muted-foreground md:text-[17px]">
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
                 Practical expertise. Execution-focused. Business-first mindset.
                 We help companies make smart, practical decisions about AI — not sell AI tools.
               </p>
