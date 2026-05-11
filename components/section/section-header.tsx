@@ -58,7 +58,7 @@ export function SectionHeader({
       </div>
       <h2
         className={cn(
-          'mt-4 max-w-4xl text-balance text-[1.65rem] font-semibold leading-[1.15] tracking-tight sm:text-3xl lg:text-[2.15rem] lg:leading-[1.12]',
+          'mt-4 max-w-4xl text-balance text-[1.75rem] font-bold leading-[1.1] tracking-tight sm:text-[2rem] lg:text-[2.35rem] lg:leading-[1.08]',
           align === 'center' && 'mx-auto',
           dark ? 'text-primary-foreground' : 'text-foreground',
         )}

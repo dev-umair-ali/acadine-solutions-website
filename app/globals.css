@@ -17,7 +17,7 @@
   --secondary: oklch(0.42 0.015 255);
   --secondary-foreground: oklch(0.98 0.005 260);
   --muted: oklch(0.88 0.008 255);
-  --muted-foreground: oklch(0.48 0.01 255);
+  --muted-foreground: oklch(0.42 0.012 255);
   --accent: oklch(0.52 0.18 200);
   --accent-foreground: oklch(0.98 0.005 260);
   --destructive: oklch(0.577 0.245 27.325);
@@ -151,5 +151,13 @@
   h2,
   h3 {
     font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--foreground);
+  }
+  h4,
+  h5 {
+    font-family: var(--font-heading);
+    font-weight: 600;
   }
 }
