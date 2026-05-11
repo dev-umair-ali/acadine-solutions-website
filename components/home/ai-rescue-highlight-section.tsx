@@ -16,7 +16,7 @@ export function AiRescueHighlightSection() {
           transition={{ duration: 0.5 }}
           className="relative overflow-hidden rounded-[1.25rem] border border-border/40 bg-linear-to-br from-primary via-primary to-[oklch(0.14_0.03_255)] p-px shadow-[0_40px_100px_-48px_rgba(15,23,42,0.85)]"
         >
-          <div className="relative overflow-hidden rounded-[1.2rem] bg-primary px-6 py-9 text-primary-foreground md:px-10 md:py-11 lg:px-14">
+          <div className="section-invert relative overflow-hidden rounded-[1.2rem] bg-primary px-6 py-9 text-primary-foreground md:px-10 md:py-11 lg:px-14">
             <div className="pointer-events-none absolute inset-0 texture-grain opacity-[0.15]" aria-hidden />
             <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-accent/25 blur-[80px]" aria-hidden />
             <div className="pointer-events-none absolute bottom-0 left-1/4 h-px w-1/2 bg-linear-to-r from-transparent via-white/20 to-transparent" aria-hidden />

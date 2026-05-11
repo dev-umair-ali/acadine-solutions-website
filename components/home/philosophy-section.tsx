@@ -6,7 +6,7 @@ import { SectionHeader } from '@/components/section/section-header'
 
 export function PhilosophySection() {
   return (
-    <section className="relative border-y border-white/10 bg-primary text-primary-foreground">
+    <section className="section-invert relative border-y border-white/10 bg-primary text-primary-foreground">
       <div className="pointer-events-none absolute inset-0 texture-grain opacity-[0.2]" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_80%_20%,rgba(56,189,198,0.14),transparent_55%)]" aria-hidden />
 

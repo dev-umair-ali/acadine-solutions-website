@@ -202,7 +202,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="border-t border-border/40 bg-primary py-12 text-primary-foreground md:py-14">
+        <section className="section-invert border-t border-border/40 bg-primary py-12 text-primary-foreground md:py-14">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Choose the entry point that matches reality</h2>

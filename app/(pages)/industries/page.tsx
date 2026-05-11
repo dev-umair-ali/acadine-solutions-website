@@ -2,199 +2,223 @@
 
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { SectionHeader } from '@/components/section/section-header'
 import { motion } from 'framer-motion'
 import { INDUSTRIES } from '@/lib/constants'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, AlertTriangle, Building2, Heart, Landmark, Truck, Settings, Headphones, Briefcase } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
+const INDUSTRY_ICONS: Record<string, React.ElementType> = {
+  healthcare: Heart,
+  finance: Landmark,
+  logistics: Truck,
+  operations: Settings,
+  support: Headphones,
+  professional: Briefcase,
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
-  },
+    transition: { duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+  }),
 }
 
+const STATS = [
+  { value: '6', label: 'Sectors' },
+  { value: '40+', label: 'Engagements' },
+  { value: '3.2×', label: 'Avg ROI' },
+]
+
 export default function IndustriesPage() {
+  const featured = INDUSTRIES.slice(0, 2)
+  const rest = INDUSTRIES.slice(2)
+
   return (
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative flex items-center py-12 md:py-16 bg-secondary/5">
-          <div className={`${siteContainer} w-full`}>
+        {/* Hero */}
+        <section className="relative border-b border-border/40 bg-muted/20 bg-dot-grid py-14 md:py-18">
+          <div className={siteContainer}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Industry Solutions
-              </h1>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                AI consulting tailored to the unique challenges and opportunities of each industry.
-              </p>
+              <SectionHeader
+                index="01"
+                eyebrow="Sectors"
+                title="Industry experience that earns trust on day one"
+                description="We bring pattern recognition from adjacent verticals — and the discipline to adapt, not copy-paste. Each engagement starts with what's actually true in your operating environment."
+              />
             </motion.div>
           </div>
         </section>
 
-        {/* Industries Grid */}
-        <section className="py-12 md:py-14">
+        {/* Bento Grid */}
+        <section className="py-14 md:py-18">
           <div className={siteContainer}>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-20"
-            >
-              {INDUSTRIES.map((industry, index) => (
-                <motion.div
-                  key={industry.id}
-                  variants={itemVariants}
-                  className="p-8 rounded-xl border border-border/40 bg-background hover:border-accent/40 hover:shadow-lg transition-all"
-                >
-                  {/* Header */}
-                  <div className="mb-8">
-                    <h2 className="text-3xl font-bold mb-3">{industry.title}</h2>
-                    <p className="text-lg text-foreground/70">{industry.description}</p>
-                  </div>
+            <SectionHeader
+              index="02"
+              eyebrow="Focus Areas"
+              title="Six sectors, one operating standard"
+              className="mb-12"
+            />
 
-                  {/* Content Grid */}
-                  <div className="grid md:grid-cols-2 gap-8">
-                    {/* Pain Points */}
-                    <div>
-                      <h3 className="text-xl font-semibold mb-6 text-destructive flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-destructive" />
-                        Common Challenges
-                      </h3>
-                      <ul className="space-y-4">
-                        {industry.painPoints.map((point, i) => (
-                          <li key={i} className="flex gap-3 text-foreground/70">
-                            <span className="text-destructive font-bold">◆</span>
-                            <span>{point}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Improvements */}
-                    <div>
-                      <h3 className="text-xl font-semibold mb-6 text-accent flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-accent" />
-                        Our Solutions
-                      </h3>
-                      <ul className="space-y-4">
-                        {industry.improvements.map((improvement, i) => (
-                          <li key={i} className="flex gap-3 text-foreground/70">
-                            <span className="text-accent font-bold">✓</span>
-                            <span>{improvement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* CTA */}
-                  <div className="mt-8 pt-8 border-t border-border/40 flex justify-between items-center">
-                    <p className="text-foreground/60">Ready to transform your {industry.title.toLowerCase()} operations?</p>
+            {/* Featured row — 2 large cards */}
+            <div className="grid gap-5 md:grid-cols-12">
+              {featured.map((industry, i) => {
+                const Icon = INDUSTRY_ICONS[industry.id] ?? Building2
+                const span = i === 0 ? 'md:col-span-7' : 'md:col-span-5'
+                return (
+                  <motion.div
+                    key={industry.id}
+                    custom={i}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all"
+                      className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-7 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_28px_72px_-32px_rgba(15,23,42,0.4)] ${span}`}
                     >
-                      Get Started
-                      <ArrowRight className="w-4 h-4" />
+                      <div>
+                        <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-muted/25">
+                          <Icon className="h-5 w-5 text-accent" strokeWidth={1.75} />
+                        </div>
+                        <h3 className="text-2xl font-bold tracking-tight text-foreground">
+                          {industry.title}
+                        </h3>
+                        <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                          {industry.description}
+                        </p>
+
+                        <div className="mt-6 space-y-3">
+                          {industry.painPoints.slice(0, 2).map((point, j) => (
+                            <div key={j} className="flex items-start gap-2.5">
+                              <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-destructive/70" strokeWidth={2} />
+                              <span className="text-sm leading-snug text-foreground/65">{point}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mt-8 flex items-center gap-2 text-sm font-bold text-accent transition-all group-hover:gap-3">
+                        Discuss this sector
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
                     </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                  </motion.div>
+                )
+              })}
+            </div>
+
+            {/* Remaining 4 — 3-col grid */}
+            <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {rest.map((industry, i) => {
+                const Icon = INDUSTRY_ICONS[industry.id] ?? Building2
+                return (
+                  <motion.div
+                    key={industry.id}
+                    custom={i + 2}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                  >
+                    <Link
+                      href="/contact"
+                      className="group flex h-full flex-col justify-between rounded-2xl border border-border/45 bg-background/90 p-6 shadow-md transition-all duration-300 hover:border-accent/40 hover:shadow-lg"
+                    >
+                      <div>
+                        <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/50 bg-muted/25">
+                          <Icon className="h-5 w-5 text-accent" strokeWidth={1.75} />
+                        </div>
+                        <h3 className="text-lg font-bold tracking-tight text-foreground">
+                          {industry.title}
+                        </h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                          {industry.description}
+                        </p>
+
+                        <div className="mt-5 space-y-2.5">
+                          {industry.painPoints.slice(0, 2).map((point, j) => (
+                            <div key={j} className="flex items-start gap-2">
+                              <AlertTriangle className="mt-0.5 h-3 w-3 shrink-0 text-destructive/60" strokeWidth={2} />
+                              <span className="text-[13px] leading-snug text-foreground/60">{point}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="mt-6 flex items-center gap-2 text-[13px] font-bold text-accent transition-all group-hover:gap-3">
+                        Learn more
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </div>
+                    </Link>
+                  </motion.div>
+                )
+              })}
+            </div>
           </div>
         </section>
 
-        {/* Cross-Industry Insights */}
-        <section className="py-12 md:py-14 bg-secondary/5">
+        {/* Stats Strip */}
+        <section className="border-y border-border/40 bg-muted/20 texture-grain">
           <div className={siteContainer}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl font-bold mb-4">
-                Cross-Industry Patterns
-              </h2>
-              <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-                Regardless of industry, we see consistent patterns in how organizations can improve.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: 'Workflow Inefficiency',
-                  description: 'Manual processes consuming time and creating bottlenecks in every industry.',
-                },
-                {
-                  title: 'Data Silos',
-                  description: 'Fragmented information preventing informed decision-making and coordination.',
-                },
-                {
-                  title: 'Scaling Challenges',
-                  description: 'Difficulty scaling operations without proportional increases in cost.',
-                },
-              ].map((item, index) => (
+            <div className="grid grid-cols-3 divide-x divide-border/40">
+              {STATS.map((stat, i) => (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 rounded-xl border border-border/40 bg-background"
+                  transition={{ duration: 0.45, delay: i * 0.1 }}
+                  className="py-10 text-center md:py-12"
                 >
-                  <h3 className="text-lg font-semibold mb-3">{item.title}</h3>
-                  <p className="text-foreground/70">{item.description}</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    {stat.label}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-14 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 text-center">
+        {/* CTA */}
+        <section className="py-14 md:py-18">
+          <div className={siteContainer}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.55 }}
+              className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-1 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)]"
             >
-              <h2 className="text-4xl font-bold mb-6">Your Industry, Our Expertise</h2>
-              <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-                We bring deep industry understanding combined with proven AI implementation expertise.
-              </p>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary-foreground text-primary font-semibold hover:shadow-lg transition-all"
-              >
-                Discuss Your Industry Challenges
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+              <div className="rounded-[14px] bg-background/80 px-8 py-12 text-center backdrop-blur-sm md:px-14 md:py-14">
+                <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                  Your industry, our operating discipline
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+                  We bring deep sector understanding combined with a bias for measurement. Start with a conversation — no slide decks, no generic proposals.
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-[0_6px_22px_-6px_rgba(15,23,42,0.45)] transition hover:brightness-[1.07]"
+                >
+                  Discuss Your Industry
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>

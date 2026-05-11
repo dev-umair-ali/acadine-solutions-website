@@ -2,232 +2,290 @@
 
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { SectionHeader } from '@/components/section/section-header'
 import { motion } from 'framer-motion'
 import { COMMON_PROBLEMS } from '@/lib/constants'
 import Link from 'next/link'
-import { ArrowRight, AlertCircle } from 'lucide-react'
+import { ArrowRight, AlertTriangle, ShieldCheck, Clock, TrendingUp } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
+const ASSESSMENT_PHASES = [
+  {
+    number: '01',
+    title: 'Diagnosis',
+    description:
+      'Deep-dive into the failed implementation to isolate root causes — technical debt, data gaps, process mismatches, or adoption barriers.',
+    deliverables: [
+      'Root-cause analysis report',
+      'Technical & data audit findings',
+      'Stakeholder impact assessment',
+    ],
   },
-}
+  {
+    number: '02',
+    title: 'Assessment',
+    description:
+      'Evaluate what is salvageable. Score existing infrastructure, models, and integrations against the operational requirements that were missed.',
+    deliverables: [
+      'Asset viability scorecard',
+      'Gap analysis vs. business requirements',
+      'Risk register with severity ratings',
+    ],
+  },
+  {
+    number: '03',
+    title: 'Redesign',
+    description:
+      'Architect a recovery plan that addresses every failure mode — with near-term stabilization steps and a sustainable long-term path.',
+    deliverables: [
+      'Recovery roadmap with milestones',
+      'Revised architecture & integration plan',
+      'Change management playbook',
+    ],
+  },
+]
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-}
+const TRUST_STATS = [
+  { value: '94%', label: 'Recovery rate', icon: TrendingUp },
+  { value: '6 wks', label: 'Avg. time to stabilize', icon: Clock },
+  { value: '20+', label: 'Engagements completed', icon: ShieldCheck },
+]
 
 export default function AIRescuePage() {
   return (
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative flex items-center py-12 md:py-16 bg-muted/25 border-b border-border/40">
-          <div className={`${siteContainer} w-full`}>
+        {/* ── Hero ── */}
+        <section className="relative overflow-hidden border-b border-border/40 bg-muted/20 py-16 md:py-20 lg:py-24">
+          <div className="texture-grain pointer-events-none absolute inset-0 opacity-30" aria-hidden />
+
+          <div className={`relative ${siteContainer}`}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
+              transition={{ duration: 0.7 }}
+              className="max-w-3xl"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-foreground mb-4 border border-accent/20">
-                <AlertCircle className="w-4 h-4 text-accent" aria-hidden />
-                <span className="text-sm font-semibold">Recovery &amp; rework</span>
+              <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-accent/25 bg-accent/8 px-4 py-2">
+                <AlertTriangle className="h-4 w-4 text-accent" aria-hidden />
+                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
+                  Recovery · Rework
+                </span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                AI Rescue for Failed Implementations
+              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
+                Rescue AI projects that missed the mark
               </h1>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                AI projects that missed the mark? We diagnose the root causes and rebuild them for success.
+              <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground sm:text-base lg:text-lg">
+                Failed implementations aren&apos;t sunk costs — they&apos;re diagnostic
+                evidence. We isolate what went wrong, stabilize what&apos;s
+                salvageable, and rebuild on a foundation that actually works.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Problems & Solutions */}
-        <section className="py-12 md:py-14">
+        {/* ── Problems & Solutions ── */}
+        <section className="py-14 md:py-18 lg:py-20">
           <div className={siteContainer}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Common AI Project Failures
-              </h2>
-              <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-                We&apos;ve seen it all. Here are the patterns that lead to failed AI implementations and how we fix them.
-              </p>
-            </motion.div>
+            <SectionHeader
+              index="01"
+              eyebrow="Failure patterns"
+              title="Why AI projects fail — and how we fix each one"
+              description="Every rescue starts with pattern recognition. These are the failure modes we see most, paired with the corrective approach."
+            />
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              {COMMON_PROBLEMS.map((problem) => (
+            <div className="mt-12 space-y-0 md:mt-14">
+              {COMMON_PROBLEMS.map((problem, index) => (
                 <motion.div
                   key={problem.id}
-                  variants={itemVariants}
-                  className="grid md:grid-cols-2 gap-8 items-center p-8 rounded-xl border border-border/40 bg-background hover:border-destructive/40 transition-all"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="group relative grid items-start gap-6 border-b border-border/30 py-8 first:pt-0 last:border-b-0 md:grid-cols-[1fr_auto_1fr] md:gap-10 md:py-10"
                 >
+                  {/* Left — problem */}
                   <div>
-                    <h3 className="text-2xl font-bold mb-3 text-foreground">
+                    <span className="mb-3 inline-flex h-7 w-7 items-center justify-center rounded-md bg-foreground/5 font-mono text-[11px] font-bold text-muted-foreground">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-2 text-lg font-bold text-foreground sm:text-xl">
                       {problem.title}
                     </h3>
-                    <p className="text-foreground/70 leading-relaxed">
+                    <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
                       {problem.description}
                     </p>
                   </div>
 
-                  <div className="bg-accent/5 rounded-lg p-6 border border-accent/20">
-                    <p className="text-sm text-foreground/60 mb-2">Our Solution:</p>
-                    <p className="text-lg font-semibold text-accent">{problem.solution}</p>
+                  {/* Center divider */}
+                  <div className="hidden h-full w-px bg-accent/25 md:block" aria-hidden />
+
+                  {/* Right — solution */}
+                  <div className="rounded-xl border border-accent/15 bg-accent/4 px-5 py-4">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-accent">
+                      Corrective approach
+                    </span>
+                    <p className="mt-2 text-[14px] font-medium leading-relaxed text-foreground sm:text-[15px]">
+                      {problem.solution}
+                    </p>
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Assessment Process */}
-        <section className="py-12 md:py-14 bg-secondary/5">
-          <div className={siteContainer}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Our Rescue Assessment
-              </h2>
-              <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-                A systematic approach to understanding what went wrong and how to fix it.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: 'Diagnosis',
-                  description: 'Thoroughly analyze the failed project to understand root causes, technical issues, and business misalignments.',
-                  step: '01',
-                },
-                {
-                  title: 'Assessment',
-                  description: 'Evaluate existing infrastructure, data quality, team capabilities, and organizational readiness.',
-                  step: '02',
-                },
-                {
-                  title: 'Redesign',
-                  description: 'Create a new implementation plan that addresses root causes and ensures sustainable success.',
-                  step: '03',
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-8 rounded-xl border border-border/40 bg-background hover:border-accent/40 transition-all"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                    <span className="font-bold text-accent">{item.step}</span>
-                  </div>
-
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-foreground/70">{item.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-12 md:py-14">
-          <div className={siteContainer}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Why We Succeed Where Others Failed
-              </h2>
-              <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-                Our approach is built on understanding the operational and organizational factors that determine AI success.
-              </p>
-            </motion.div>
+        {/* ── Assessment Timeline ── */}
+        <section className="relative bg-muted/20 py-14 md:py-18 lg:py-20">
+          <div className="bg-dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                'Deep operational expertise, not just AI knowledge',
-                'Business-first approach that prioritizes outcomes',
-                'Proven experience rescuing failing projects',
-                'Change management expertise for staff adoption',
-                'Transparent communication about challenges and timelines',
-                'Long-term partnership mindset, not project completion',
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="flex gap-4 items-start"
-                >
-                  <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                  </div>
-                  <p className="text-lg text-foreground/70">{item}</p>
-                </motion.div>
-              ))}
+          <div className={`relative ${siteContainer}`}>
+            <SectionHeader
+              index="02"
+              eyebrow="Assessment process"
+              title="A systematic path from failure to recovery"
+              description="Three phases, each with concrete deliverables — so you always know where things stand."
+            />
+
+            {/* Vertical timeline */}
+            <div className="relative mt-12 md:mt-16">
+              {/* Connecting line */}
+              <div
+                className="absolute left-5 top-0 hidden h-full w-px bg-linear-to-b from-accent/50 via-accent/20 to-transparent md:left-8 md:block"
+                aria-hidden
+              />
+
+              <div className="space-y-10 md:space-y-14">
+                {ASSESSMENT_PHASES.map((phase, index) => (
+                  <motion.div
+                    key={phase.number}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.5, delay: index * 0.12 }}
+                    className="relative md:pl-20"
+                  >
+                    {/* Phase number dot */}
+                    <div className="absolute left-0 top-0 hidden h-10 w-10 items-center justify-center rounded-full border-2 border-accent/40 bg-background font-mono text-sm font-bold text-accent md:left-[13px] md:flex lg:left-[18px]">
+                      {phase.number}
+                    </div>
+
+                    <div className="rounded-2xl border border-border/45 bg-background/90 p-6 shadow-md md:p-8">
+                      <span className="mb-2 inline-block font-mono text-sm font-bold text-accent md:hidden">
+                        Phase {phase.number}
+                      </span>
+                      <h3 className="text-xl font-bold text-foreground sm:text-2xl">
+                        {phase.title}
+                      </h3>
+                      <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted-foreground sm:text-[15px]">
+                        {phase.description}
+                      </p>
+
+                      <div className="mt-5 border-t border-border/30 pt-4">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
+                          Deliverables
+                        </span>
+                        <ul className="mt-2.5 space-y-1.5">
+                          {phase.deliverables.map((d) => (
+                            <li
+                              key={d}
+                              className="flex items-center gap-2 text-[13px] text-foreground sm:text-[14px]"
+                            >
+                              <span className="h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden />
+                              {d}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-14 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 text-center">
+        {/* ── Trust Strip ── */}
+        <section className="section-invert border-y border-border/40 bg-primary py-12 md:py-14">
+          <div className={siteContainer}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
+              className="grid gap-8 sm:grid-cols-3 sm:gap-6"
             >
-              <h2 className="text-4xl font-bold mb-6">Ready to Rescue Your AI Project?</h2>
-              <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-                Don&apos;t abandon your AI investment. Let&apos;s diagnose the issues and rebuild for success.
-              </p>
+              {TRUST_STATS.map((stat) => {
+                const Icon = stat.icon
+                return (
+                  <div
+                    key={stat.label}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <Icon className="mb-3 h-5 w-5 text-accent" aria-hidden />
+                    <span className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
+                      {stat.value}
+                    </span>
+                    <span className="mt-1 text-[12px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/55">
+                      {stat.label}
+                    </span>
+                  </div>
+                )
+              })}
+            </motion.div>
+          </div>
+        </section>
 
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary-foreground text-primary font-semibold hover:shadow-lg transition-all"
-              >
-                Start Rescue Assessment
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+        {/* ── CTA ── */}
+        <section className="relative border-t border-border/50 pb-14 pt-12 md:pb-16 md:pt-14 lg:pb-18 lg:pt-16">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,oklch(0.62_0.12_200/0.12),transparent_60%)]" aria-hidden />
+
+          <div className={`relative ${siteContainer}`}>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="relative overflow-hidden rounded-[1.25rem] border border-border/50 bg-linear-to-b from-muted/50 to-background p-px shadow-[0_32px_80px_-40px_rgba(15,23,42,0.35)]"
+            >
+              <div className="texture-grain absolute inset-0 rounded-[1.2rem] opacity-25" aria-hidden />
+              <div className="relative rounded-[1.15rem] bg-background/95 px-6 py-10 text-center md:px-14 md:py-12">
+                <div className="mx-auto flex max-w-3xl flex-col items-center">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[11px] font-medium text-accent">04</span>
+                    <span className="h-px w-12 bg-border" aria-hidden />
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
+                      Next step
+                    </span>
+                  </div>
+                  <h2 className="mt-5 text-balance text-[1.75rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-3xl lg:text-[2.35rem]">
+                    Ready to rescue your AI investment?
+                  </h2>
+                  <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
+                    Don&apos;t write off what you&apos;ve built. Share context on the
+                    project — we&apos;ll respond with an honest assessment and a path forward.
+                  </p>
+                  <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-[13px] font-bold text-primary-foreground shadow-[0_16px_44px_-14px_rgba(15,23,42,0.55)] transition hover:brightness-105"
+                      >
+                        Start rescue assessment
+                        <ArrowRight className="h-4 w-4 opacity-90" aria-hidden />
+                      </Link>
+                    </motion.div>
+                    <Link
+                      href="/case-examples"
+                      className="inline-flex items-center rounded-lg border border-border/55 px-6 py-3 text-[13px] font-bold text-foreground transition hover:border-accent/40 hover:bg-muted/40"
+                    >
+                      Case examples
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>
