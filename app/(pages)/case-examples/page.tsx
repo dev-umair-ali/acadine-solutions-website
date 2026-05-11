@@ -2,9 +2,10 @@
 
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { SectionHeader } from '@/components/section/section-header'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, TrendingUp } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
 
 const caseStudies = [
@@ -76,23 +77,19 @@ const caseStudies = [
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-}
+const HEADLINE_STATS = [
+  { value: '6', label: 'Engagements' },
+  { value: '$12M+', label: 'Cost Savings' },
+  { value: '95%+', label: 'Adoption Rates' },
+]
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 },
-  },
+    transition: { duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  }),
 }
 
 export default function CaseExamplesPage() {
@@ -100,171 +97,167 @@ export default function CaseExamplesPage() {
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative flex items-center py-12 md:py-16 bg-secondary/5">
-          <div className={`${siteContainer} w-full`}>
+        {/* Hero */}
+        <section className="relative border-b border-border/40 bg-muted/20 bg-dot-grid py-14 md:py-18">
+          <div className={siteContainer}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Case examples
-              </h1>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                Illustrative engagements structured as problem, solution, and outcome — representative of how we report internally.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Case Studies Grid */}
-        <section className="py-12 md:py-14">
-          <div className={siteContainer}>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              {caseStudies.map((study, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="p-8 rounded-xl border border-border/40 bg-background hover:border-accent/40 hover:shadow-lg transition-all"
-                >
-                  {/* Header */}
-                  <div className="mb-6">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between md:gap-4 mb-4">
-                      <div>
-                        <h2 className="text-3xl font-bold text-foreground">{study.company}</h2>
-                        <p className="text-foreground/60 text-sm mt-1">{study.industry}</p>
-                      </div>
-                      <div className="flex items-center gap-2 text-accent font-semibold mt-4 md:mt-0">
-                        <TrendingUp className="w-5 h-5" />
-                        Measurable Success
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Challenge & Solution */}
-                  <div className="grid md:grid-cols-2 gap-8 mb-8">
-                    {/* Challenge */}
-                    <div>
-                      <h3 className="text-sm font-semibold text-destructive uppercase tracking-wider mb-3">
-                        Challenge
-                      </h3>
-                      <p className="text-foreground/70 leading-relaxed">{study.challenge}</p>
-                    </div>
-
-                    {/* Solution */}
-                    <div>
-                      <h3 className="text-sm font-semibold text-accent uppercase tracking-wider mb-3">
-                        Solution
-                      </h3>
-                      <p className="text-foreground/70 leading-relaxed">{study.solution}</p>
-                    </div>
-                  </div>
-
-                  {/* Results */}
-                  <div className="border-t border-border/40 pt-8">
-                    <h3 className="text-sm font-semibold text-primary uppercase tracking-wider mb-6">
-                      Results & Impact
-                    </h3>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      {study.results.map((result, i) => (
-                        <div
-                          key={i}
-                          className="p-4 rounded-lg bg-accent/5 border border-accent/20"
-                        >
-                          <p className="text-2xl font-bold text-accent mb-2">{result.metric}</p>
-                          <p className="text-sm text-foreground/70">{result.description}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Key Insights */}
-        <section className="py-12 md:py-14 bg-secondary/5">
-          <div className={siteContainer}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="max-w-3xl"
             >
-              <h2 className="text-4xl font-bold mb-4">
-                What Success Looks Like
-              </h2>
-              <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-                Common themes across our successful implementations.
-              </p>
+              <SectionHeader
+                index="01"
+                eyebrow="Evidence"
+                title="Results we can point to, structured as we'd report them internally"
+                description="Illustrative engagements organized as problem, approach, and outcome. Each case reflects real operating constraints — not best-case lab conditions."
+              />
             </motion.div>
+          </div>
+        </section>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  title: 'Operational Efficiency',
-                  description: 'Average 30% reduction in manual work through intelligent automation.',
-                },
-                {
-                  title: 'Cost Savings',
-                  description: 'Typical implementations deliver 2-4x ROI within first 18 months.',
-                },
-                {
-                  title: 'Staff Satisfaction',
-                  description: 'Employees spend less time on tedious work, more on strategic tasks.',
-                },
-                {
-                  title: 'Scalability',
-                  description: 'Systems designed to grow with your business without proportional cost increases.',
-                },
-              ].map((item, index) => (
+        {/* Headline Metrics Strip */}
+        <section className="border-b border-border/40 bg-muted/20 texture-grain">
+          <div className={siteContainer}>
+            <div className="grid grid-cols-3 divide-x divide-border/40">
+              {HEADLINE_STATS.map((stat, i) => (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-6 rounded-xl border border-border/40 bg-background"
+                  transition={{ duration: 0.45, delay: i * 0.1 }}
+                  className="py-10 text-center md:py-12"
                 >
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-foreground/70">{item.description}</p>
+                  <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                    {stat.label}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-14 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 text-center">
+        {/* Case Studies — Alternating Layout */}
+        <section className="py-14 md:py-18">
+          <div className={siteContainer}>
+            <SectionHeader
+              index="02"
+              eyebrow="Case Studies"
+              title="Six engagements, six operating realities"
+              className="mb-14"
+            />
+
+            <div className="space-y-16 md:space-y-20">
+              {caseStudies.map((study, index) => {
+                const isEven = index % 2 === 1
+                const heroResult = study.results[0]
+                const secondaryResults = study.results.slice(1)
+
+                return (
+                  <motion.article
+                    key={index}
+                    custom={index}
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-60px' }}
+                    className="grid items-start gap-8 border-t border-border/40 pt-12 first:border-t-0 first:pt-0 md:grid-cols-2 md:gap-14"
+                  >
+                    {/* Challenge + Solution side */}
+                    <div className={isEven ? 'md:order-2' : 'md:order-1'}>
+                      <span className="inline-block rounded-full border border-accent/25 bg-accent/8 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
+                        {study.industry}
+                      </span>
+                      <h3 className="mt-4 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+                        {study.company}
+                      </h3>
+
+                      <div className="mt-6">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-destructive/70">
+                          Challenge
+                        </p>
+                        <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                          {study.challenge}
+                        </p>
+                      </div>
+
+                      <div className="mt-5">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent/80">
+                          Approach
+                        </p>
+                        <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+                          {study.solution}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Results side */}
+                    <div className={isEven ? 'md:order-1' : 'md:order-2'}>
+                      <div className="rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-6 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)] md:p-8">
+                        {/* Hero metric */}
+                        <div className="mb-6 border-b border-border/40 pb-6">
+                          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                            Key Result
+                          </p>
+                          <p className="mt-3 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+                            {heroResult.metric}
+                          </p>
+                          <p className="mt-1.5 text-sm text-muted-foreground">
+                            {heroResult.description}
+                          </p>
+                        </div>
+
+                        {/* Secondary metrics */}
+                        <div className="grid grid-cols-2 gap-4">
+                          {secondaryResults.map((result, j) => (
+                            <div key={j} className="rounded-xl border border-border/40 bg-background/60 p-4">
+                              <p className="text-xl font-bold tracking-tight text-accent md:text-2xl">
+                                {result.metric}
+                              </p>
+                              <p className="mt-1 text-[13px] leading-snug text-muted-foreground">
+                                {result.description}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-14 md:py-18">
+          <div className={siteContainer}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.55 }}
+              className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-1 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)]"
             >
-              <h2 className="text-4xl font-bold mb-6">Ready to Achieve Similar Results?</h2>
-              <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-                Your success story starts with a conversation. Let&apos;s discuss your specific challenges and opportunities.
-              </p>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary-foreground text-primary font-semibold hover:shadow-lg transition-all"
-              >
-                Start Your Project
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+              <div className="rounded-[14px] bg-background/80 px-8 py-12 text-center backdrop-blur-sm md:px-14 md:py-14">
+                <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+                  Ready to build your own case study?
+                </h2>
+                <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+                  Your success story starts with a diagnosis. We&apos;ll scope the engagement around measurable outcomes — not generic promises.
+                </p>
+                <Link
+                  href="/contact"
+                  className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-[0_6px_22px_-6px_rgba(15,23,42,0.45)] transition hover:brightness-[1.07]"
+                >
+                  Start Your Project
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>

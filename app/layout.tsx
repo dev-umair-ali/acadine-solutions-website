@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { Manrope } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
@@ -72,9 +73,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={cn(geist.variable, geistMono.variable, manrope.variable, 'bg-background')}>
-      <body className="font-sans antialiased">
-        {children}
+    <html lang="en" className={cn(geist.variable, geistMono.variable, manrope.variable)} suppressHydrationWarning>
+      <body className="font-sans antialiased bg-background">
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

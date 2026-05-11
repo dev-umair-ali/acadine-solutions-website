@@ -2,242 +2,254 @@
 
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { SectionHeader } from '@/components/section/section-header'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Users, FileCheck, BarChart3 } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
+
+const values = [
+  {
+    name: 'Integrity',
+    description:
+      "We're honest about what AI can and can't do. We say no when a project isn't right for you — even if it means walking away from revenue.",
+  },
+  {
+    name: 'Excellence',
+    description:
+      'High standards in every deliverable. Every implementation reflects a commitment to quality that outlasts the engagement.',
+  },
+  {
+    name: 'Partnership',
+    description:
+      "Your success is our success. We're invested in long-term outcomes, not project completion metrics.",
+  },
+]
+
+const engagementCards = [
+  {
+    icon: Users,
+    title: 'Executive clarity',
+    description:
+      'Direct access to senior practitioners who speak CFO, CIO, and COO — with traceable assumptions and governance-ready artifacts.',
+  },
+  {
+    icon: FileCheck,
+    title: 'Operational truth-telling',
+    description:
+      'We document trade-offs explicitly: what must change in process before tools can help — and what should not be automated.',
+  },
+  {
+    icon: BarChart3,
+    title: 'Measured adoption',
+    description:
+      'Training, monitoring, and iteration are part of scope — not an afterthought purchased separately.',
+  },
+]
 
 export default function AboutPage() {
   return (
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative flex items-center py-12 md:py-16 bg-secondary/5">
-          <div className={`${siteContainer} w-full`}>
+        {/* ── Hero ── */}
+        <section className="relative overflow-hidden border-b border-border/40 bg-muted/20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-50" aria-hidden />
+
+          <div className={`relative ${siteContainer} py-16 md:py-20 lg:py-24`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center"
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-3xl"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                About Acadine Solutions
+              <div className="inline-flex items-baseline gap-3">
+                <span className="font-mono text-[11px] font-medium tabular-nums text-accent">01</span>
+                <span className="h-px w-10 bg-border" aria-hidden />
+                <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-foreground/42">
+                  Company
+                </span>
+              </div>
+
+              <h1 className="mt-5 text-balance text-[2rem] font-bold leading-[1.08] tracking-[-0.03em] text-foreground sm:text-[2.5rem] lg:text-[3rem] xl:text-[3.35rem]">
+                Practitioners first — operators, integrators, advisors.
               </h1>
-              <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                We are practitioners first: operators, integrators, and advisors focused on measurable outcomes — not slides about outcomes.
+
+              <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-[1.7] text-muted-foreground md:text-[17px]">
+                Acadine Solutions helps leadership teams cut through AI hype and find
+                where intelligence actually earns its cost — then implements with
+                measurable checkpoints, not slide decks about outcomes.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Our Story */}
-        <section className="py-12 md:py-14">
-          <div className="max-w-4xl mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="prose prose-invert max-w-none"
-            >
-              <h2 className="text-4xl font-bold mb-6">Our Story</h2>
-              <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-                Acadine Solutions was founded on a simple observation: most AI consulting focuses on technology and hype, not on the business outcomes that actually matter.
-              </p>
-
-              <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-                We watched intelligent companies invest millions in AI projects that failed because they weren&apos;t grounded in operational reality. Systems were built without understanding how work actually gets done. Implementation plans didn&apos;t account for organizational change. And success was measured by technical metrics instead of business impact.
-              </p>
-
-              <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-                We decided to build something different. A consulting firm that brings deep operational expertise combined with practical AI implementation knowledge. That diagnoses before designing. That involves your teams from day one. That measures success by business outcomes, not technical complexity.
-              </p>
-
-              <p className="text-lg text-foreground/70 leading-relaxed">
-                Today, Acadine Solutions helps organizations across industries transform their operations through AI that actually works.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Our Approach */}
-        <section className="py-12 md:py-14 bg-secondary/5">
+        {/* ── Story — editorial two-column ── */}
+        <section className="py-14 md:py-20 lg:py-24">
           <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16 xl:gap-20"
             >
-              <h2 className="text-4xl font-bold mb-4">What Sets Us Apart</h2>
-              <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-                Our philosophy and approach to AI consulting is fundamentally different.
-              </p>
-            </motion.div>
+              {/* Left — pull quote */}
+              <div className="flex items-start">
+                <blockquote className="border-l-[3px] border-accent pl-6 lg:pl-8">
+                  <p className="text-[1.35rem] font-bold leading-[1.35] tracking-tight text-foreground sm:text-[1.5rem] lg:text-[1.65rem]">
+                    Most AI consulting sells technology. We started because no one was
+                    selling operational truth.
+                  </p>
+                </blockquote>
+              </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {[
-                {
-                  title: 'Operational Expertise First',
-                  description: 'We understand how business really works. Our team brings deep operational experience across industries before AI knowledge.',
-                },
-                {
-                  title: 'Business-Driven Design',
-                  description:
-                    "Every decision flows from your business context and operational needs, not from what's technically possible.",
-                },
-                {
-                  title: 'Practical Implementation',
-                  description: 'We build solutions that work in reality, considering data quality, integration challenges, and organizational constraints.',
-                },
-                {
-                  title: 'Staff Engagement',
-                  description: 'Your teams are partners, not just users. We involve them from day one to ensure smooth adoption and ownership.',
-                },
-                {
-                  title: 'Measurable Outcomes',
-                  description: 'Success is defined by business metrics: cost reduction, efficiency gains, revenue growth, or quality improvement.',
-                },
-                {
-                  title: 'Long-Term Partnership',
-                  description: 'We stick around post-launch to optimize performance, solve problems, and drive continuous improvement.',
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="p-6 rounded-xl border border-border/40 bg-background hover:border-accent/40 transition-all"
-                >
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                  <p className="text-foreground/70">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Values */}
-        <section className="py-12 md:py-14">
-          <div className={siteContainer}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl font-bold mb-4">Our Core Values</h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  value: 'Integrity',
-                  description:
-                    "We're honest about what AI can and can't do. We say no when a project isn't right for you.",
-                },
-                {
-                  value: 'Excellence',
-                  description: 'High standards in everything we do. Every implementation reflects our commitment to quality.',
-                },
-                {
-                  value: 'Partnership',
-                  description:
-                    "Your success is our success. We're invested in your long-term outcomes, not just project completion.",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-8 rounded-xl border border-border/40 bg-background text-center hover:border-accent/40 transition-all"
-                >
-                  <h3 className="text-2xl font-bold text-accent mb-4">{item.value}</h3>
-                  <p className="text-foreground/70">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Engagement model */}
-        <section className="py-12 md:py-14 bg-secondary/5">
-          <div className={siteContainer}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h2 className="text-4xl font-bold mb-4">How leadership teams engage us</h2>
-              <p className="text-foreground/60 text-lg max-w-2xl mx-auto mb-12">
-                No inflated metrics — just a delivery model designed for governance-heavy environments.
-              </p>
-
-              <div className="grid md:grid-cols-3 gap-8 text-left">
-                {[
-                  {
-                    title: 'Executive clarity',
-                    description:
-                      'Direct access to senior practitioners who can speak CFO, CIO, and COO — with traceable assumptions.',
-                  },
-                  {
-                    title: 'Operational truth-telling',
-                    description:
-                      'We document trade-offs explicitly: what must change in process before tools can help — and what should not be automated.',
-                  },
-                  {
-                    title: 'Measured adoption',
-                    description:
-                      'Training, monitoring, and iteration are part of scope — not an afterthought purchased separately.',
-                  },
-                ].map((item, index) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="p-8 rounded-xl border border-border/40 bg-background text-left"
-                  >
-                    <p className="text-lg font-semibold text-foreground mb-2">{item.title}</p>
-                    <p className="text-foreground/70 leading-relaxed">{item.description}</p>
-                  </motion.div>
-                ))}
+              {/* Right — short paragraphs */}
+              <div className="space-y-5">
+                <p className="text-[15px] leading-[1.75] text-muted-foreground md:text-base">
+                  We watched intelligent companies invest millions in AI projects that
+                  failed because they weren&apos;t grounded in operational reality.
+                  Systems built without understanding how work actually gets done.
+                  Implementation plans that didn&apos;t account for organizational
+                  change. Success measured by technical metrics instead of business
+                  impact.
+                </p>
+                <p className="text-[15px] leading-[1.75] text-muted-foreground md:text-base">
+                  So we built something different — a firm that diagnoses before
+                  designing, involves your teams from day one, and measures success by
+                  outcomes leadership can actually sponsor: cost reduction, efficiency
+                  gains, quality improvement.
+                </p>
+                <p className="text-[15px] leading-[1.75] text-muted-foreground md:text-base">
+                  Today, Acadine Solutions helps organizations across industries
+                  transform their operations through AI that works in reality — not
+                  just in demos.
+                </p>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-12 md:py-14 bg-primary text-primary-foreground">
-          <div className="max-w-4xl mx-auto px-4 text-center">
+        {/* ── Values — horizontal stacked cards ── */}
+        <section className="border-t border-border/40 bg-muted/20 py-14 md:py-20 lg:py-24">
+          <div className={siteContainer}>
+            <SectionHeader
+              index="02"
+              eyebrow="Principles"
+              title="What we stand on"
+              description="Three convictions that shape every engagement — from scoping to post-launch."
+              className="mb-12"
+            />
+
+            <div className="space-y-4">
+              {values.map((v, i) => (
+                <motion.div
+                  key={v.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
+                  className={`grid items-baseline gap-4 rounded-2xl border border-border/45 p-6 shadow-md sm:grid-cols-[minmax(0,1fr)_minmax(0,2.5fr)] sm:gap-8 sm:p-8 ${
+                    i % 2 === 0
+                      ? 'bg-background/90'
+                      : 'bg-muted/30'
+                  }`}
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-mono text-[12px] font-medium tabular-nums text-accent/70">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="text-[1.25rem] font-bold tracking-tight text-foreground sm:text-[1.5rem]">
+                      {v.name}
+                    </h3>
+                  </div>
+                  <p className="text-[15px] leading-[1.75] text-muted-foreground">
+                    {v.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Engagement model — dark section ── */}
+        <section className="bg-primary py-14 md:py-20 lg:py-24">
+          <div className={siteContainer}>
+            <SectionHeader
+              index="03"
+              eyebrow="Engagement"
+              title="How leadership teams engage us"
+              description="No inflated metrics — just a delivery model designed for governance-heavy environments."
+              dark
+              className="mb-12"
+            />
+
+            <div className="grid gap-5 md:grid-cols-3">
+              {engagementCards.map((card, i) => (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.1 }}
+                  className="rounded-2xl border border-primary-foreground/10 bg-primary-foreground/4 p-7 backdrop-blur-sm"
+                >
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary-foreground/10">
+                    <card.icon className="h-5 w-5 text-primary-foreground/80" />
+                  </div>
+                  <h3 className="text-[1.1rem] font-bold text-primary-foreground">
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-primary-foreground/65">
+                    {card.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── CTA — premium card ── */}
+        <section className="py-14 md:py-20 lg:py-24">
+          <div className={siteContainer}>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
+              className="relative overflow-hidden rounded-[1.25rem] border border-border/50 bg-linear-to-b from-muted/50 to-background p-px shadow-[0_32px_80px_-40px_rgba(15,23,42,0.35)]"
             >
-              <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
-              <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-                Let&apos;s discuss how Acadine Solutions can help transform your operations through practical AI implementation.
-              </p>
+              <div className="texture-grain pointer-events-none absolute inset-0 rounded-[1.2rem] opacity-[0.25]" aria-hidden />
 
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary-foreground text-primary font-semibold hover:shadow-lg transition-all"
-              >
-                Get in Touch
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+              <div className="relative rounded-[1.15rem] bg-background/95 px-6 py-12 text-center md:px-14 md:py-16">
+                <div className="mx-auto flex max-w-2xl flex-col items-center">
+                  <h2 className="text-balance text-[1.75rem] font-bold leading-[1.12] tracking-tight text-foreground sm:text-3xl lg:text-[2.35rem]">
+                    Ready to partner with practitioners — not presenters?
+                  </h2>
+                  <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
+                    Send context on your workflows and constraints — we&apos;ll respond
+                    with a grounded view of fit, risk, and a path leadership can
+                    sponsor.
+                  </p>
+                  <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-[13px] font-bold text-primary-foreground shadow-[0_16px_44px_-14px_rgba(15,23,42,0.55)] transition hover:brightness-105"
+                      >
+                        Book a consultation
+                        <ArrowRight className="h-4 w-4 opacity-90" aria-hidden />
+                      </Link>
+                    </motion.div>
+                    <Link
+                      href="/case-examples"
+                      className="inline-flex items-center rounded-xl border border-border/55 px-6 py-3.5 text-[13px] font-bold text-foreground transition hover:border-accent/40 hover:bg-muted/40"
+                    >
+                      Case examples
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </section>

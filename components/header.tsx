@@ -3,8 +3,9 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { useTheme } from 'next-themes'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { ArrowUpRight, Menu, Phone, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Moon, Phone, Sun, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { siteContainer } from '@/lib/site-layout'
 
@@ -38,6 +39,36 @@ function DesktopNavLink({ href, label }: { href: string; label: string }) {
       )}
       <span className="relative z-10">{label}</span>
     </Link>
+  )
+}
+
+function ThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return <div className="h-9 w-9" />
+
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-foreground/60 transition hover:bg-muted/50 hover:text-foreground"
+      aria-label={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {resolvedTheme === 'dark' ? (
+          <motion.span key="sun" initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 90 }} transition={{ duration: 0.15 }}>
+            <Sun className="h-[16px] w-[16px]" strokeWidth={2} />
+          </motion.span>
+        ) : (
+          <motion.span key="moon" initial={{ opacity: 0, rotate: 90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: -90 }} transition={{ duration: 0.15 }}>
+            <Moon className="h-[16px] w-[16px]" strokeWidth={2} />
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </button>
   )
 }
 
@@ -101,7 +132,9 @@ export function Header() {
           </LayoutGroup>
 
           {/* Right side */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <ThemeToggle />
+
             <a
               href="tel:+14155551234"
               className="hidden items-center gap-2 rounded-full border border-border/60 bg-background/80 px-3 py-2 text-[13px] font-medium text-foreground/75 shadow-sm transition hover:border-accent/35 hover:text-foreground lg:inline-flex"

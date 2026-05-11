@@ -124,8 +124,10 @@
     background-image: radial-gradient(oklch(0.55 0.02 255 / 0.22) 1px, transparent 1px);
     background-size: 20px 20px;
   }
+  .dark .bg-dot-grid {
+    background-image: radial-gradient(oklch(0.55 0.02 255 / 0.12) 1px, transparent 1px);
+  }
 
-  /* Subtle film grain — reads as print-quality, not noise */
   .texture-grain {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
@@ -147,13 +149,18 @@
       radial-gradient(ellipse 80% 45% at 100% 15%, oklch(0.22 0.04 255 / 0.06), transparent 50%);
     background-attachment: fixed;
   }
+  .dark body,
+  body:is(.dark *) {
+    background-image:
+      radial-gradient(ellipse 100% 65% at 50% -25%, oklch(0.42 0.12 200 / 0.12), transparent 55%),
+      radial-gradient(ellipse 80% 45% at 100% 15%, oklch(0.15 0.04 255 / 0.15), transparent 50%);
+  }
   h1,
   h2,
   h3 {
     font-family: var(--font-heading);
     font-weight: 700;
     letter-spacing: -0.025em;
-    color: var(--foreground);
   }
   h4,
   h5 {
