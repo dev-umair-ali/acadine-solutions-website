@@ -8,6 +8,10 @@ import { useState } from 'react'
 import { siteContainer } from '@/lib/site-layout'
 import Link from 'next/link'
 
+const WEB3FORMS_KEY = '912c7711-ef10-4272-83af-630dc7fe9486'
+
+type FormStatus = 'idle' | 'loading' | 'success' | 'error'
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,20 +20,42 @@ export default function ContactPage() {
     challenge: '',
   })
 
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<FormStatus>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: '', email: '', company: '', challenge: '' })
-    }, 3200)
+    setStatus('loading')
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'New Contact Form Submission - Acadine Solutions',
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          message: formData.challenge,
+        }),
+      })
+
+      const data = await res.json()
+
+      if (data.success) {
+        setStatus('success')
+        setFormData({ name: '', email: '', company: '', challenge: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -112,13 +138,33 @@ export default function ContactPage() {
                   Fields marked below map directly to how we triage inquiries internally — no gimmicky lead scoring.
                 </p>
 
-                {submitted ? (
+                {status === 'success' ? (
                   <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="mt-10 rounded-2xl border border-accent/25 bg-background p-8 text-center">
-                    <p className="text-lg font-semibold text-foreground">Received.</p>
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-accent/10">
+                      <svg className="h-6 w-6 text-accent" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                    </div>
+                    <p className="mt-4 text-lg font-bold text-foreground">Thank you! Your message has been sent successfully.</p>
                     <p className="mt-2 text-sm text-foreground/65">We&apos;ll reply within one business day with next steps.</p>
+                    <button
+                      type="button"
+                      onClick={() => setStatus('idle')}
+                      className="mt-6 inline-flex rounded-xl border border-border/60 bg-muted/20 px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/40"
+                    >
+                      Send another message
+                    </button>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+                    {status === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="rounded-xl border border-destructive/25 bg-destructive/5 px-4 py-3 text-sm font-medium text-destructive"
+                      >
+                        Something went wrong. Please try again.
+                      </motion.div>
+                    )}
+
                     <div className="grid gap-6 md:grid-cols-2">
                       <div>
                         <label htmlFor="name" className="block text-sm font-semibold text-foreground">
@@ -130,8 +176,9 @@ export default function ContactPage() {
                           value={formData.name}
                           onChange={handleChange}
                           required
+                          disabled={status === 'loading'}
                           autoComplete="name"
-                          className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                          className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60"
                           placeholder="Jordan Lee"
                         />
                       </div>
@@ -146,8 +193,9 @@ export default function ContactPage() {
                           value={formData.email}
                           onChange={handleChange}
                           required
+                          disabled={status === 'loading'}
                           autoComplete="email"
-                          className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                          className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60"
                           placeholder="jordan@company.com"
                         />
                       </div>
@@ -162,8 +210,9 @@ export default function ContactPage() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
+                        disabled={status === 'loading'}
                         autoComplete="organization"
-                        className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                        className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60"
                         placeholder="Northwind Operations"
                       />
                     </div>
@@ -178,17 +227,26 @@ export default function ContactPage() {
                         value={formData.challenge}
                         onChange={handleChange}
                         required
+                        disabled={status === 'loading'}
                         rows={6}
-                        className="mt-2 w-full resize-y rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2"
+                        className="mt-2 w-full resize-y rounded-xl border border-border/60 bg-background px-4 py-3 text-sm text-foreground outline-none ring-ring/40 transition focus:border-accent/50 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60"
                         placeholder="Describe the operational issue, scope, stakeholders, and what a successful outcome looks like."
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-95 md:w-auto"
+                      disabled={status === 'loading'}
+                      className="w-full rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70 md:w-auto"
                     >
-                      Submit inquiry
+                      {status === 'loading' ? (
+                        <span className="inline-flex items-center gap-2">
+                          <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                          Sending...
+                        </span>
+                      ) : (
+                        'Submit inquiry'
+                      )}
                     </button>
 
                     <p className="text-xs text-foreground/50">
