@@ -113,17 +113,17 @@ export const PROCESS_STEPS = [
   {
     number: 1,
     title: 'Diagnose',
-    description: 'Understand workflows, data, and problems.',
+    description: 'Understand workflows, data, and problems',
   },
   {
     number: 2,
     title: 'Design',
-    description: 'Define the right solutions.',
+    description: 'Define the right solutions',
   },
   {
     number: 3,
     title: 'Implement',
-    description: 'Build and deploy what works.',
+    description: 'Build and deploy what works',
   },
 ]
 

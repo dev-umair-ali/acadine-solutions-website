@@ -27,15 +27,14 @@ export function AiRescueHighlightSection() {
                   <span className="font-mono text-[11px] font-medium text-accent">06</span>
                   <span className="h-px w-10 bg-primary-foreground/25" aria-hidden />
                   <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-primary-foreground/50">
-                    Recovery
+                    AI Rework
                   </span>
                 </div>
                 <h2 className="mt-4 max-w-xl text-balance text-2xl font-semibold tracking-tight md:text-3xl lg:text-[2.2rem] lg:leading-tight">
-                  Already tried AI — and it didn&apos;t land?
+                  Already tried AI and it didn&apos;t work?
                 </h2>
                 <p className="mt-4 max-w-[52ch] text-[14px] leading-relaxed text-primary-foreground/72 md:text-[15px]">
-                  We treat rescue like turnaround work: stabilize outcomes, fix data and workflow fit, then rebuild delivery
-                  with governance your auditors and operators can trust.
+                  We assess and fix AI implementations that are not delivering value.
                 </p>
               </div>
 

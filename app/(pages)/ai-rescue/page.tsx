@@ -75,12 +75,11 @@ export default function AIRescuePage() {
               </div>
 
               <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
-                Rescue AI projects that missed the mark
+                AI Rescue & Rework
               </h1>
               <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground sm:text-base lg:text-lg">
-                Failed implementations aren&apos;t sunk costs — they&apos;re diagnostic
-                evidence. We isolate what went wrong, stabilize what&apos;s
-                salvageable, and rebuild on a foundation that actually works.
+                Focused on fixing failed AI projects. We assess and fix AI implementations
+                that are not delivering value — stabilize outcomes, rebuild on a foundation that works.
               </p>
             </motion.div>
           </div>

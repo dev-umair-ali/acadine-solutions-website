@@ -52,9 +52,9 @@ export default function IndustriesPage() {
             >
               <SectionHeader
                 index="01"
-                eyebrow="Sectors"
-                title="Industry experience that earns trust on day one"
-                description="We bring pattern recognition from adjacent verticals — and the discipline to adapt, not copy-paste. Each engagement starts with what's actually true in your operating environment."
+                eyebrow="Industries"
+                title="Industries We Serve"
+                description="We work across industries to help businesses improve operations and adopt AI where it makes sense — with practical, sector-specific examples."
               />
             </motion.div>
           </div>

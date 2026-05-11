@@ -145,11 +145,10 @@ export default function ServicesPage() {
             >
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">Services</p>
               <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-                From assessment to implementation — and recovery when needed
+                Services
               </h1>
               <p className="mt-5 text-pretty text-lg leading-relaxed text-foreground/65">
-                Each section below expands what we deliver, how decisions are made, and what “done” looks like in operating
-                terms — not slide terms.
+                We help companies improve operations and implement the right solutions — AI included only when it adds real value.
               </p>
             </motion.div>
           </div>

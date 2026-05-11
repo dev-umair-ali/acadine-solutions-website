@@ -81,9 +81,9 @@ export function UseCasesSection() {
       <div className={`relative ${siteContainer}`}>
         <SectionHeader
           index="07"
-          eyebrow="Patterns"
-          title="Outcomes we engineer — not slogans we borrow"
-          description="Representative themes from recent programs; each is anchored to measurable operating metrics."
+          eyebrow="Use Cases"
+          title="Real-world examples of what we deliver"
+          description="Practical outcomes across reporting, workflows, customer processes, and data — not theoretical demos."
           align="center"
           className="mb-10 lg:mb-12"
         />

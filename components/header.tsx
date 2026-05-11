@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
@@ -108,15 +109,15 @@ export function Header() {
 
         <div className={cn(siteContainer, 'flex h-14 items-center justify-between gap-4 sm:h-16 md:h-17')}>
           {/* Logo */}
-          <Link href="/" className="group flex shrink-0 items-center gap-2.5">
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-primary to-primary/85 text-[13px] font-bold text-primary-foreground shadow-[0_6px_20px_-4px_rgba(15,23,42,0.35)] ring-1 ring-white/15 transition-transform duration-300 group-hover:scale-[1.03] sm:h-10 sm:w-10 sm:text-sm">
-              <span className="absolute inset-0 rounded-xl bg-linear-to-t from-white/10 to-transparent opacity-70" />
-              A
-            </span>
-            <span className="leading-tight">
-              <span className="text-[14px] font-bold tracking-tight text-foreground sm:text-[15px]">Acadine</span>
-              <span className="hidden text-[10px] font-bold uppercase tracking-[0.14em] text-foreground/40 sm:block">Solutions</span>
-            </span>
+          <Link href="/" className="group flex shrink-0 items-center">
+            <Image
+              src="/logo.png"
+              alt="Acadine Solutions"
+              width={160}
+              height={48}
+              className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] sm:h-10 dark:brightness-0 dark:invert"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}

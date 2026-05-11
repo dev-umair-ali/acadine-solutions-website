@@ -34,9 +34,9 @@ export function ServicesSection() {
       <div className={`relative ${siteContainer}`}>
         <SectionHeader
           index="04"
-          eyebrow="Capability set"
-          title="Engagements scoped like an operating plan — not a slide deck"
-          description="Seven parallel tracks; most clients begin with assessment and discovery, then converge on implementation or rescue."
+          eyebrow="Services"
+          title="Services"
+          description="We help companies improve operations and implement the right solutions — AI included only when it adds real value."
           align="center"
           className="mb-10 lg:mb-12"
         />

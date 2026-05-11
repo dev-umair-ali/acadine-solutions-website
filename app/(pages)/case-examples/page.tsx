@@ -108,9 +108,9 @@ export default function CaseExamplesPage() {
             >
               <SectionHeader
                 index="01"
-                eyebrow="Evidence"
-                title="Results we can point to, structured as we'd report them internally"
-                description="Illustrative engagements organized as problem, approach, and outcome. Each case reflects real operating constraints — not best-case lab conditions."
+                eyebrow="Case Examples"
+                title="Problem &rarr; Solution &rarr; Outcome"
+                description="Real examples of how we help businesses identify problems, design solutions, and deliver measurable results."
               />
             </motion.div>
           </div>

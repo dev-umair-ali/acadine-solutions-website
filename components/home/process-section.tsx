@@ -12,10 +12,10 @@ const phases = [
   {
     number: '01',
     title: 'Diagnose',
-    subtitle: 'Weeks 1–4',
+    subtitle: 'Step 1',
     icon: Search,
     description:
-      'Map how work actually happens — systems, handoffs, approvals, and information flows. Surface where value leaks before recommending anything.',
+      'Understand workflows, data, and problems.',
     deliverables: [
       { icon: FileCheck, label: 'Evidence pack with operational metrics' },
       { icon: FileText, label: 'Prioritized findings & trade-off matrix' },
@@ -26,10 +26,10 @@ const phases = [
   {
     number: '02',
     title: 'Design',
-    subtitle: 'Weeks 4–8',
+    subtitle: 'Step 2',
     icon: PenTool,
     description:
-      'Define the right solutions with explicit scope, owners, and decision gates. Your leadership team reviews every recommendation before a line of code is written.',
+      'Define the right solutions.',
     deliverables: [
       { icon: FileText, label: 'Decision memo for executive review' },
       { icon: BarChart3, label: 'Implementation roadmap with milestones' },
@@ -40,10 +40,10 @@ const phases = [
   {
     number: '03',
     title: 'Implement',
-    subtitle: 'Weeks 8–16',
+    subtitle: 'Step 3',
     icon: Rocket,
     description:
-      'Build and deploy what works — with runbooks, monitoring, and handover so your team can operate confidently from day one.',
+      'Build and deploy what works.',
     deliverables: [
       { icon: BarChart3, label: 'Live dashboards tied to KPIs' },
       { icon: FileCheck, label: 'Operations runbook & team handover' },
@@ -143,9 +143,9 @@ export function ProcessSection() {
       <div className={`relative ${siteContainer}`}>
         <SectionHeader
           index="05"
-          eyebrow="Method"
-          title="Diagnose → design → implement — with executive checkpoints"
-          description="No black-box delivery: each phase ends with artifacts your leadership team can scrutinize."
+          eyebrow="Process"
+          title="Diagnose → Design → Implement"
+          description="A clear, structured approach to improving your operations and implementing the right solutions."
           align="center"
           className="mb-14 lg:mb-16"
         />

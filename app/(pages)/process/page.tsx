@@ -107,12 +107,11 @@ export default function ProcessPage() {
               </div>
 
               <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
-                Diagnose. Design. Implement.
+                Diagnose &rarr; Design &rarr; Implement
               </h1>
               <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground sm:text-base lg:text-lg">
-                A systematic, transparent approach to understanding your
-                challenges, architecting the right solutions, and delivering
-                lasting operational change.
+                Our three-step process: understand workflows, data, and problems.
+                Define the right solutions. Build and deploy what works.
               </p>
             </motion.div>
           </div>

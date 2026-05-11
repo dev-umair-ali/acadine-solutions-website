@@ -15,9 +15,9 @@ export function PhilosophySection() {
           <div>
             <SectionHeader
               index="03"
-              eyebrow="Positioning"
+              eyebrow="Core Philosophy"
               title="We don’t start with AI. We start with your business."
-              description="Intelligent systems only matter when workflows, ownership, and measurement are credible — otherwise you automate confusion faster."
+              description="We fix business problems first. AI is only used when it actually improves the outcome."
               dark
               className="text-left!"
             />

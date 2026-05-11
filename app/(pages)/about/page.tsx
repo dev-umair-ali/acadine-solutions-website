@@ -72,13 +72,12 @@ export default function AboutPage() {
               </div>
 
               <h1 className="mt-5 text-balance text-[2rem] font-bold leading-[1.08] tracking-[-0.03em] text-foreground sm:text-[2.5rem] lg:text-[3rem] xl:text-[3.35rem]">
-                Practitioners first — operators, integrators, advisors.
+                About Acadine Solutions
               </h1>
 
               <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-[1.7] text-muted-foreground md:text-[17px]">
-                Acadine Solutions helps leadership teams cut through AI hype and find
-                where intelligence actually earns its cost — then implements with
-                measurable checkpoints, not slide decks about outcomes.
+                Practical expertise. Execution-focused. Business-first mindset.
+                We help companies make smart, practical decisions about AI — not sell AI tools.
               </p>
             </motion.div>
           </div>
