@@ -115,7 +115,7 @@ export function Header() {
               alt="Acadine Solutions"
               width={160}
               height={48}
-              className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] sm:h-10 dark:brightness-0 dark:invert"
+              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] sm:h-14 dark:brightness-0 dark:invert"
               priority
             />
           </Link>

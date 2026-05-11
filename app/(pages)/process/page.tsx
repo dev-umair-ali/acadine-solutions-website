@@ -90,26 +90,20 @@ export default function ProcessPage() {
       <Header />
       <main>
         {/* ── Hero ── */}
-        <section className="relative overflow-hidden border-b border-border/40 bg-muted/20 py-16 md:py-20 lg:py-24">
-          <div className="bg-dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden />
-
+        <section className="relative border-b border-border/40 bg-muted/20 py-14 md:py-18 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
           <div className={`relative ${siteContainer}`}>
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <div className="mb-5 flex items-center gap-3">
-                <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-foreground/45">
-                  Methodology
-                </span>
-              </div>
-
-              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-foreground/45">Process</p>
+              <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">
                 Diagnose &rarr; Design &rarr; Implement
               </h1>
-              <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground sm:text-base lg:text-lg">
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
                 Our three-step process: understand workflows, data, and problems.
                 Define the right solutions. Build and deploy what works.
               </p>

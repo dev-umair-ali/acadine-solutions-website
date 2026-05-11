@@ -98,20 +98,22 @@ export default function CaseExamplesPage() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative border-b border-border/40 bg-muted/20 bg-dot-grid py-14 md:py-18">
-          <div className={siteContainer}>
+        <section className="relative border-b border-border/40 bg-muted/20 py-14 md:py-18 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
+          <div className={`relative ${siteContainer}`}>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <SectionHeader
-                index="01"
-                eyebrow="Case Examples"
-                title="Problem &rarr; Solution &rarr; Outcome"
-                description="Real examples of how we help businesses identify problems, design solutions, and deliver measurable results."
-              />
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-foreground/45">Case Examples</p>
+              <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">
+                Problem &rarr; Solution &rarr; Outcome
+              </h1>
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
+                Real examples of how we help businesses identify problems, design solutions, and deliver measurable results.
+              </p>
             </motion.div>
           </div>
         </section>

@@ -61,12 +61,13 @@ export default function ContactPage() {
     <>
       <Header />
       <main>
-        <section className="border-b border-border/40 bg-muted/25 py-10 md:py-12">
-          <div className={siteContainer}>
-            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">Contact</p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">Start with context — not a sales script</h1>
-              <p className="mt-5 text-pretty text-lg leading-relaxed text-foreground/65">
+        <section className="relative border-b border-border/40 bg-muted/20 py-14 md:py-18 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
+          <div className={`relative ${siteContainer}`}>
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-foreground/45">Contact</p>
+              <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">Start with context — not a sales script</h1>
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
                 Share the operational problem, constraints, and what success would look like for your leadership team. We respond within one business day.
               </p>
             </motion.div>

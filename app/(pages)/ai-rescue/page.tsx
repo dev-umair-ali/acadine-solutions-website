@@ -57,27 +57,20 @@ export default function AIRescuePage() {
       <Header />
       <main>
         {/* ── Hero ── */}
-        <section className="relative overflow-hidden border-b border-border/40 bg-muted/20 py-16 md:py-20 lg:py-24">
-          <div className="texture-grain pointer-events-none absolute inset-0 opacity-30" aria-hidden />
-
+        <section className="relative border-b border-border/40 bg-muted/20 py-14 md:py-18 lg:py-20">
+          <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
           <div className={`relative ${siteContainer}`}>
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-accent/25 bg-accent/8 px-4 py-2">
-                <AlertTriangle className="h-4 w-4 text-accent" aria-hidden />
-                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">
-                  Recovery · Rework
-                </span>
-              </div>
-
-              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-[3.5rem]">
-                AI Rescue & Rework
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-foreground/45">AI Rescue</p>
+              <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">
+                AI Rescue &amp; Rework
               </h1>
-              <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground sm:text-base lg:text-lg">
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
                 Focused on fixing failed AI projects. We assess and fix AI implementations
                 that are not delivering value — stabilize outcomes, rebuild on a foundation that works.
               </p>
