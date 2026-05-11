@@ -85,10 +85,11 @@ export default function IndustriesPage() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
+                    className={span}
                   >
                     <Link
                       href="/contact"
-                      className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-7 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_28px_72px_-32px_rgba(15,23,42,0.4)] ${span}`}
+                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-7 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_28px_72px_-32px_rgba(15,23,42,0.4)]"
                     >
                       <div>
                         <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-muted/25">
