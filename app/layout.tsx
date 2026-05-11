@@ -57,7 +57,8 @@ export const metadata: Metadata = {
     description: 'Business-first consulting for AI readiness, automation, and recovery.',
   },
   icons: {
-    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    icon: [{ url: '/logo.png', type: 'image/png' }],
+    apple: [{ url: '/logo.png' }],
   },
 }
 
