@@ -208,7 +208,7 @@ export default function AIRescuePage() {
         </section>
 
         {/* ── Trust Strip ── */}
-        <section className="border-y border-border/40 bg-primary py-12 md:py-14">
+        <section className="section-invert border-y border-border/40 bg-primary py-12 md:py-14">
           <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 16 }}

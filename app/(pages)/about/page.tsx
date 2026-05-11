@@ -173,7 +173,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── Engagement model — dark section ── */}
-        <section className="bg-primary py-14 md:py-20 lg:py-24">
+        <section className="section-invert bg-primary py-14 md:py-20 lg:py-24">
           <div className={siteContainer}>
             <SectionHeader
               index="03"

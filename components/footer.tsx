@@ -16,7 +16,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-border/60 bg-primary text-primary-foreground">
+    <footer className="section-invert relative border-t border-border/60 bg-primary text-primary-foreground">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
