@@ -6,7 +6,6 @@ import { motion } from 'framer-motion'
 import { CalendarClock, Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { siteContainer } from '@/lib/site-layout'
-import Link from 'next/link'
 
 const WEB3FORMS_KEY = '912c7711-ef10-4272-83af-630dc7fe9486'
 
@@ -261,34 +260,21 @@ export default function ContactPage() {
 
         <section id="booking" className="border-t border-border/40 bg-muted/20 py-10 md:py-12">
           <div className={siteContainer}>
-            <div className="grid gap-8 rounded-3xl border border-border/60 bg-background p-8 md:grid-cols-[1.1fr_0.9fr] md:items-center md:p-10">
-              <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-foreground/55">
-                  <CalendarClock className="h-4 w-4 text-accent" aria-hidden />
-                  Calendar briefing
-                </div>
-                <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Prefer to align live?</h2>
-                <p className="mt-3 max-w-xl text-pretty text-sm leading-relaxed text-foreground/65">
-                  After we review your brief, we typically schedule a focused 45-minute session with decision-makers and operators
-                  — agenda-driven, no generic product tour.
-                </p>
-                <p className="mt-4 text-sm text-foreground/55">
-                  If your organization uses a standard scheduler (Calendly, Cal.com, Microsoft Bookings), share it in your email
-                  — we will coordinate without adding another tool unless you prefer it.
-                </p>
+            <div className="rounded-3xl border border-border/60 bg-background p-8 md:p-10">
+              <div className="flex items-center gap-2 mb-2">
+                <CalendarClock className="h-5 w-5 text-accent" aria-hidden />
+                <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">Book a Consultation</h2>
               </div>
-              <div className="rounded-2xl border border-dashed border-border/70 bg-muted/10 p-6 text-sm text-foreground/65">
-                <p className="font-semibold text-foreground">Enterprise scheduling</p>
-                <p className="mt-2 leading-relaxed">
-                  For teams with procurement or vendor onboarding steps, we follow your process — including NDAs and security
-                  questionnaires — before calendar holds.
-                </p>
-                <Link
-                  href="mailto:hello@acadine.com?subject=Calendar%20briefing%20request"
-                  className="mt-5 inline-flex rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-95"
-                >
-                  Email to schedule
-                </Link>
+              <p className="mb-6 max-w-xl text-sm leading-relaxed text-foreground/65">
+                Schedule a focused consultation with our team — no generic product tour, just a practical discussion about your business challenges.
+              </p>
+              <div className="overflow-hidden rounded-2xl border border-border/40">
+                <iframe
+                  src="https://cal.com/acadine/consultation"
+                  className="h-[600px] w-full border-0"
+                  title="Book a consultation with Acadine Solutions"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

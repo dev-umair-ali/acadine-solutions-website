@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, Phone } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
 
@@ -31,16 +32,14 @@ export function Footer() {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-12">
           {/* Brand */}
           <div className="shrink-0">
-            <Link href="/" className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-foreground/10 text-[13px] font-bold text-primary-foreground ring-1 ring-primary-foreground/15">
-                A
-              </span>
-              <div className="leading-tight">
-                <span className="text-[14px] font-bold tracking-tight">Acadine</span>
-                <span className="block text-[9px] font-bold uppercase tracking-[0.16em] text-primary-foreground/40">
-                  Solutions
-                </span>
-              </div>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Acadine Solutions"
+                width={160}
+                height={48}
+                className="h-9 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="mt-4 max-w-[260px] text-[12px] leading-relaxed text-primary-foreground/45">
               Business-first consulting. Diagnose workflows, improve operations, implement what earns measurable outcomes.

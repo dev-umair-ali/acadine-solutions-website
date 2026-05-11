@@ -172,16 +172,15 @@ export function HeroSection() {
             </div>
 
             <h1 className="mt-5 text-balance text-[2.1rem] font-bold leading-[1.06] tracking-[-0.03em] text-foreground sm:text-[2.5rem] lg:text-[3rem] xl:text-[3.35rem]">
-              Make your business{' '}
+              Make Your Business{' '}
               <span className="bg-linear-to-r from-foreground via-foreground to-foreground/50 bg-clip-text text-transparent">
-                AI-ready
+                AI-Ready
               </span>{' '}
-              — without the hype.
+              — Without the Hype
             </h1>
 
             <p className="mt-5 max-w-xl text-pretty text-[15px] leading-[1.7] text-muted-foreground md:text-[17px]">
-              We identify where intelligence and automation actually earn their cost: workflows, data discipline, adoption —
-              then implement with measurable checkpoints.
+              We identify where AI actually creates value, fix operational gaps, and implement solutions that improve efficiency and decision-making.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -211,8 +210,7 @@ export function HeroSection() {
                 <div>
                   <p className="text-[14px] font-bold text-foreground">Not every problem needs AI.</p>
                   <p className="mt-1.5 text-[13px] leading-relaxed text-muted-foreground">
-                    We tell you when to standardize, when to automate with rules, and when models are justified —
-                    with explicit trade-offs for leadership.
+                    We help you determine when it does — and when it doesn&apos;t.
                   </p>
                 </div>
               </div>

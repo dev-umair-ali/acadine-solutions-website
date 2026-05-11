@@ -27,7 +27,7 @@ export function FinalCtaSection() {
                 <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-muted-foreground">Next step</span>
               </div>
               <h2 className="mt-5 text-balance text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-foreground sm:text-3xl lg:text-[2.35rem]">
-                Find where AI can actually improve your business
+                Find Where AI Can Actually Improve Your Business
               </h2>
               <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
                 Send context on workflows and constraints — we&apos;ll respond with a grounded view of fit, risk, and a path
