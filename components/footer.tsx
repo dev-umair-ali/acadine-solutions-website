@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Mail, Phone } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
 
 const links = [
@@ -68,20 +68,13 @@ export function Footer() {
               <Mail className="h-3.5 w-3.5 shrink-0 opacity-50" aria-hidden />
               hello@acadine.com
             </a>
-            <a
-              href="tel:+14155551234"
-              className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/55 transition hover:text-primary-foreground"
-            >
-              <Phone className="h-3.5 w-3.5 shrink-0 opacity-50" aria-hidden />
-              +1 (415) 555-1234
-            </a>
           </div>
         </div>
 
         {/* Divider + bottom */}
         <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-primary-foreground/10 pt-6 md:flex-row md:items-center">
           <p className="text-[11px] font-medium text-primary-foreground/30">
-            &copy; {year} Acadine Solutions. All rights reserved.
+            &copy; {year} Acadine Solutions Group LLC. All rights reserved.
           </p>
           <div className="flex gap-5 text-[11px] font-medium text-primary-foreground/30">
             <Link href="/contact" className="transition hover:text-primary-foreground/55">Privacy</Link>

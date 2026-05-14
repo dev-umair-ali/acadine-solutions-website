@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { ArrowUpRight, Menu, Moon, Phone, Sun, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { siteContainer } from '@/lib/site-layout'
 
@@ -135,14 +135,6 @@ export function Header() {
           {/* Right side */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             <ThemeToggle />
-
-            <a
-              href="tel:+14155551234"
-              className="hidden items-center gap-2 rounded-full border border-border/60 bg-background/80 px-3 py-2 text-[13px] font-medium text-foreground/75 shadow-sm transition hover:border-accent/35 hover:text-foreground lg:inline-flex"
-            >
-              <Phone className="h-3.5 w-3.5 text-accent" aria-hidden />
-              <span className="tabular-nums">415 555-1234</span>
-            </a>
 
             <Link
               href="/contact"

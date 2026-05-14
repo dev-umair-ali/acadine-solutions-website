@@ -3,7 +3,7 @@
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
-import { ArrowRight, CalendarClock, CheckCircle2, Clock, Mail, MapPin, Phone, Send, Shield } from 'lucide-react'
+import { ArrowRight, CalendarClock, CheckCircle2, Clock, Mail, MapPin, Send, Shield } from 'lucide-react'
 import { useState } from 'react'
 import { siteContainer } from '@/lib/site-layout'
 
@@ -14,7 +14,7 @@ type FormStatus = 'idle' | 'loading' | 'success' | 'error'
 const RESPONSE_PROMISES = [
   { icon: Clock, text: 'Response within 1 business day' },
   { icon: Shield, text: 'NDA-ready if required' },
-  { icon: CalendarClock, text: 'Follow-up call within 48 hours' },
+  { icon: CalendarClock, text: 'Structured follow-up after we review' },
 ]
 
 export default function ContactPage() {
@@ -112,20 +112,6 @@ export default function ContactPage() {
                     <ArrowRight className="h-4 w-4 text-foreground/20 transition group-hover:text-accent group-hover:translate-x-0.5" />
                   </a>
 
-                  <a
-                    href="tel:+14155551234"
-                    className="group flex items-center gap-4 rounded-2xl border border-border/50 bg-background p-5 shadow-sm transition-all hover:border-accent/40 hover:shadow-md"
-                  >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/8 text-primary transition group-hover:bg-primary/12">
-                      <Phone className="h-5 w-5" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/40">Phone</p>
-                      <p className="mt-0.5 text-[15px] font-semibold tabular-nums text-foreground group-hover:text-primary">+1 (415) 555-1234</p>
-                    </div>
-                    <ArrowRight className="h-4 w-4 text-foreground/20 transition group-hover:text-primary group-hover:translate-x-0.5" />
-                  </a>
-
                   <div className="flex items-center gap-4 rounded-2xl border border-border/50 bg-background p-5 shadow-sm">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-muted/50 text-foreground/60">
                       <MapPin className="h-5 w-5" />
@@ -158,20 +144,13 @@ export default function ContactPage() {
                       )
                     })}
                   </div>
-                  <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
+                  <div className="mt-6">
                     <a
                       href="mailto:hello@acadine.com?subject=Consultation%20Request%20-%20Acadine%20Solutions"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-foreground px-5 py-3 text-[13px] font-bold text-primary transition hover:bg-white"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-foreground px-5 py-3 text-[13px] font-bold text-primary transition hover:bg-white sm:w-auto"
                     >
                       <Mail className="h-4 w-4" />
                       Email to schedule
-                    </a>
-                    <a
-                      href="tel:+14155551234"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-5 py-3 text-[13px] font-semibold text-primary-foreground transition hover:bg-primary-foreground/10"
-                    >
-                      <Phone className="h-4 w-4" />
-                      Call directly
                     </a>
                   </div>
                 </div>
