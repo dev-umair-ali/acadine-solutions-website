@@ -182,14 +182,6 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
-
-                      <Link
-                        href="/contact"
-                        className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-95"
-                      >
-                        Book a Consultation
-                        <ArrowRight className="h-4 w-4" aria-hidden />
-                      </Link>
                     </div>
 
                     <div className={isEven ? 'md:order-2' : 'md:order-1'}>
