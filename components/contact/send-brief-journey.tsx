@@ -113,7 +113,7 @@ export function SendBriefJourney() {
   const [openCategories, setOpenCategories] = useState<Set<string>>(new Set())
   const [selected, setSelected] = useState<Map<string, SelectedInterest>>(new Map())
   const [reflections, setReflections] = useState<Record<number, string>>({})
-  const [contact, setContact] = useState({ name: '', email: '', company: '' })
+  const [contact, setContact] = useState({ name: '', email: '', company: '', referredBy: '' })
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const selectedList = useMemo(() => Array.from(selected.values()), [selected])
@@ -181,6 +181,7 @@ export function SendBriefJourney() {
         replyto: contact.email,
         name: contact.name,
         company: contact.company,
+        referred_by: contact.referredBy.trim() || undefined,
         message: buildMessage(),
         recipient: WEB3FORMS_RECIPIENT,
         form_type: 'guided_brief',
@@ -191,7 +192,7 @@ export function SendBriefJourney() {
         setStatus('success')
         setSelected(new Map())
         setReflections({})
-        setContact({ name: '', email: '', company: '' })
+        setContact({ name: '', email: '', company: '', referredBy: '' })
         setOpenCategories(new Set())
       } else {
         setStatus('error')
@@ -425,6 +426,19 @@ export function SendBriefJourney() {
             autoComplete="organization"
             className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
             placeholder="Company name"
+          />
+        </div>
+        <div>
+          <label htmlFor="brief-referred-by" className="block text-[13px] font-bold text-foreground">
+            Referred By <span className="font-normal text-muted-foreground">(Optional)</span>
+          </label>
+          <input
+            id="brief-referred-by"
+            value={contact.referredBy}
+            onChange={(e) => setContact((p) => ({ ...p, referredBy: e.target.value }))}
+            disabled={status === 'loading'}
+            className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+            placeholder="Referral code or name"
           />
         </div>
       </div>

@@ -37,6 +37,7 @@ export default function ContactPage() {
     email: '',
     company: '',
     challenge: '',
+    referredBy: '',
   })
   const [status, setStatus] = useState<FormStatus>('idle')
 
@@ -58,13 +59,14 @@ export default function ContactPage() {
         name: formData.name,
         company: formData.company,
         message: formData.challenge,
+        referred_by: formData.referredBy.trim() || undefined,
         recipient: WEB3FORMS_RECIPIENT,
         form_type: 'quick_message',
       })
 
       if (data.success) {
         setStatus('success')
-        setFormData({ name: '', email: '', company: '', challenge: '' })
+        setFormData({ name: '', email: '', company: '', challenge: '', referredBy: '' })
       } else {
         setStatus('error')
       }
@@ -315,6 +317,21 @@ export default function ContactPage() {
                             rows={5}
                             className="mt-2 w-full resize-y rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
                             placeholder="Describe your business challenge, current workflows, and what a successful outcome looks like..."
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="referredBy" className="block text-[13px] font-bold text-foreground">
+                            Referred By <span className="font-normal text-muted-foreground">(Optional)</span>
+                          </label>
+                          <input
+                            id="referredBy"
+                            name="referredBy"
+                            value={formData.referredBy}
+                            onChange={handleChange}
+                            disabled={status === 'loading'}
+                            className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+                            placeholder="Referral code or name"
                           />
                         </div>
 
