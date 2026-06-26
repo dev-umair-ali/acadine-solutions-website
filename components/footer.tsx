@@ -62,11 +62,11 @@ export function Footer() {
           {/* Contact */}
           <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-5 md:flex-col md:items-end md:gap-2.5">
             <a
-              href="mailto:hello@acadine.com"
+              href="mailto:info@acadine.io"
               className="inline-flex items-center gap-2 text-[13px] text-primary-foreground/55 transition hover:text-primary-foreground"
             >
               <Mail className="h-3.5 w-3.5 shrink-0 opacity-50" aria-hidden />
-              hello@acadine.com
+              info@acadine.io
             </a>
           </div>
         </div>
