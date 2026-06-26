@@ -1,4 +1,4 @@
-export const WEB3FORMS_KEY = '912c7711-ef10-4272-83af-630dc7fe9486'
+export const WEB3FORMS_KEY = 'a0a6aee4-8b23-40a5-874e-6cfeb40c8dd9'
 
 export const WEB3FORMS_RECIPIENT = 'info@acadine.io'
 
