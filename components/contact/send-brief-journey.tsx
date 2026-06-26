@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { CheckCircle2, ChevronDown, Send, Sparkles } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { submitToWeb3Forms, WEB3FORMS_RECIPIENT } from '@/lib/web3forms'
+import { HoneypotField } from '@/components/contact/honeypot-field'
 import { cn } from '@/lib/utils'
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error'
@@ -115,6 +116,8 @@ export function SendBriefJourney() {
   const [reflections, setReflections] = useState<Record<number, string>>({})
   const [contact, setContact] = useState({ name: '', email: '', company: '', referredBy: '' })
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [botHoneypot, setBotHoneypot] = useState(false)
 
   const selectedList = useMemo(() => Array.from(selected.values()), [selected])
 
@@ -171,7 +174,10 @@ export function SendBriefJourney() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (botHoneypot) return
+
     setStatus('loading')
+    setErrorMessage(null)
 
     try {
       const data = await submitToWeb3Forms({
@@ -195,9 +201,11 @@ export function SendBriefJourney() {
         setContact({ name: '', email: '', company: '', referredBy: '' })
         setOpenCategories(new Set())
       } else {
+        setErrorMessage(data.message ?? null)
         setStatus('error')
       }
     } catch {
+      setErrorMessage(null)
       setStatus('error')
     }
   }
@@ -228,7 +236,8 @@ export function SendBriefJourney() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-7">
+    <form onSubmit={handleSubmit} className="relative space-y-7">
+      <HoneypotField checked={botHoneypot} onChange={setBotHoneypot} />
       <div className="rounded-xl border border-accent/15 bg-linear-to-br from-accent/5 via-background to-muted/15 p-4 md:p-5">
         <div className="flex items-start gap-3">
           <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
@@ -445,7 +454,7 @@ export function SendBriefJourney() {
 
       {status === 'error' && (
         <div className="rounded-xl border border-destructive/25 bg-destructive/5 px-4 py-3 text-[13px] font-medium text-destructive">
-          Something went wrong. Please try again or email us at info@acadine.io.
+          {errorMessage ?? 'Something went wrong. Please try again or email us at info@acadine.io.'}
         </div>
       )}
 

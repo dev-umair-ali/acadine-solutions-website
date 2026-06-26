@@ -19,6 +19,7 @@ import {
 import { useState } from 'react'
 import { siteContainer } from '@/lib/site-layout'
 import { submitToWeb3Forms, WEB3FORMS_RECIPIENT } from '@/lib/web3forms'
+import { HoneypotField } from '@/components/contact/honeypot-field'
 import { cn } from '@/lib/utils'
 
 type FormMode = 'quick' | 'guided'
@@ -40,6 +41,8 @@ export default function ContactPage() {
     referredBy: '',
   })
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [botHoneypot, setBotHoneypot] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -48,7 +51,10 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (botHoneypot) return
+
     setStatus('loading')
+    setErrorMessage(null)
 
     try {
       const data = await submitToWeb3Forms({
@@ -68,9 +74,11 @@ export default function ContactPage() {
         setStatus('success')
         setFormData({ name: '', email: '', company: '', challenge: '', referredBy: '' })
       } else {
+        setErrorMessage(data.message ?? null)
         setStatus('error')
       }
     } catch {
+      setErrorMessage(null)
       setStatus('error')
     }
   }
@@ -244,10 +252,11 @@ export default function ContactPage() {
                         </button>
                       </motion.div>
                     ) : (
-                      <form onSubmit={handleSubmit} className="space-y-5">
+                      <form onSubmit={handleSubmit} className="relative space-y-5">
+                        <HoneypotField checked={botHoneypot} onChange={setBotHoneypot} />
                         {status === 'error' && (
                           <div className="rounded-xl border border-destructive/25 bg-destructive/5 px-4 py-3 text-[13px] font-medium text-destructive">
-                            Something went wrong. Please try again or email us directly.
+                            {errorMessage ?? 'Something went wrong. Please try again or email us directly.'}
                           </div>
                         )}
 
