@@ -3,7 +3,7 @@
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { motion } from 'framer-motion'
-import { SERVICES } from '@/lib/constants'
+import { POSITIONING, SERVICES } from '@/lib/constants'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
@@ -28,6 +28,39 @@ function ServiceVisual({ serviceId }: { serviceId: string }) {
         <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/45">Workflow view</span>
         <span className="text-[10px] text-foreground/40">{serviceId}</span>
       </div>
+
+      {serviceId === 'ai-audit' && (
+        <div className="space-y-3">
+          {[
+            'Where AI may create business value',
+            'Which opportunities are worth pursuing first',
+            'Which workflows should not be automated yet',
+            'What the best starting point should be',
+          ].map((row, i) => (
+            <div key={row} className="flex items-center gap-3 rounded-xl border border-border/50 bg-background/80 px-3 py-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent/12 text-[11px] font-semibold text-accent">
+                {i + 1}
+              </span>
+              <span className="text-xs font-medium text-foreground/75">{row}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {serviceId === 'ai-education' && (
+        <div className="space-y-2">
+          {[
+            'What AI can and cannot do',
+            'Where AI may fit within current workflows',
+            'How to identify practical use cases',
+            'How to avoid over-automating the wrong problems',
+          ].map((row) => (
+            <div key={row} className="rounded-lg border border-border/50 bg-background/70 px-3 py-2.5 text-[11px] font-medium text-foreground/70">
+              {row}
+            </div>
+          ))}
+        </div>
+      )}
 
       {serviceId === 'assessment' && (
         <div className="space-y-3">
@@ -161,6 +194,7 @@ export default function ServicesPage() {
               {SERVICES.map((service, index) => {
                 const IconComponent = service.icon
                 const isEven = index % 2 === 0
+                const bestFor = 'bestFor' in service ? service.bestFor : undefined
                 return (
                   <motion.article
                     key={service.id}
@@ -172,7 +206,22 @@ export default function ServicesPage() {
                         <IconComponent className="h-6 w-6 text-accent" strokeWidth={1.75} aria-hidden />
                       </div>
                       <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">{service.title}</h2>
+                      <p className="mt-3 text-[15px] font-medium text-foreground/80">{service.description}</p>
                       <p className="mt-4 leading-relaxed text-foreground/65">{service.longDescription}</p>
+
+                      {bestFor && bestFor.length > 0 && (
+                        <div className="mt-8">
+                          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/45">Best for</p>
+                          <ul className="mt-4 space-y-3">
+                            {bestFor.map((line) => (
+                              <li key={line} className="flex gap-3 text-foreground/70">
+                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
+                                <span className="leading-relaxed">{line}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
 
                       <ul className="mt-8 space-y-4">
                         {service.highlights.map((line) => (
@@ -182,6 +231,16 @@ export default function ServicesPage() {
                           </li>
                         ))}
                       </ul>
+
+                      {(service.id === 'ai-audit' || service.id === 'ai-education') && (
+                        <Link
+                          href="/contact"
+                          className="mt-8 inline-flex items-center gap-2 rounded-xl border border-accent/30 bg-accent/5 px-5 py-2.5 text-[13px] font-bold text-accent transition hover:bg-accent/10"
+                        >
+                          {service.id === 'ai-audit' ? 'Start With an AI Opportunity Audit' : 'Schedule an AI Education Session'}
+                          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                        </Link>
+                      )}
                     </div>
 
                     <div className={isEven ? 'md:order-2' : 'md:order-1'}>
@@ -194,21 +253,42 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        <section className="border-t border-border/40 bg-muted/15 py-12 md:py-16">
+          <div className={`${siteContainer} mx-auto max-w-3xl text-center`}>
+            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">Our approach</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">{POSITIONING.headline}</h2>
+              <div className="mt-6 space-y-2 text-[15px] leading-relaxed text-muted-foreground">
+                {POSITIONING.paragraphs.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         <section className="section-invert border-t border-border/40 bg-primary py-12 text-primary-foreground md:py-14">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Choose the entry point that matches reality</h2>
               <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-primary-foreground/75">
-                If you are unsure where to start, we typically begin with diagnosis — even for implementation-heavy asks —
-                so scope stays anchored to measurable outcomes.
+                Not sure where to begin? Start with a free discovery conversation, a paid AI Opportunity Audit, or an AI education session — before committing to implementation.
               </p>
-              <Link
-                href="/contact"
-                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary-foreground px-8 py-3.5 text-sm font-semibold text-primary transition hover:opacity-95"
-              >
-                Book a Consultation
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-xl bg-primary-foreground px-8 py-3.5 text-sm font-semibold text-primary transition hover:opacity-95"
+                >
+                  Book a Discovery Conversation
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/25 px-8 py-3.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary-foreground/10"
+                >
+                  Start With an AI Opportunity Audit
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>

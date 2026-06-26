@@ -6,9 +6,50 @@ import {
   LayoutDashboard,
   Layers,
   Wrench,
+  ClipboardList,
+  GraduationCap,
 } from 'lucide-react'
 
 export const SERVICES = [
+  {
+    id: 'ai-audit',
+    title: 'AI Opportunity Audit',
+    description:
+      'A deeper review for organizations that want to understand where AI best fits before investing in implementation.',
+    icon: ClipboardList,
+    longDescription:
+      'We evaluate workflows, systems, data readiness, business priorities, and operational constraints to identify practical AI, automation, reporting, and process improvement opportunities.',
+    highlights: [
+      'Workflow, systems, and data readiness evaluation',
+      'Practical AI, automation, reporting, and process improvement opportunities',
+      'Grounded roadmap before implementation investment',
+    ],
+    bestFor: [
+      'Organizations unsure where to start',
+      'Teams considering AI investment',
+      'Leaders comparing multiple possible use cases',
+      'Businesses that want a grounded roadmap before implementation',
+    ],
+  },
+  {
+    id: 'ai-education',
+    title: 'AI Education & Enablement',
+    description: 'Practical AI education for business leaders and teams.',
+    icon: GraduationCap,
+    longDescription:
+      'We help organizations understand what AI can do, where it applies, how to identify useful opportunities, and how to avoid common mistakes.',
+    highlights: [
+      'What AI can and cannot do in your context',
+      'How to identify practical use cases without overcomplicating the process',
+      'How teams can safely and effectively use AI tools',
+    ],
+    bestFor: [
+      'Leadership teams exploring AI',
+      'Businesses wanting to train employees',
+      'Teams unsure how to apply AI to daily work',
+      'Organizations that need practical, non-technical AI education',
+    ],
+  },
   {
     id: 'assessment',
     title: 'Business & Workflow Assessment',
@@ -109,6 +150,19 @@ export const SERVICES = [
   },
 ]
 
+export const POSITIONING = {
+  headline: 'Business First. AI Second.',
+  paragraphs: [
+    'We do not force AI into every problem.',
+    'Some business problems need AI.',
+    'Some need automation.',
+    'Some need better reporting.',
+    'Some need process improvement.',
+    'Some need education before implementation.',
+    'Acadine helps organizations determine the right path before investing in the wrong solution.',
+  ],
+}
+
 export const PROCESS_STEPS = [
   {
     number: 1,
@@ -134,35 +188,59 @@ export const INDUSTRIES = [
     description:
       'Operational clarity where accuracy, compliance, and patient throughput intersect.',
     painPoints: [
-      'Administrative load competing with clinical time',
-      'Fragmented patient and operational data',
-      'Scheduling and capacity constraints',
-      'Documentation overhead across care settings',
+      'Administrative burden competing with clinical priorities',
+      'Fragmented patient, device, operational, or reporting data',
+      'Manual reporting and documentation workflows',
+      'Scheduling inefficiencies',
+      'Compliance and audit preparation demands',
     ],
-    improvements: [
-      'Workflow automation for repeatable administrative tasks',
-      'Operational dashboards with accountable metrics',
-      'Triage and routing improvements grounded in policy',
-      'Measured pilots before broad ML deployment',
+    engagementAreas: [
+      'Operational workflow review',
+      'Reporting and dashboard improvement',
+      'AI-readiness review',
+      'Compliance documentation support',
+      'Process automation',
+      'Internal knowledge management',
+      'Scheduling and throughput optimization',
     ],
+    startingPoints: [
+      'Executive dashboards',
+      'Scheduling optimization',
+      'Documentation workflow improvement',
+      'Compliance support',
+      'Operational reporting automation',
+    ],
+    cta: 'Explore Healthcare Opportunities',
   },
   {
     id: 'finance',
     title: 'Finance',
     description:
-      'Controls-first modernization for reporting speed and operational resilience.',
+      'Controls-first modernization for reporting speed, accuracy, and operational resilience.',
     painPoints: [
-      'Manual reconciliation and exception handling',
+      'Manual reconciliation',
+      'Exception handling',
       'Heavy compliance reporting cycles',
-      'Limited end-to-end visibility across systems',
-      'Fragile spreadsheet-driven processes',
+      'Spreadsheet-driven reporting',
+      'Limited visibility across financial data',
     ],
-    improvements: [
-      'Structured workflows with audit trails and approvals',
-      'Automation where rules are stable; analytics where variance matters',
-      'Executive reporting packs that reconcile to source systems',
-      'Monitoring for operational and model risk where applicable',
+    engagementAreas: [
+      'Financial reporting automation',
+      'AI audit for finance workflows',
+      'Exception tracking',
+      'Forecasting support',
+      'Compliance documentation',
+      'Contract or document review support',
+      'Executive financial dashboards',
     ],
+    startingPoints: [
+      'Budget forecasting',
+      'Invoice review workflows',
+      'Financial reporting automation',
+      'Cash-flow visibility',
+      'Contract analysis support',
+    ],
+    cta: 'Explore Finance Opportunities',
   },
   {
     id: 'logistics',
@@ -170,17 +248,29 @@ export const INDUSTRIES = [
     description:
       'End-to-end visibility and disciplined execution across the network.',
     painPoints: [
-      'Planning latency and exception-driven firefighting',
+      'Planning delays',
+      'Exception-driven firefighting',
       'Incomplete shipment or inventory signals',
-      'Cost pressure without transparent trade-offs',
-      'Tool sprawl across carriers and partners',
+      'Manual coordination',
+      'Limited real-time operational visibility',
     ],
-    improvements: [
-      'Integrated operational dashboards and exception workflows',
-      'Forecasting and planning improvements with clear assumptions',
-      'Automation for repetitive coordination tasks',
-      'Measurement frameworks tied to service levels and margin',
+    engagementAreas: [
+      'Workflow automation',
+      'Shipment visibility',
+      'Inventory forecasting',
+      'Exception reporting',
+      'Route or schedule support',
+      'Operational dashboarding',
+      'Process improvement',
     ],
+    startingPoints: [
+      'Exception tracking dashboard',
+      'Inventory forecasting',
+      'Operational reporting',
+      'Route planning support',
+      'Workflow automation',
+    ],
+    cta: 'Explore Logistics Opportunities',
   },
   {
     id: 'operations',
@@ -188,17 +278,29 @@ export const INDUSTRIES = [
     description:
       'Productivity, quality, and throughput improvements that scale.',
     painPoints: [
-      'Manual coordination across shifts and sites',
-      'Inconsistent quality checks and rework',
-      'Inventory and production inefficiencies',
-      'Limited standard work and training reinforcement',
+      'Manual coordination across teams, shifts, or sites',
+      'Inconsistent quality checks',
+      'Rework',
+      'Process variation',
+      'Limited visibility into performance',
     ],
-    improvements: [
-      'Standard work digitization with performance visibility',
-      'Quality workflows with traceability and root-cause habits',
-      'Automation for repetitive measurement and scheduling tasks',
-      'Continuous improvement cadence leadership can run monthly',
+    engagementAreas: [
+      'Business process improvement',
+      'Workflow automation',
+      'SOP development',
+      'Quality reporting',
+      'Resource planning',
+      'Operational dashboards',
+      'AI education for operational leaders',
     ],
+    startingPoints: [
+      'Process mapping',
+      'KPI dashboards',
+      'Workflow automation',
+      'Quality reporting',
+      'SOP and training support',
+    ],
+    cta: 'Explore Operations Opportunities',
   },
   {
     id: 'support',
@@ -206,35 +308,59 @@ export const INDUSTRIES = [
     description:
       'Faster resolution with consistent quality and sustainable staffing models.',
     painPoints: [
-      'Ticket volume exceeding capacity planning',
+      'Ticket volume exceeding capacity',
       'Inconsistent responses across channels',
-      'Knowledge scattered across tools',
-      'Agent burnout from repetitive inquiries',
+      'Slow response times',
+      'Knowledge gaps',
+      'Difficulty identifying recurring issues',
     ],
-    improvements: [
-      'Routing and prioritization tied to customer outcomes',
-      'Knowledge workflows that stay current',
-      'Automation where policies are clear; assistance where judgment matters',
-      'Metrics that reflect resolution quality — not just handle time',
+    engagementAreas: [
+      'Customer support automation',
+      'FAQ automation',
+      'Knowledge base development',
+      'Ticket routing',
+      'Customer service AI assistants',
+      'Service trend reporting',
+      'Response drafting support',
     ],
+    startingPoints: [
+      'AI support assistant',
+      'FAQ automation',
+      'Ticket classification',
+      'Knowledge base search',
+      'Customer feedback analysis',
+    ],
+    cta: 'Explore Customer Support Opportunities',
   },
   {
     id: 'professional',
     title: 'Professional Services',
     description:
-      'Delivery discipline: utilization, margin, and client outcomes aligned.',
+      'Delivery discipline where utilization, margin, and client outcomes stay aligned.',
     painPoints: [
       'Forecasting gaps across pipeline and staffing',
-      'Project leakage from scope and change management',
-      'Knowledge silos between teams',
-      'Billing and time-entry friction',
+      'Project leakage',
+      'Scope management issues',
+      'Manual client reporting',
+      'Knowledge trapped across documents and teams',
     ],
-    improvements: [
-      'Operating cadence for staffing and delivery risk',
-      'Structured templates for proposals and delivery artifacts',
-      'Workflow automation for routine reporting and scheduling tasks',
-      'Dashboards that tie delivery metrics to financial outcomes',
+    engagementAreas: [
+      'Proposal development',
+      'Client reporting',
+      'Knowledge management',
+      'Forecasting support',
+      'Project tracking',
+      'Internal AI assistants',
+      'AI education for teams',
     ],
+    startingPoints: [
+      'Proposal generation',
+      'Project reporting automation',
+      'Client update summaries',
+      'Internal knowledge assistant',
+      'Resource planning dashboards',
+    ],
+    cta: 'Explore Professional Services Opportunities',
   },
 ]
 

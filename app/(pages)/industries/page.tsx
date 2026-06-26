@@ -4,10 +4,22 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { SectionHeader } from '@/components/section/section-header'
 import { motion } from 'framer-motion'
-import { INDUSTRIES } from '@/lib/constants'
+import { INDUSTRIES, POSITIONING } from '@/lib/constants'
 import Link from 'next/link'
-import { ArrowRight, AlertTriangle, Building2, Heart, Landmark, Truck, Settings, Headphones, Briefcase } from 'lucide-react'
+import {
+  ArrowRight,
+  Building2,
+  Heart,
+  Landmark,
+  Truck,
+  Settings,
+  Headphones,
+  Briefcase,
+  ChevronDown,
+} from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
+import { cn } from '@/lib/utils'
+import { useState } from 'react'
 
 const INDUSTRY_ICONS: Record<string, React.ElementType> = {
   healthcare: Heart,
@@ -19,29 +31,117 @@ const INDUSTRY_ICONS: Record<string, React.ElementType> = {
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.45, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] },
   }),
 }
 
-const STATS = [
-  { value: '6', label: 'Sectors' },
-  { value: '40+', label: 'Engagements' },
-  { value: '3.2×', label: 'Avg ROI' },
-]
+function IndustryCard({ industry, index }: { industry: (typeof INDUSTRIES)[number]; index: number }) {
+  const [open, setOpen] = useState(false)
+  const Icon = INDUSTRY_ICONS[industry.id] ?? Building2
+
+  return (
+    <motion.div
+      custom={index}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className={cn(
+        'overflow-hidden rounded-2xl border border-border/45 bg-background/90 shadow-md transition-all duration-300',
+        open && 'border-accent/35 shadow-lg',
+      )}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-start gap-4 p-6 text-left transition hover:bg-muted/10 md:p-7"
+        aria-expanded={open}
+      >
+        <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-muted/25">
+          <Icon className="h-5 w-5 text-accent" strokeWidth={1.75} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h3 className="text-xl font-bold tracking-tight text-foreground md:text-2xl">{industry.title}</h3>
+          <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{industry.description}</p>
+          {!open && (
+            <p className="mt-4 text-[13px] font-bold text-accent">Learn more</p>
+          )}
+        </div>
+        <ChevronDown
+          className={cn('mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300', open && 'rotate-180')}
+          aria-hidden
+        />
+      </button>
+
+      <div
+        className={cn(
+          'grid transition-[grid-template-rows] duration-300 ease-out',
+          open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+        )}
+      >
+        <div className="overflow-hidden">
+          <div className="space-y-8 border-t border-border/40 px-6 pb-7 pt-2 md:px-7">
+            <div>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/45">Common Pain Points</h4>
+              <ul className="mt-4 space-y-2.5">
+                {industry.painPoints.map((point) => (
+                  <li key={point} className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/70">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-destructive/60" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/45">Usual Engagement Areas</h4>
+              <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+                {industry.engagementAreas.map((area) => (
+                  <li key={area} className="flex gap-2 text-[13px] leading-snug text-foreground/65">
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/45">Example Starting Points</h4>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {industry.startingPoints.map((point) => (
+                  <li
+                    key={point}
+                    className="rounded-lg border border-border/50 bg-muted/20 px-3 py-1.5 text-[12px] font-medium text-foreground/70"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-[13px] font-bold text-primary-foreground shadow-sm transition hover:brightness-105"
+            >
+              {industry.cta}
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 export default function IndustriesPage() {
-  const featured = INDUSTRIES.slice(0, 2)
-  const rest = INDUSTRIES.slice(2)
-
   return (
     <>
       <Header />
       <main>
-        {/* Hero */}
         <section className="relative border-b border-border/40 bg-muted/20 py-14 md:py-18 lg:py-20">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
           <div className={`relative ${siteContainer}`}>
@@ -62,166 +162,141 @@ export default function IndustriesPage() {
           </div>
         </section>
 
-        {/* Bento Grid */}
         <section className="py-14 md:py-18">
           <div className={siteContainer}>
             <SectionHeader
               index="02"
               eyebrow="Focus Areas"
               title="Six sectors, one operating standard"
-              className="mb-12"
+              description="Click any industry to explore common pain points, engagement areas, and practical starting points."
+              className="mb-10"
             />
 
-            {/* Featured row — 2 large cards */}
-            <div className="grid gap-5 md:grid-cols-12">
-              {featured.map((industry, i) => {
-                const Icon = INDUSTRY_ICONS[industry.id] ?? Building2
-                const span = i === 0 ? 'md:col-span-7' : 'md:col-span-5'
-                return (
-                  <motion.div
-                    key={industry.id}
-                    custom={i}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className={span}
-                  >
-                    <Link
-                      href="/contact"
-                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-7 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_28px_72px_-32px_rgba(15,23,42,0.4)]"
-                    >
-                      <div>
-                        <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border/50 bg-muted/25">
-                          <Icon className="h-5 w-5 text-accent" strokeWidth={1.75} />
-                        </div>
-                        <h3 className="text-2xl font-bold tracking-tight text-foreground">
-                          {industry.title}
-                        </h3>
-                        <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-                          {industry.description}
-                        </p>
-
-                        <div className="mt-6 space-y-3">
-                          {industry.painPoints.slice(0, 2).map((point, j) => (
-                            <div key={j} className="flex items-start gap-2.5">
-                              <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0 text-destructive/70" strokeWidth={2} />
-                              <span className="text-sm leading-snug text-foreground/65">{point}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="mt-8 flex items-center gap-2 text-sm font-bold text-accent transition-all group-hover:gap-3">
-                        Discuss this sector
-                        <ArrowRight className="h-4 w-4" />
-                      </div>
-                    </Link>
-                  </motion.div>
-                )
-              })}
-            </div>
-
-            {/* Remaining 4 — 3-col grid */}
-            <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {rest.map((industry, i) => {
-                const Icon = INDUSTRY_ICONS[industry.id] ?? Building2
-                return (
-                  <motion.div
-                    key={industry.id}
-                    custom={i + 2}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                  >
-                    <Link
-                      href="/contact"
-                      className="group flex h-full flex-col justify-between rounded-2xl border border-border/45 bg-background/90 p-6 shadow-md transition-all duration-300 hover:border-accent/40 hover:shadow-lg"
-                    >
-                      <div>
-                        <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/50 bg-muted/25">
-                          <Icon className="h-5 w-5 text-accent" strokeWidth={1.75} />
-                        </div>
-                        <h3 className="text-lg font-bold tracking-tight text-foreground">
-                          {industry.title}
-                        </h3>
-                        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                          {industry.description}
-                        </p>
-
-                        <div className="mt-5 space-y-2.5">
-                          {industry.painPoints.slice(0, 2).map((point, j) => (
-                            <div key={j} className="flex items-start gap-2">
-                              <AlertTriangle className="mt-0.5 h-3 w-3 shrink-0 text-destructive/60" strokeWidth={2} />
-                              <span className="text-[13px] leading-snug text-foreground/60">{point}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="mt-6 flex items-center gap-2 text-[13px] font-bold text-accent transition-all group-hover:gap-3">
-                        Learn more
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </div>
-                    </Link>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Strip */}
-        <section className="border-y border-border/40 bg-muted/20 texture-grain">
-          <div className={siteContainer}>
-            <div className="grid grid-cols-3 divide-x divide-border/40">
-              {STATS.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.1 }}
-                  className="py-10 text-center md:py-12"
-                >
-                  <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                    {stat.label}
-                  </p>
-                </motion.div>
+            <div className="space-y-4">
+              {INDUSTRIES.map((industry, i) => (
+                <IndustryCard key={industry.id} industry={industry} index={i} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-14 md:py-18">
-          <div className={siteContainer}>
+        <section className="border-t border-border/40 bg-muted/15 py-14 md:py-18">
+          <div className={`${siteContainer} mx-auto max-w-4xl`}>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.55 }}
-              className="relative mx-auto max-w-3xl overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-1 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)]"
+              className="rounded-2xl border border-border/45 bg-background/90 p-8 shadow-md md:p-10"
             >
-              <div className="rounded-[14px] bg-background/80 px-8 py-12 text-center backdrop-blur-sm md:px-14 md:py-14">
-                <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-                  Your industry, our operating discipline
-                </h2>
-                <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-                  We bring deep sector understanding combined with a bias for measurement. Start with a conversation — no slide decks, no generic proposals.
-                </p>
-                <Link
-                  href="/contact"
-                  className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-[0_6px_22px_-6px_rgba(15,23,42,0.45)] transition hover:brightness-[1.07]"
-                >
-                  Discuss Your Industry
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+              <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+                Not Sure Where AI Fits In Your Industry?
+              </h2>
+              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
+                Every industry has different workflows, systems, risks, and opportunities. If your organization is unsure where to begin, Acadine can help through either:
+              </p>
+
+              <div className="mt-8 grid gap-6 md:grid-cols-2">
+                <div className="rounded-xl border border-border/50 bg-muted/15 p-6">
+                  <h3 className="text-lg font-bold text-foreground">AI Opportunity Audit</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+                    A deeper review to identify where AI, automation, reporting, or process improvement may create practical business value.
+                  </p>
+                  <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/45">Best for organizations that want to understand:</p>
+                  <ul className="mt-3 space-y-2">
+                    {[
+                      'Which opportunities are most valuable',
+                      'Which workflows are ready for AI',
+                      'What data or process gaps may exist',
+                      'Where to begin before implementation',
+                    ].map((item) => (
+                      <li key={item} className="flex gap-2 text-[13px] text-foreground/70">
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="rounded-xl border border-border/50 bg-muted/15 p-6">
+                  <h3 className="text-lg font-bold text-foreground">AI Education &amp; Enablement</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+                    A practical education session for leadership teams and employees.
+                  </p>
+                  <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/45">Best for organizations that want to understand:</p>
+                  <ul className="mt-3 space-y-2">
+                    {[
+                      'What AI can realistically do',
+                      'How AI may apply to their industry',
+                      'Where teams can use AI safely and effectively',
+                      'How to identify use cases without overcomplicating the process',
+                    ].map((item) => (
+                      <li key={item} className="flex gap-2 text-[13px] text-foreground/70">
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
+
+              <Link
+                href="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-sm transition hover:brightness-105"
+              >
+                Explore AI Opportunities for Your Industry
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="py-14 md:py-18">
+          <div className={`${siteContainer} mx-auto max-w-3xl text-center`}>
+            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-accent">Our approach</p>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">{POSITIONING.headline}</h2>
+              <div className="mt-6 space-y-2 text-[15px] leading-relaxed text-muted-foreground">
+                {POSITIONING.paragraphs.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="border-t border-border/40 bg-muted/20 py-14 md:py-18">
+          <div className={`${siteContainer} mx-auto max-w-3xl`}>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-2xl border border-border/45 bg-background/90 p-8 text-center shadow-md md:p-10"
+            >
+              <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">Not Seeing Your Industry?</h2>
+              <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+                AI opportunities are not limited to one sector. If your organization relies on people, processes, documents, data, reporting, customers, or repetitive workflows, there may be practical opportunities to improve how work gets done.
+              </p>
+              <p className="mt-6 text-[14px] font-semibold text-foreground">Acadine can help through:</p>
+              <ul className="mx-auto mt-4 max-w-md space-y-2 text-left text-[14px] text-foreground/70">
+                {[
+                  'An initial discovery conversation',
+                  'A paid AI Opportunity Audit',
+                  'AI education and enablement',
+                  'A formal Diagnose → Design → Implement engagement',
+                ].map((item) => (
+                  <li key={item} className="flex gap-2.5">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-sm transition hover:brightness-105"
+              >
+                Explore Where AI Fits
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
             </motion.div>
           </div>
         </section>
