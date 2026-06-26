@@ -6,7 +6,7 @@ import { SectionHeader } from '@/components/section/section-header'
 import { motion } from 'framer-motion'
 import { COMMON_PROBLEMS } from '@/lib/constants'
 import Link from 'next/link'
-import { ArrowRight, AlertTriangle, ShieldCheck, Clock, TrendingUp } from 'lucide-react'
+import { ArrowRight, AlertTriangle, Clock, TrendingUp } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
 
 const ASSESSMENT_PHASES = [
@@ -48,7 +48,6 @@ const ASSESSMENT_PHASES = [
 const TRUST_STATS = [
   { value: '94%', label: 'Recovery rate', icon: TrendingUp },
   { value: '6 wks', label: 'Avg. time to stabilize', icon: Clock },
-  { value: '20+', label: 'Engagements completed', icon: ShieldCheck },
 ]
 
 export default function AIRescuePage() {
@@ -207,7 +206,7 @@ export default function AIRescuePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="grid gap-8 sm:grid-cols-3 sm:gap-6"
+              className="grid gap-8 sm:grid-cols-2 sm:gap-6"
             >
               {TRUST_STATS.map((stat) => {
                 const Icon = stat.icon

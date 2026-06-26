@@ -99,7 +99,7 @@ export default function ContactPage() {
                 {/* Contact cards */}
                 <div className="space-y-4">
                   <a
-                    href="mailto:hello@acadine.com"
+                    href="mailto:info@acadine.io"
                     className="group flex items-center gap-4 rounded-2xl border border-border/50 bg-background p-5 shadow-sm transition-all hover:border-accent/40 hover:shadow-md"
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition group-hover:bg-accent/15">
@@ -107,7 +107,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex-1">
                       <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/40">Email</p>
-                      <p className="mt-0.5 text-[15px] font-semibold text-foreground group-hover:text-accent">hello@acadine.com</p>
+                      <p className="mt-0.5 text-[15px] font-semibold text-foreground group-hover:text-accent">info@acadine.io</p>
                     </div>
                     <ArrowRight className="h-4 w-4 text-foreground/20 transition group-hover:text-accent group-hover:translate-x-0.5" />
                   </a>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                   </div>
                   <div className="mt-6">
                     <a
-                      href="mailto:hello@acadine.com?subject=Consultation%20Request%20-%20Acadine%20Solutions"
+                      href="mailto:info@acadine.io?subject=Consultation%20Request%20-%20Acadine%20Solutions"
                       className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary-foreground px-5 py-3 text-[13px] font-bold text-primary transition hover:bg-white sm:w-auto"
                     >
                       <Mail className="h-4 w-4" />
