@@ -110,13 +110,22 @@ type SelectedInterest = {
 }
 
 export function SendBriefJourney() {
-  const [openCategory, setOpenCategory] = useState<string>(BRIEF_CATEGORIES[0].id)
+  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set())
   const [selected, setSelected] = useState<Map<string, SelectedInterest>>(new Map())
   const [reflections, setReflections] = useState<Record<number, string>>({})
   const [contact, setContact] = useState({ name: '', email: '', company: '' })
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const selectedList = useMemo(() => Array.from(selected.values()), [selected])
+
+  const toggleCategory = (id: string) => {
+    setOpenCategories((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
 
   const toggleInterest = (categoryId: string, categoryTitle: string, interest: string) => {
     const key = `${categoryId}::${interest}`
@@ -183,6 +192,7 @@ export function SendBriefJourney() {
         setSelected(new Map())
         setReflections({})
         setContact({ name: '', email: '', company: '' })
+        setOpenCategories(new Set())
       } else {
         setStatus('error')
       }
@@ -217,8 +227,8 @@ export function SendBriefJourney() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      <div className="rounded-xl border border-border/50 bg-linear-to-br from-accent/5 via-background to-muted/20 p-5">
+    <form onSubmit={handleSubmit} className="space-y-7">
+      <div className="rounded-xl border border-accent/15 bg-linear-to-br from-accent/5 via-background to-muted/15 p-4 md:p-5">
         <div className="flex items-start gap-3">
           <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
           <p className="text-[14px] leading-relaxed text-foreground/75">
@@ -227,43 +237,49 @@ export function SendBriefJourney() {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         {BRIEF_CATEGORIES.map((cat) => {
-          const isOpen = openCategory === cat.id
+          const isOpen = openCategories.has(cat.id)
           const count = selectedList.filter((s) => s.categoryId === cat.id).length
           return (
             <div
               key={cat.id}
               className={cn(
-                'overflow-hidden rounded-xl border border-border/50 bg-background shadow-sm transition',
-                isOpen && 'border-accent/30 shadow-md',
+                'overflow-hidden rounded-xl border border-border/50 bg-background transition',
+                isOpen && 'border-accent/30 shadow-sm',
+                count > 0 && !isOpen && 'border-accent/20',
               )}
             >
               <button
                 type="button"
-                onClick={() => setOpenCategory(isOpen ? '' : cat.id)}
-                className="flex w-full items-center gap-4 p-4 text-left md:p-5"
+                onClick={() => toggleCategory(cat.id)}
+                aria-expanded={isOpen}
+                className="flex w-full items-center gap-3 p-4 text-left md:gap-4"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border/50 bg-muted/25 text-lg">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/50 bg-muted/20 text-base md:h-10 md:w-10 md:text-lg">
                   {cat.icon}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-[15px] font-bold text-foreground">{cat.title}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-[14px] font-bold text-foreground md:text-[15px]">{cat.title}</h3>
                     {count > 0 && (
                       <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-bold text-accent-foreground">
                         {count}
                       </span>
                     )}
                   </div>
-                  <p className="mt-0.5 text-[12px] text-muted-foreground">{cat.blurb}</p>
+                  <p className="mt-0.5 text-[12px] leading-snug text-muted-foreground">{cat.blurb}</p>
                 </div>
-                <ChevronDown className={cn('h-4 w-4 shrink-0 text-muted-foreground transition', isOpen && 'rotate-180')} />
+                <ChevronDown
+                  className={cn('h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200', isOpen && 'rotate-180')}
+                />
               </button>
 
               {isOpen && (
-                <div className="border-t border-border/40 px-4 pb-5 pt-2 md:px-5">
-                  <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground/40">Tap what interests you</p>
+                <div className="border-t border-border/40 px-4 pb-4 pt-1 md:px-5 md:pb-5">
+                  <p className="mb-2.5 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground/40">
+                    Tap what interests you
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {cat.interests.map((interest) => {
                       const key = `${cat.id}::${interest}`
@@ -274,15 +290,15 @@ export function SendBriefJourney() {
                           type="button"
                           onClick={() => toggleInterest(cat.id, cat.title, interest)}
                           className={cn(
-                            'inline-flex items-center gap-1.5 rounded-lg border px-3 py-2 text-[12px] font-medium transition',
+                            'inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[12px] font-medium transition md:px-3 md:py-2',
                             isSel
                               ? 'border-accent bg-accent/10 text-accent'
-                              : 'border-border/60 bg-muted/15 text-foreground/70 hover:border-accent/40',
+                              : 'border-border/60 bg-muted/10 text-foreground/70 hover:border-accent/40',
                           )}
                         >
                           <span
                             className={cn(
-                              'flex h-3.5 w-3.5 items-center justify-center rounded border text-[8px]',
+                              'flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded border text-[8px]',
                               isSel ? 'border-accent bg-accent text-accent-foreground' : 'border-border/70',
                             )}
                           >
@@ -301,21 +317,21 @@ export function SendBriefJourney() {
       </div>
 
       {selectedList.length > 0 && (
-        <div className="rounded-xl border border-border/50 bg-primary p-6 text-primary-foreground">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="text-lg font-bold">Your brief summary</h3>
+        <div className="rounded-xl border border-primary/15 bg-primary p-5 text-primary-foreground md:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <h3 className="text-base font-bold md:text-lg">Your brief summary</h3>
             <span className="rounded-full bg-primary-foreground/15 px-3 py-1 text-[12px] font-bold">
               {selectedList.length} selected
             </span>
           </div>
-          <p className="mt-2 text-[13px] text-primary-foreground/65">
+          <p className="mt-1.5 text-[13px] text-primary-foreground/65">
             These selections will be included when you submit — no need to commit to any of them.
           </p>
           <div className="mt-4 space-y-3">
             {Object.values(groupedSelections).map((group) => (
               <div key={group.title}>
                 <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-accent">{group.title}</p>
-                <div className="mt-2 flex flex-wrap gap-1.5">
+                <div className="mt-1.5 flex flex-wrap gap-1.5">
                   {group.items.map((item) => (
                     <span
                       key={item}
@@ -333,10 +349,18 @@ export function SendBriefJourney() {
 
       <div>
         <h3 className="text-[15px] font-bold text-foreground">Before we meet, consider</h3>
-        <p className="mt-1 text-[13px] text-muted-foreground">Optional — helps us prepare for a productive first conversation.</p>
-        <div className="mt-4 space-y-3">
+        <p className="mt-1 text-[13px] text-muted-foreground">
+          Optional — helps us prepare for a productive first conversation.
+        </p>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
           {REFLECTION_PROMPTS.map((prompt, i) => (
-            <div key={prompt} className="rounded-xl border border-border/50 bg-muted/10 p-4">
+            <div
+              key={prompt}
+              className={cn(
+                'rounded-xl border border-border/50 bg-muted/10 p-4',
+                i === REFLECTION_PROMPTS.length - 1 && REFLECTION_PROMPTS.length % 2 === 1 && 'md:col-span-2',
+              )}
+            >
               <label htmlFor={`reflection-${i}`} className="text-[13px] font-medium text-foreground">
                 {prompt}
               </label>
@@ -346,7 +370,7 @@ export function SendBriefJourney() {
                 onChange={(e) => setReflections((prev) => ({ ...prev, [i]: e.target.value }))}
                 disabled={status === 'loading'}
                 rows={2}
-                className="mt-2 w-full resize-y rounded-lg border border-border/60 bg-background px-3 py-2.5 text-[13px] text-foreground outline-none ring-ring/40 transition placeholder:text-foreground/30 focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+                className="mt-2 w-full resize-y rounded-lg border border-border/60 bg-background px-3 py-2.5 text-[13px] text-foreground outline-none transition placeholder:text-foreground/30 focus:border-accent/50 focus:ring-2 disabled:opacity-60"
                 placeholder="Optional"
               />
             </div>
@@ -356,7 +380,7 @@ export function SendBriefJourney() {
 
       <div className="space-y-4 border-t border-border/40 pt-6">
         <h3 className="text-[15px] font-bold text-foreground">Your contact details</h3>
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="brief-name" className="block text-[13px] font-bold text-foreground">
               Name <span className="text-destructive">*</span>
@@ -411,7 +435,7 @@ export function SendBriefJourney() {
         </div>
       )}
 
-      <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
         <button
           type="submit"
           disabled={status === 'loading'}
@@ -432,9 +456,7 @@ export function SendBriefJourney() {
             </>
           )}
         </button>
-        <p className="text-[12px] text-foreground/40">
-          Submissions go to {WEB3FORMS_RECIPIENT}
-        </p>
+        <p className="text-[12px] text-foreground/40">Submissions go to {WEB3FORMS_RECIPIENT}</p>
       </div>
     </form>
   )
