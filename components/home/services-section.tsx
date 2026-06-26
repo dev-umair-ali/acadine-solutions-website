@@ -10,11 +10,13 @@ import { cn } from '@/lib/utils'
 
 const layout: { span: string; featured?: boolean }[] = [
   { span: 'lg:col-span-7', featured: true },
-  { span: 'lg:col-span-5' },
+  { span: 'lg:col-span-5', featured: true },
   { span: 'lg:col-span-4' },
   { span: 'lg:col-span-4' },
   { span: 'lg:col-span-4' },
-  { span: 'lg:col-span-5' },
+  { span: 'lg:col-span-4' },
+  { span: 'lg:col-span-4' },
+  { span: 'lg:col-span-4' },
   { span: 'lg:col-span-7', featured: true },
 ]
 
