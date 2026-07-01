@@ -107,15 +107,15 @@ export function Header() {
           aria-hidden
         />
 
-        <div className={cn(siteContainer, 'flex h-14 items-center justify-between gap-4 sm:h-16 md:h-17')}>
+        <div className={cn(siteContainer, 'flex h-16 items-center justify-between gap-4 sm:h-17 md:h-18')}>
           {/* Logo */}
           <Link href="/" className="group flex shrink-0 items-center">
             <Image
               src="/logo.png"
               alt="Acadine Solutions"
-              width={160}
-              height={48}
-              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] sm:h-14 dark:brightness-0 dark:invert"
+              width={200}
+              height={60}
+              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02] sm:h-16 lg:h-18 dark:brightness-0 dark:invert"
               priority
             />
           </Link>
@@ -195,7 +195,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed left-0 right-0 top-[calc(3.5rem+1px)] z-50 sm:top-[calc(4rem+1px)] md:hidden"
+              className="fixed left-0 right-0 top-[calc(4rem+1px)] z-50 sm:top-[calc(4.25rem+1px)] md:top-[calc(4.5rem+1px)] md:hidden"
             >
               <div className={siteContainer}>
                 <nav

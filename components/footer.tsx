@@ -36,9 +36,9 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="Acadine Solutions"
-                width={160}
-                height={48}
-                className="h-12 w-auto object-contain brightness-0 invert sm:h-14"
+                width={200}
+                height={60}
+                className="h-14 w-auto object-contain brightness-0 invert sm:h-16 lg:h-18"
               />
             </Link>
             <p className="mt-4 max-w-[260px] text-[12px] leading-relaxed text-primary-foreground/45">
