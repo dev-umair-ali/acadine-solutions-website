@@ -78,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn(geist.variable, geistMono.variable, manrope.variable)} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-background">
+      <body className="font-sans antialiased bg-background" suppressHydrationWarning>
         <ThemeProvider>
           {children}
         </ThemeProvider>
