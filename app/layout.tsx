@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: '%s | Acadine Solutions',
   },
   description:
-    'Practical AI consulting and operational improvement — assessments, process redesign, disciplined adoption, and measurable automation.',
+    'Practical AI consulting and operational improvement: assessments, process redesign, disciplined adoption, and measurable automation.',
   keywords: [
     'AI consulting',
     'business operations',

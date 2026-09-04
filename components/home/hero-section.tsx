@@ -52,7 +52,7 @@ function ConsultingVisual() {
         {/* Chart area */}
         <div className="p-5">
           <div className="flex items-center justify-between mb-3">
-            <p className="text-[12px] font-bold text-foreground/80">Workflow efficiency — 90 days</p>
+            <p className="text-[12px] font-bold text-foreground/80">Workflow efficiency, 90 days</p>
             <div className="flex items-center gap-1 text-accent">
               <TrendingUp className="h-3 w-3" />
               <span className="font-mono text-[10px] font-bold">+28%</span>
@@ -86,7 +86,7 @@ function ConsultingVisual() {
           <span className="text-[11px] font-bold text-foreground/80">Governance</span>
         </div>
         <p className="mt-2 text-[10px] leading-snug text-foreground/55">
-          3 workflows flagged for control gaps — fix before automation.
+          3 workflows flagged for control gaps. Fix before automation.
         </p>
         <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-border/40">
           <motion.div
@@ -176,7 +176,7 @@ export function HeroSection() {
               <span className="bg-linear-to-r from-foreground via-foreground to-foreground/50 bg-clip-text text-transparent">
                 AI-Ready
               </span>{' '}
-              — Without the Hype
+              Without the Hype
             </h1>
 
             <p className="mt-5 max-w-xl text-pretty text-[15px] leading-[1.7] text-muted-foreground md:text-[17px]">
@@ -210,7 +210,7 @@ export function HeroSection() {
                 <div>
                   <p className="text-[14px] font-bold text-foreground">Not every problem needs AI.</p>
                   <p className="mt-1.5 text-[13px] leading-relaxed text-muted-foreground">
-                    We help you determine when it does — and when it doesn&apos;t.
+                    We help you determine when it does, and when it doesn&apos;t.
                   </p>
                 </div>
               </div>

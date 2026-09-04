@@ -14,7 +14,7 @@ const ASSESSMENT_PHASES = [
     number: '01',
     title: 'Diagnosis',
     description:
-      'Deep-dive into the failed implementation to isolate root causes — technical debt, data gaps, process mismatches, or adoption barriers.',
+      'Deep-dive into the failed implementation to isolate root causes: technical debt, data gaps, process mismatches, or adoption barriers.',
     deliverables: [
       'Root-cause analysis report',
       'Technical & data audit findings',
@@ -36,7 +36,7 @@ const ASSESSMENT_PHASES = [
     number: '03',
     title: 'Redesign',
     description:
-      'Architect a recovery plan that addresses every failure mode — with near-term stabilization steps and a sustainable long-term path.',
+      'Architect a recovery plan that addresses every failure mode, with near-term stabilization steps and a sustainable long-term path.',
     deliverables: [
       'Recovery roadmap with milestones',
       'Revised architecture & integration plan',
@@ -71,7 +71,7 @@ export default function AIRescuePage() {
               </h1>
               <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
                 Focused on fixing failed AI projects. We assess and fix AI implementations
-                that are not delivering value — stabilize outcomes, rebuild on a foundation that works.
+                that are not delivering value. Stabilize outcomes, rebuild on a foundation that works.
               </p>
             </motion.div>
           </div>
@@ -83,7 +83,7 @@ export default function AIRescuePage() {
             <SectionHeader
               index="01"
               eyebrow="Failure patterns"
-              title="Why AI projects fail — and how we fix each one"
+              title="Why AI projects fail, and how we fix each one"
               description="Every rescue starts with pattern recognition. These are the failure modes we see most, paired with the corrective approach."
             />
 
@@ -137,7 +137,7 @@ export default function AIRescuePage() {
               index="02"
               eyebrow="Assessment process"
               title="A systematic path from failure to recovery"
-              description="Three phases, each with concrete deliverables — so you always know where things stand."
+              description="Three phases, each with concrete deliverables, so you always know where things stand."
             />
 
             {/* Vertical timeline */}
@@ -256,7 +256,7 @@ export default function AIRescuePage() {
                   </h2>
                   <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
                     Don&apos;t write off what you&apos;ve built. Share context on the
-                    project — we&apos;ll respond with an honest assessment and a path forward.
+                    project. We&apos;ll respond with an honest assessment and a path forward.
                   </p>
                   <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>

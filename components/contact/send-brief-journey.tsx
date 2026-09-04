@@ -174,14 +174,18 @@ export function SendBriefJourney() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (botHoneypot) return
+    if (botHoneypot) {
+      setErrorMessage('Something went wrong. Please try again or email us at info@acadine.io.')
+      setStatus('error')
+      return
+    }
 
     setStatus('loading')
     setErrorMessage(null)
 
     try {
       const data = await submitToWeb3Forms({
-        subject: 'Send a Brief — Acadine Solutions',
+        subject: 'Send a Brief: Acadine Solutions',
         from_name: contact.name,
         email: contact.email,
         replyto: contact.email,
@@ -242,7 +246,7 @@ export function SendBriefJourney() {
         <div className="flex items-start gap-3">
           <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
           <p className="text-[14px] leading-relaxed text-foreground/75">
-            <b className="font-semibold text-foreground">Explore the possibilities.</b> Tap the areas that interest you or seem relevant to your organization. You don&apos;t need technical knowledge — your selections help us prepare for a more focused conversation.
+            <b className="font-semibold text-foreground">Explore the possibilities.</b> Tap the areas that interest you or seem relevant to your organization. You don&apos;t need technical knowledge. Your selections help us prepare for a more focused conversation.
           </p>
         </div>
       </div>
@@ -335,7 +339,7 @@ export function SendBriefJourney() {
             </span>
           </div>
           <p className="mt-1.5 text-[13px] text-primary-foreground/65">
-            These selections will be included when you submit — no need to commit to any of them.
+            These selections will be included when you submit. No need to commit to any of them.
           </p>
           <div className="mt-4 space-y-3">
             {Object.values(groupedSelections).map((group) => (
@@ -360,7 +364,7 @@ export function SendBriefJourney() {
       <div>
         <h3 className="text-[15px] font-bold text-foreground">Before we meet, consider</h3>
         <p className="mt-1 text-[13px] text-muted-foreground">
-          Optional — helps us prepare for a productive first conversation.
+          Optional. Helps us prepare for a productive first conversation.
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
           {REFLECTION_PROMPTS.map((prompt, i) => (
@@ -470,7 +474,7 @@ export function SendBriefJourney() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              Sending...
+              Sending, please wait...
             </>
           ) : (
             <>
@@ -479,7 +483,11 @@ export function SendBriefJourney() {
             </>
           )}
         </button>
-        <p className="text-[12px] text-foreground/40">Submissions go to {WEB3FORMS_RECIPIENT}</p>
+        <p className="text-[12px] text-foreground/40">
+          {status === 'loading'
+            ? 'A slow connection can take a few seconds. Please keep this tab open.'
+            : `Submissions go to ${WEB3FORMS_RECIPIENT}`}
+        </p>
       </div>
     </form>
   )

@@ -9,16 +9,21 @@ export type Web3FormsResult = {
   message?: string
 }
 
+const SUBMIT_TIMEOUT_MS = 20000
+
 export async function submitToWeb3Forms(payload: Web3FormsPayload): Promise<Web3FormsResult> {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), SUBMIT_TIMEOUT_MS)
+
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_KEY,
-        botcheck: false,
         ...payload,
       }),
+      signal: controller.signal,
     })
 
     let data: Web3FormsResult
@@ -39,10 +44,15 @@ export async function submitToWeb3Forms(payload: Web3FormsPayload): Promise<Web3
     }
 
     return data
-  } catch {
+  } catch (error) {
+    const timedOut = error instanceof DOMException && error.name === 'AbortError'
     return {
       success: false,
-      message: `Network error — the form could not reach the submission service. Please email ${WEB3FORMS_RECIPIENT} directly.`,
+      message: timedOut
+        ? `The request took too long, likely due to a slow connection. Please try again or email ${WEB3FORMS_RECIPIENT} directly.`
+        : `Network error. The form could not reach the submission service. Please email ${WEB3FORMS_RECIPIENT} directly.`,
     }
+  } finally {
+    clearTimeout(timeoutId)
   }
 }

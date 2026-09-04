@@ -156,7 +156,7 @@ export default function IndustriesPage() {
                 Industries We Serve
               </h1>
               <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
-                We work across industries to help businesses improve operations and adopt AI where it makes sense — with practical, sector-specific examples.
+                We work across industries to help businesses improve operations and adopt AI where it makes sense, with practical, sector-specific examples.
               </p>
             </motion.div>
           </div>

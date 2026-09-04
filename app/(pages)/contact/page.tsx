@@ -51,7 +51,11 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (botHoneypot) return
+    if (botHoneypot) {
+      setErrorMessage('Something went wrong. Please try again or email us directly.')
+      setStatus('error')
+      return
+    }
 
     setStatus('loading')
     setErrorMessage(null)
@@ -151,7 +155,7 @@ export default function ContactPage() {
                     <h3 className="text-lg font-bold">Book a Consultation</h3>
                   </div>
                   <p className="mt-3 text-[14px] leading-relaxed text-primary-foreground/65">
-                    Schedule a focused 45-minute session — agenda-driven, no generic product tour.
+                    Schedule a focused 45-minute session, agenda-driven, no generic product tour.
                   </p>
                   <ul className="mt-5 space-y-2.5">
                     {RESPONSE_PROMISES.map((item) => {
@@ -351,7 +355,7 @@ export default function ContactPage() {
                             className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-[14px] font-bold text-primary-foreground shadow-[0_12px_36px_-10px_rgba(15,23,42,0.45)] transition hover:brightness-105 disabled:opacity-70"
                           >
                             {status === 'loading' ? (
-                              'Sending...'
+                              'Sending, please wait...'
                             ) : (
                               <>
                                 <Send className="h-4 w-4" />
@@ -360,7 +364,9 @@ export default function ContactPage() {
                             )}
                           </button>
                           <p className="text-[12px] text-foreground/40">
-                            Submissions go to {WEB3FORMS_RECIPIENT}
+                            {status === 'loading'
+                              ? 'A slow connection can take a few seconds. Please keep this tab open.'
+                              : `Submissions go to ${WEB3FORMS_RECIPIENT}`}
                           </p>
                         </div>
                       </form>

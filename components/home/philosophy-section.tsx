@@ -29,7 +29,7 @@ export function PhilosophySection() {
               transition={{ duration: 0.5 }}
               className="mt-10 border-l-2 border-accent pl-6 font-serif text-[1.35rem] italic leading-snug text-primary-foreground/85 sm:text-[1.5rem] lg:text-[1.65rem]"
             >
-              “Executives don’t need more AI slides — they need operating truth and a delivery path they can defend.”
+              “Executives don’t need more AI slides. They need operating truth and a delivery path they can defend.”
             </motion.blockquote>
           </div>
 
@@ -45,9 +45,9 @@ export function PhilosophySection() {
             </p>
             <ul className="mt-6 space-y-5 border-t border-white/10 pt-6">
               {[
-                { t: 'Operational baseline', d: 'Measured cycle-time, exceptions, and rework — before tooling debates.' },
+                { t: 'Operational baseline', d: 'Measured cycle-time, exceptions, and rework, before tooling debates.' },
                 { t: 'Decision logs', d: 'Explicit trade-offs for procurement, IT security, and finance.' },
-                { t: 'Adoption cadence', d: 'Training and monitoring treated as scope — not an afterthought.' },
+                { t: 'Adoption cadence', d: 'Training and monitoring treated as scope, not an afterthought.' },
               ].map((row) => (
                 <li key={row.t} className="flex gap-4">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_12px_rgba(56,189,198,0.55)]" />
