@@ -149,6 +149,11 @@ export function SendBriefJourney() {
     return groups
   }, [selectedList])
 
+  const isMeaningfulAnswer = (value: string | undefined) => {
+    const answer = value?.trim() ?? ''
+    return answer.length > 0 && !/^optional$/i.test(answer)
+  }
+
   const buildMessage = () => {
     const lines: string[] = ['--- Areas of Interest ---']
     if (selectedList.length === 0) {
@@ -160,13 +165,13 @@ export function SendBriefJourney() {
       })
     }
 
-    const reflectionAnswers = REFLECTION_PROMPTS.map((q, i) => reflections[i]?.trim()).filter(Boolean)
-    if (reflectionAnswers.length > 0) {
-      lines.push('\n--- Reflection Notes ---')
-      REFLECTION_PROMPTS.forEach((q, i) => {
-        const answer = reflections[i]?.trim()
-        if (answer) lines.push(`\n${q}\n${answer}`)
-      })
+    const reflectionNotes = REFLECTION_PROMPTS.flatMap((question, i) => {
+      const answer = reflections[i]?.trim() ?? ''
+      if (!isMeaningfulAnswer(answer)) return []
+      return [`${question}\n${answer}`]
+    })
+    if (reflectionNotes.length > 0) {
+      lines.push('\n--- Reflection Notes ---', '', ...reflectionNotes)
     }
 
     return lines.join('\n')
@@ -174,8 +179,12 @@ export function SendBriefJourney() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (botHoneypot) {
-      setErrorMessage('Something went wrong. Please try again or email us at info@acadine.io.')
+    if (botHoneypot) return
+
+    const name = contact.name.trim()
+    const email = contact.email.trim()
+    if (!name || !email) {
+      setErrorMessage('Please enter your name and email.')
       setStatus('error')
       return
     }
@@ -183,15 +192,18 @@ export function SendBriefJourney() {
     setStatus('loading')
     setErrorMessage(null)
 
+    const company = contact.company.trim()
+    const referredBy = contact.referredBy.trim()
+
     try {
       const data = await submitToWeb3Forms({
         subject: 'Send a Brief: Acadine Solutions',
-        from_name: contact.name,
-        email: contact.email,
-        replyto: contact.email,
-        name: contact.name,
-        company: contact.company,
-        referred_by: contact.referredBy.trim() || undefined,
+        from_name: name,
+        email,
+        replyto: email,
+        name,
+        ...(company ? { company } : {}),
+        ...(referredBy ? { referred_by: referredBy } : {}),
         message: buildMessage(),
         recipient: WEB3FORMS_RECIPIENT,
         form_type: 'guided_brief',
