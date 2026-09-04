@@ -12,7 +12,7 @@ const values = [
   {
     name: 'Integrity',
     description:
-      "We're honest about what AI can and can't do. We say no when a project isn't right for you — even if it means walking away from revenue.",
+      "We're honest about what AI can and can't do. We say no when a project isn't right for you, even if it means walking away from revenue.",
   },
   {
     name: 'Excellence',
@@ -31,19 +31,19 @@ const engagementCards = [
     icon: Users,
     title: 'Executive clarity',
     description:
-      'Direct access to senior practitioners who speak CFO, CIO, and COO — with traceable assumptions and governance-ready artifacts.',
+      'Direct access to senior practitioners who speak CFO, CIO, and COO, with traceable assumptions and governance-ready artifacts.',
   },
   {
     icon: FileCheck,
     title: 'Operational truth-telling',
     description:
-      'We document trade-offs explicitly: what must change in process before tools can help — and what should not be automated.',
+      'We document trade-offs explicitly: what must change in process before tools can help, and what should not be automated.',
   },
   {
     icon: BarChart3,
     title: 'Measured adoption',
     description:
-      'Training, monitoring, and iteration are part of scope — not an afterthought purchased separately.',
+      'Training, monitoring, and iteration are part of scope, not an afterthought purchased separately.',
   },
 ]
 
@@ -68,7 +68,7 @@ export default function AboutPage() {
               </h1>
               <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
                 Practical expertise. Execution-focused. Business-first mindset.
-                We help companies make smart, practical decisions about AI — not sell AI tools.
+                We help companies make smart, practical decisions about AI, not sell AI tools.
               </p>
             </motion.div>
           </div>
@@ -105,14 +105,14 @@ export default function AboutPage() {
                   impact.
                 </p>
                 <p className="text-[15px] leading-[1.75] text-muted-foreground md:text-base">
-                  So we built something different — a firm that diagnoses before
+                  So we built something different: a firm that diagnoses before
                   designing, involves your teams from day one, and measures success by
                   outcomes leadership can actually sponsor: cost reduction, efficiency
                   gains, quality improvement.
                 </p>
                 <p className="text-[15px] leading-[1.75] text-muted-foreground md:text-base">
                   Today, Acadine Solutions helps organizations across industries
-                  transform their operations through AI that works in reality — not
+                  transform their operations through AI that works in reality, not
                   just in demos.
                 </p>
               </div>
@@ -127,7 +127,7 @@ export default function AboutPage() {
               index="02"
               eyebrow="Principles"
               title="What we stand on"
-              description="Three convictions that shape every engagement — from scoping to post-launch."
+              description="Three convictions that shape every engagement, from scoping to post-launch."
               className="mb-12"
             />
 
@@ -169,7 +169,7 @@ export default function AboutPage() {
               index="03"
               eyebrow="Engagement"
               title="How leadership teams engage us"
-              description="No inflated metrics — just a delivery model designed for governance-heavy environments."
+              description="No inflated metrics, just a delivery model designed for governance-heavy environments."
               dark
               className="mb-12"
             />
@@ -214,10 +214,10 @@ export default function AboutPage() {
               <div className="relative rounded-[1.15rem] bg-background/95 px-6 py-12 text-center md:px-14 md:py-16">
                 <div className="mx-auto flex max-w-2xl flex-col items-center">
                   <h2 className="text-balance text-[1.75rem] font-bold leading-[1.12] tracking-tight text-foreground sm:text-3xl lg:text-[2.35rem]">
-                    Ready to partner with practitioners — not presenters?
+                    Ready to partner with practitioners, not presenters?
                   </h2>
                   <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
-                    Send context on your workflows and constraints — we&apos;ll respond
+                    Send context on your workflows and constraints. We&apos;ll respond
                     with a grounded view of fit, risk, and a path leadership can
                     sponsor.
                   </p>
