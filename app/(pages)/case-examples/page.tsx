@@ -372,56 +372,81 @@ export default function CaseExamplesPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-14 md:py-18">
+        <section className="py-14 md:py-20 lg:py-24">
           <div className={siteContainer}>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55 }}
-              className="section-invert relative overflow-hidden rounded-[1.25rem] bg-primary p-10 text-primary-foreground shadow-[0_40px_100px_-48px_rgba(15,23,42,0.85)] md:p-14 lg:p-16"
+              className="relative overflow-hidden rounded-[1.25rem] border border-border/50 bg-linear-to-b from-muted/50 to-background p-px shadow-[0_32px_80px_-40px_rgba(15,23,42,0.35)]"
             >
-              <div className="pointer-events-none absolute inset-0 texture-grain opacity-15" aria-hidden />
-              <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/20 blur-[80px]" aria-hidden />
+              <div className="texture-grain pointer-events-none absolute inset-0 rounded-[1.2rem] opacity-[0.25]" aria-hidden />
 
-              <div className="relative mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                  Bring enterprise experience to your business
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-primary-foreground/65">
-                  The scale and industry may change. The fundamentals remain remarkably consistent. Successful transformation begins by understanding the problem, organizing the information, identifying the constraints, defining what success actually means, and then selecting the technology that supports that outcome.
-                </p>
-                <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-primary-foreground/65">
-                  Acadine applies experience developed across AI, data, regulated technology, enterprise systems, cybersecurity, and complex operational environments to help organizations:
-                </p>
-                <ul className="mx-auto mt-6 grid max-w-2xl gap-2 text-left sm:grid-cols-2">
-                  {CLOSING_CAPABILITIES.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-[14px] leading-snug text-primary-foreground/70">
-                      <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mx-auto mt-6 max-w-2xl text-[15px] leading-relaxed text-primary-foreground/65">
-                  Acadine{'\u2019'}s senior leadership remains directly involved in strategy, architecture, oversight, and delivery. Clients benefit directly from the experience represented on this page throughout the engagement.
-                </p>
-                <p className="mx-auto mt-8 max-w-2xl text-[16px] font-semibold leading-relaxed text-primary-foreground">
-                  Understand the problem. Organize the data. Simplify the workflow. Deliver information leadership can act on.
-                </p>
-                <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                  <Link
-                    href="/contact/"
-                    className="inline-flex items-center gap-2 rounded-xl bg-primary-foreground px-8 py-3.5 text-[14px] font-bold text-primary shadow-xl transition hover:bg-white"
-                  >
-                    Start With a Discovery Conversation
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                  <Link
-                    href="/process/"
-                    className="inline-flex items-center rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-6 py-3.5 text-[14px] font-semibold text-primary-foreground transition hover:bg-primary-foreground/10"
-                  >
-                    See our process
-                  </Link>
+              <div className="relative rounded-[1.15rem] bg-background/95 px-6 py-10 md:px-10 md:py-14 lg:px-14 lg:py-16">
+                <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.8fr)] lg:items-start lg:gap-14">
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-[11px] font-medium text-accent">04</span>
+                      <span className="h-px w-12 bg-border" aria-hidden />
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-muted-foreground">
+                        Next step
+                      </span>
+                    </div>
+                    <h2 className="mt-5 text-balance text-[1.75rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-3xl lg:text-[2.35rem]">
+                      Bring enterprise experience to your business
+                    </h2>
+                    <p className="mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
+                      The scale and industry may change. The fundamentals remain remarkably consistent. Successful transformation begins by understanding the problem, organizing the information, identifying the constraints, defining what success actually means, and then selecting the technology that supports that outcome.
+                    </p>
+                    <p className="mt-4 max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
+                      Acadine applies experience developed across AI, data, regulated technology, enterprise systems, cybersecurity, and complex operational environments to help organizations:
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-border/45 bg-muted/25 p-5 shadow-sm lg:row-span-2 md:p-6">
+                    <ul className="space-y-1">
+                      {CLOSING_CAPABILITIES.map((item, i) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-3 rounded-xl px-1.5 py-2.5 transition-colors hover:bg-background/80"
+                        >
+                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-accent/10 font-mono text-[10px] font-bold text-accent">
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <span className="pt-0.5 text-[14px] leading-snug text-foreground/80">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <p className="max-w-2xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
+                      Acadine{'\u2019'}s senior leadership remains directly involved in strategy, architecture, oversight, and delivery. Clients benefit directly from the experience represented on this page throughout the engagement.
+                    </p>
+                    <blockquote className="mt-6 border-l-[3px] border-accent pl-5">
+                      <p className="text-[16px] font-semibold leading-relaxed text-foreground">
+                        Understand the problem. Organize the data. Simplify the workflow. Deliver information leadership can act on.
+                      </p>
+                    </blockquote>
+                    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                        <Link
+                          href="/contact/"
+                          className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-[13px] font-bold text-primary-foreground shadow-[0_16px_44px_-14px_rgba(15,23,42,0.55)] transition hover:brightness-105"
+                        >
+                          Start With a Discovery Conversation
+                          <ArrowRight className="h-4 w-4 opacity-90" aria-hidden />
+                        </Link>
+                      </motion.div>
+                      <Link
+                        href="/process/"
+                        className="inline-flex items-center justify-center rounded-xl border border-border/55 px-6 py-3.5 text-[13px] font-bold text-foreground transition hover:border-accent/40 hover:bg-muted/40"
+                      >
+                        See our process
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
