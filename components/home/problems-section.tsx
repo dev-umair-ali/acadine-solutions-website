@@ -17,7 +17,7 @@ const problems = [
   {
     icon: Hand,
     title: 'Manual processes',
-    description: 'High-touch workflows consume leadership attention — especially close cycles, compliance checks, and approval chains that should run themselves.',
+    description: 'High-touch workflows consume leadership attention, especially close cycles, compliance checks, and approval chains that should run themselves.',
     signal: 'Signal: hours per cycle × frequency',
   },
   {
@@ -29,7 +29,7 @@ const problems = [
   {
     icon: GitBranch,
     title: 'Poor workflows',
-    description: 'Handoffs and exceptions are invisible — so improvement has no baseline and no accountability.',
+    description: 'Handoffs and exceptions are invisible, so improvement has no baseline and no accountability.',
     signal: 'Signal: exception rate × resolution time',
   },
 ]
@@ -57,7 +57,7 @@ export function ProblemsSection() {
               index="02"
               eyebrow="Pain Points"
               title="Common business challenges we solve"
-              description="These are the problems we see most often — and fix before recommending any technology."
+              description="These are the problems we see most often, and fix before recommending any technology."
               align="left"
             />
             <motion.div

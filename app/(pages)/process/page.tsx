@@ -22,7 +22,7 @@ const PHASE_DETAILS: Record<
   1: {
     icon: Compass,
     extended:
-      'We immerse in how work actually happens — systems, handoffs, data flows, and decision points — so recommendations are grounded in reality rather than assumptions.',
+      'We immerse in how work actually happens: systems, handoffs, data flows, and decision points, so recommendations are grounded in reality rather than assumptions.',
     activities: [
       'Comprehensive workflow analysis and mapping',
       'Stakeholder interviews across departments',
@@ -35,7 +35,7 @@ const PHASE_DETAILS: Record<
   2: {
     icon: PenTool,
     extended:
-      'We translate diagnosis into a prescriptive plan — prioritized use cases, architecture decisions, and a phased timeline your leadership team can sponsor with confidence.',
+      'We translate diagnosis into a prescriptive plan: prioritized use cases, architecture decisions, and a phased timeline your leadership team can sponsor with confidence.',
     activities: [
       'AI use-case identification and prioritization',
       'Solution architecture and technical design',
@@ -48,7 +48,7 @@ const PHASE_DETAILS: Record<
   3: {
     icon: Rocket,
     extended:
-      'We build, integrate, and harden — then train your teams so the solution runs under their ownership with measurable, ongoing performance.',
+      'We build, integrate, and harden, then train your teams so the solution runs under their ownership with measurable, ongoing performance.',
     activities: [
       'System development and integration',
       'Staff training and change management',
@@ -72,7 +72,7 @@ const PRINCIPLES = [
     icon: PenTool,
     title: 'Iterate, don\u2019t overcommit',
     description:
-      'We build and test in phases with explicit decision gates — so scope stays honest and investments are validated before they scale.',
+      'We build and test in phases with explicit decision gates, so scope stays honest and investments are validated before they scale.',
     bg: 'bg-linear-to-br from-primary/4 via-background to-accent/3',
   },
   {
@@ -118,7 +118,7 @@ export default function ProcessPage() {
               index="01"
               eyebrow="Three phases"
               title="How we move from diagnosis to delivery"
-              description="Each phase has explicit deliverables, durations, and decision gates — so you always know where things stand."
+              description="Each phase has explicit deliverables, durations, and decision gates, so you always know where things stand."
               align="center"
               className="mb-14 md:mb-18"
             />
@@ -251,7 +251,7 @@ export default function ProcessPage() {
               index="02"
               eyebrow="Principles"
               title="What guides every engagement"
-              description="The beliefs that shape how we work — and why outcomes stick."
+              description="The beliefs that shape how we work, and why outcomes stick."
               className="mb-12 md:mb-14"
             />
 
@@ -311,7 +311,7 @@ export default function ProcessPage() {
                     Ready to start your transformation?
                   </h2>
                   <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
-                    Let&apos;s begin with a diagnosis of your current state — we&apos;ll
+                    Let&apos;s begin with a diagnosis of your current state. We&apos;ll
                     respond with a grounded view of fit, risk, and a path forward.
                   </p>
                   <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

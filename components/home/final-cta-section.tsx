@@ -30,7 +30,7 @@ export function FinalCtaSection() {
                 Find Where AI Can Actually Improve Your Business
               </h2>
               <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
-                Send context on workflows and constraints — we&apos;ll respond with a grounded view of fit, risk, and a path
+                Send context on workflows and constraints. We&apos;ll respond with a grounded view of fit, risk, and a path
                 leadership can sponsor.
               </p>
               <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

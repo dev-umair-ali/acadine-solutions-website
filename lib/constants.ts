@@ -57,7 +57,7 @@ export const SERVICES = [
       'Evaluate operations, workflows, tools, and data to identify inefficiencies.',
     icon: SearchCheck,
     longDescription:
-      'We map how work actually happens — systems, handoffs, approvals, and information flows — so recommendations are grounded in reality rather than slides.',
+      'We map how work actually happens: systems, handoffs, approvals, and information flows, so recommendations are grounded in reality rather than slides.',
     highlights: [
       'Workflow and stakeholder interviews with operational metrics',
       'Systems inventory, integration points, and constraint analysis',
@@ -82,10 +82,10 @@ export const SERVICES = [
     id: 'discovery',
     title: 'AI Opportunity Discovery',
     description:
-      'Identify where AI creates value — and where it should not be used.',
+      'Identify where AI creates value, and where it should not be used.',
     icon: ScanSearch,
     longDescription:
-      'We separate viable AI use cases from organizational theater: fit to data, risk, maintenance burden, and expected ROI — including explicit “do not automate” recommendations.',
+      'We separate viable AI use cases from organizational theater: fit to data, risk, maintenance burden, and expected ROI, including explicit “do not automate” recommendations.',
     highlights: [
       'Use-case scoring tied to business KPIs and governance constraints',
       'Explicit trade-offs between rules-based automation and ML approaches',
@@ -99,7 +99,7 @@ export const SERVICES = [
       'Prepare the business, data, and team for successful AI adoption.',
     icon: Map,
     longDescription:
-      'A phased plan covering data foundations, roles, operating cadence, and evaluation metrics — sized to your capacity so adoption is sustainable.',
+      'A phased plan covering data foundations, roles, operating cadence, and evaluation metrics, sized to your capacity so adoption is sustainable.',
     highlights: [
       'Phased milestones with owners, dependencies, and decision gates',
       'Data quality and access prerequisites spelled out plainly',
@@ -113,10 +113,10 @@ export const SERVICES = [
       'Build workflows, dashboards, and systems that reduce manual work.',
     icon: LayoutDashboard,
     longDescription:
-      'We implement practical orchestration, integrations, and reporting so teams spend less time reconciling and more time deciding — without unnecessary complexity.',
+      'We implement practical orchestration, integrations, and reporting so teams spend less time reconciling and more time deciding, without unnecessary complexity.',
     highlights: [
       'Integration patterns chosen for maintainability and observability',
-      'Dashboards aligned to leadership decisions — not vanity charts',
+      'Dashboards aligned to leadership decisions, not vanity charts',
       'Runbooks, monitoring, and handover so teams can operate confidently',
     ],
   },
@@ -127,7 +127,7 @@ export const SERVICES = [
       'Implement AI solutions only where they create measurable value.',
     icon: Layers,
     longDescription:
-      'When AI is the right tool, we deliver models and applications with clear evaluation, guardrails, and ownership — focused on measured outcomes, not demos.',
+      'When AI is the right tool, we deliver models and applications with clear evaluation, guardrails, and ownership, focused on measured outcomes, not demos.',
     highlights: [
       'Evaluation harnesses and production monitoring suited to the risk profile',
       'Human-in-the-loop designs where judgment still matters',
@@ -141,7 +141,7 @@ export const SERVICES = [
       'Fix AI solutions that were poorly implemented or not delivering results.',
     icon: Wrench,
     longDescription:
-      'We diagnose failure modes — misaligned objectives, data gaps, brittle integrations, or adoption issues — and rework delivery plans so investments produce business impact.',
+      'We diagnose failure modes: misaligned objectives, data gaps, brittle integrations, or adoption issues, and rework delivery plans so investments produce business impact.',
     highlights: [
       'Honest assessment of what should be retired versus rebuilt',
       'Recovery roadmap with near-term stabilization and longer-term correction',
@@ -415,7 +415,7 @@ export const USE_CASES: {
   {
     title: 'Workflow improvement',
     description:
-      'Approvals, routing, and handoffs become traceable — reducing cycle time and rework.',
+      'Approvals, routing, and handoffs become traceable, reducing cycle time and rework.',
     preview: 'workflow',
   },
   {

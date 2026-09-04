@@ -110,9 +110,9 @@ function ServiceVisual({ serviceId }: { serviceId: string }) {
       {serviceId === 'roadmap' && (
         <div className="space-y-3">
           {[
-            { t: 'Phase 1 — Foundations', d: 'Data access + owners' },
-            { t: 'Phase 2 — Pilots', d: 'Measured adoption gates' },
-            { t: 'Phase 3 — Scale', d: 'Operate + improve' },
+            { t: 'Phase 1: Foundations', d: 'Data access + owners' },
+            { t: 'Phase 2: Pilots', d: 'Measured adoption gates' },
+            { t: 'Phase 3: Scale', d: 'Operate + improve' },
           ].map((p) => (
             <div key={p.t} className="rounded-xl border border-border/50 bg-background/75 p-3">
               <p className="text-[11px] font-semibold text-foreground">{p.t}</p>
@@ -129,7 +129,7 @@ function ServiceVisual({ serviceId }: { serviceId: string }) {
               <div key={i} className="flex-1 rounded-sm bg-linear-to-t from-primary/15 to-accent/45" style={{ height: `${h}px` }} />
             ))}
           </div>
-          <p className="mt-3 text-[11px] text-foreground/55">Dashboards tied to decisions — weekly operating review.</p>
+          <p className="mt-3 text-[11px] text-foreground/55">Dashboards tied to decisions, weekly operating review.</p>
         </div>
       )}
 
@@ -155,7 +155,7 @@ function ServiceVisual({ serviceId }: { serviceId: string }) {
           </div>
           <div className="rounded-xl border border-border/50 bg-background/75 p-3">
             <p className="text-[11px] font-semibold text-foreground">Rebuild plan</p>
-            <p className="mt-1 text-[10px] text-foreground/55">What ships next — and what stops shipping.</p>
+            <p className="mt-1 text-[10px] text-foreground/55">What ships next, and what stops shipping.</p>
           </div>
         </div>
       )}
@@ -182,7 +182,7 @@ export default function ServicesPage() {
                 Services
               </h1>
               <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
-                We help companies improve operations and implement the right solutions — AI included only when it adds real value.
+                We help companies improve operations and implement the right solutions, AI included only when it adds real value.
               </p>
             </motion.div>
           </div>
@@ -272,7 +272,7 @@ export default function ServicesPage() {
             <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
               <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Choose the entry point that matches reality</h2>
               <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-primary-foreground/75">
-                Not sure where to begin? Start with a free discovery conversation, a paid AI Opportunity Audit, or an AI education session — before committing to implementation.
+                Not sure where to begin? Start with a free discovery conversation, a paid AI Opportunity Audit, or an AI education session, before committing to implementation.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
                 <Link

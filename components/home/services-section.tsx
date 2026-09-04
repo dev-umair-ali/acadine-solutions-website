@@ -38,7 +38,7 @@ export function ServicesSection() {
           index="04"
           eyebrow="Services"
           title="Services"
-          description="We help companies improve operations and implement the right solutions — AI included only when it adds real value."
+          description="We help companies improve operations and implement the right solutions, AI included only when it adds real value."
           align="center"
           className="mb-10 lg:mb-12"
         />

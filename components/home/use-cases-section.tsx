@@ -83,7 +83,7 @@ export function UseCasesSection() {
           index="07"
           eyebrow="Use Cases"
           title="Real-world examples of what we deliver"
-          description="Practical outcomes across reporting, workflows, customer processes, and data — not theoretical demos."
+          description="Practical outcomes across reporting, workflows, customer processes, and data, not theoretical demos."
           align="center"
           className="mb-10 lg:mb-12"
         />
