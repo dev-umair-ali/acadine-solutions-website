@@ -1,13 +1,16 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Case Examples | Acadine Solutions',
+  title: {
+    absolute: 'Selected Team Experience | AI, Data & Technology | Acadine',
+  },
   description:
-    'Illustrative engagements structured as problem, solution, and outcome — executive reporting style.',
+    'Explore prior professional experience of Acadine\u2019s founding team across artificial intelligence, enterprise analytics, systems architecture, life sciences, cybersecurity, technology modernization, and complex program execution.',
   openGraph: {
-    title: 'Case Examples | Acadine Solutions',
-    description: 'Representative results from workflow and AI modernization work.',
-    url: 'https://acadine.com/case-examples',
+    title: 'Selected Team Experience | Acadine Solutions',
+    description:
+      'Senior experience across AI, enterprise data, architecture, cybersecurity, life sciences, modernization, and complex program execution.',
+    url: 'https://www.acadine.io/case-examples/',
   },
 }
 
