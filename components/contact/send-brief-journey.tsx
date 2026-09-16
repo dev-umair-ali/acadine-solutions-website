@@ -375,7 +375,7 @@ export function SendBriefJourney() {
 
       <div>
         <h3 className="text-[15px] font-bold text-foreground">Before we meet, consider</h3>
-        <p className="mt-1 text-[13px] text-muted-foreground">
+        <p className="mt-1 text-[13px] text-foreground/70 dark:text-foreground/75">
           Optional. Helps us prepare for a productive first conversation.
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -383,7 +383,7 @@ export function SendBriefJourney() {
             <div
               key={prompt}
               className={cn(
-                'rounded-xl border border-border/50 bg-muted/10 p-4',
+                'rounded-xl border border-border/50 bg-muted/10 p-4 dark:border-white/15 dark:bg-muted/25',
                 i === REFLECTION_PROMPTS.length - 1 && REFLECTION_PROMPTS.length % 2 === 1 && 'md:col-span-2',
               )}
             >
@@ -396,7 +396,7 @@ export function SendBriefJourney() {
                 onChange={(e) => setReflections((prev) => ({ ...prev, [i]: e.target.value }))}
                 disabled={status === 'loading'}
                 rows={2}
-                className="mt-2 w-full resize-y rounded-lg border border-border/60 bg-background px-3 py-2.5 text-[13px] text-foreground outline-none transition placeholder:text-foreground/30 focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+                className="mt-2 w-full resize-y rounded-lg border border-border/80 bg-background px-3 py-2.5 text-[13px] text-foreground outline-none transition placeholder:text-foreground/50 focus:border-accent/50 focus:ring-2 disabled:opacity-60 dark:border-white/25 dark:bg-card dark:placeholder:text-foreground/65"
                 placeholder="Optional"
               />
             </div>
@@ -418,7 +418,7 @@ export function SendBriefJourney() {
               required
               disabled={status === 'loading'}
               autoComplete="name"
-              className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+              className="mt-2 w-full rounded-xl border border-border/80 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none placeholder:text-foreground/50 focus:border-accent/50 focus:ring-2 disabled:opacity-60 dark:border-white/25 dark:bg-card dark:placeholder:text-foreground/65"
               placeholder="Your name"
             />
           </div>
@@ -434,7 +434,7 @@ export function SendBriefJourney() {
               required
               disabled={status === 'loading'}
               autoComplete="email"
-              className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+              className="mt-2 w-full rounded-xl border border-border/80 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none placeholder:text-foreground/50 focus:border-accent/50 focus:ring-2 disabled:opacity-60 dark:border-white/25 dark:bg-card dark:placeholder:text-foreground/65"
               placeholder="you@company.com"
             />
           </div>
@@ -449,20 +449,20 @@ export function SendBriefJourney() {
             onChange={(e) => setContact((p) => ({ ...p, company: e.target.value }))}
             disabled={status === 'loading'}
             autoComplete="organization"
-            className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+            className="mt-2 w-full rounded-xl border border-border/80 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none placeholder:text-foreground/50 focus:border-accent/50 focus:ring-2 disabled:opacity-60 dark:border-white/25 dark:bg-card dark:placeholder:text-foreground/65"
             placeholder="Company name"
           />
         </div>
         <div>
           <label htmlFor="brief-referred-by" className="block text-[13px] font-bold text-foreground">
-            Referred By <span className="font-normal text-muted-foreground">(Optional)</span>
+            Referred By <span className="font-normal text-foreground/65 dark:text-foreground/75">(Optional)</span>
           </label>
           <input
             id="brief-referred-by"
             value={contact.referredBy}
             onChange={(e) => setContact((p) => ({ ...p, referredBy: e.target.value }))}
             disabled={status === 'loading'}
-            className="mt-2 w-full rounded-xl border border-border/60 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none focus:border-accent/50 focus:ring-2 disabled:opacity-60"
+            className="mt-2 w-full rounded-xl border border-border/80 bg-background px-4 py-3 text-[14px] text-foreground shadow-sm outline-none placeholder:text-foreground/50 focus:border-accent/50 focus:ring-2 disabled:opacity-60 dark:border-white/25 dark:bg-card dark:placeholder:text-foreground/65"
             placeholder="Referral code or name"
           />
         </div>
