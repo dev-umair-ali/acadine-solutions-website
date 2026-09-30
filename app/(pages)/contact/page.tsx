@@ -152,7 +152,7 @@ export default function ContactPage() {
                 <div className="section-invert rounded-2xl bg-primary p-6 text-primary-foreground shadow-[0_24px_64px_-20px_rgba(15,23,42,0.5)]">
                   <div className="flex items-center gap-2">
                     <CalendarClock className="h-5 w-5 text-accent" />
-                    <h3 className="text-lg font-bold">Book a Consultation</h3>
+                    <h3 className="text-lg font-bold">Book A Consultation</h3>
                   </div>
                   <p className="mt-3 text-[14px] leading-relaxed text-primary-foreground/65">
                     Schedule a focused 45-minute session, agenda-driven, no generic product tour.

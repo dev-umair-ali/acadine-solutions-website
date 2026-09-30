@@ -4,6 +4,7 @@ import { Mail } from 'lucide-react'
 import { siteContainer } from '@/lib/site-layout'
 
 const links = [
+  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/ai-rescue', label: 'AI Rescue' },
   { href: '/process', label: 'Process' },
@@ -36,9 +37,9 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="Acadine Solutions"
-                width={200}
-                height={60}
-                className="h-14 w-auto object-contain brightness-0 invert sm:h-16 lg:h-18"
+                width={400}
+                height={120}
+                className="h-16 w-auto object-contain brightness-0 invert sm:h-20 lg:h-24"
               />
             </Link>
             <p className="mt-4 max-w-[260px] text-[12px] leading-relaxed text-primary-foreground/45">

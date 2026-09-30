@@ -89,8 +89,8 @@ export default function ProcessPage() {
     <>
       <Header />
       <main>
-        {/* ── Hero ── */}
-        <section className="relative border-b border-border/40 bg-muted/20 py-14 md:py-18 lg:py-20">
+        {/* ── Hero + simple box diagram ── */}
+        <section className="relative border-b border-border/40 bg-muted/25 py-14 md:py-18 lg:py-20">
           <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
           <div className={`relative ${siteContainer}`}>
             <motion.div
@@ -99,14 +99,44 @@ export default function ProcessPage() {
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-foreground/45">Process</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-foreground/55">Process</p>
               <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl">
                 Diagnose &rarr; Design &rarr; Implement
               </h1>
-              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
+              <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-foreground/70 lg:text-lg">
                 Our three-step process: understand workflows, data, and problems.
                 Define the right solutions. Build and deploy what works.
               </p>
+            </motion.div>
+
+            {/* Simple one-word boxes up front */}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.15 }}
+              className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4"
+            >
+              {PROCESS_STEPS.map((step, index) => (
+                <div key={step.number} className="relative">
+                  {index < PROCESS_STEPS.length - 1 && (
+                    <div
+                      className="absolute right-[-0.55rem] top-1/2 z-10 hidden h-0.5 w-[calc(0.55rem*2+0.25rem)] -translate-y-1/2 bg-accent/50 sm:block"
+                      aria-hidden
+                    />
+                  )}
+                  <div className="flex h-full flex-col items-center justify-center rounded-2xl border-2 border-accent/35 bg-background px-4 py-7 text-center shadow-[0_16px_40px_-28px_rgba(15,23,42,0.35)]">
+                    <span className="font-mono text-[11px] font-bold tabular-nums text-accent">
+                      {String(step.number).padStart(2, '0')}
+                    </span>
+                    <p className="mt-2 text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+                      {step.title}
+                    </p>
+                    <p className="mt-2 max-w-[16rem] text-[12px] leading-snug text-foreground/60">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </div>
         </section>
@@ -310,17 +340,16 @@ export default function ProcessPage() {
                   <h2 className="mt-5 text-balance text-[1.75rem] font-bold leading-[1.15] tracking-tight text-foreground sm:text-3xl lg:text-[2.35rem]">
                     Ready to start your transformation?
                   </h2>
-                  <p className="mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-muted-foreground">
-                    Let&apos;s begin with a diagnosis of your current state. We&apos;ll
-                    respond with a grounded view of fit, risk, and a path forward.
+                  <p className="mt-4 max-w-2xl text-pretty text-[15px] leading-relaxed text-foreground/70">
+                    Let&apos;s start with a consultation where our Acadine representative can work with you side by side to understand your current problem space while understanding how to create a roadmap and path forward.
                   </p>
                   <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                       <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3 text-[13px] font-bold text-primary-foreground shadow-[0_16px_44px_-14px_rgba(15,23,42,0.55)] transition hover:brightness-105"
+                        className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-[14px] font-bold text-primary-foreground shadow-[0_16px_44px_-14px_rgba(15,23,42,0.55)] transition hover:brightness-105"
                       >
-                        Schedule diagnosis
+                        Book A Consultation
                         <ArrowRight className="h-4 w-4 opacity-90" aria-hidden />
                       </Link>
                     </motion.div>
