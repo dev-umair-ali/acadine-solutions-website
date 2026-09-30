@@ -189,13 +189,13 @@ export function HeroSection() {
                   href="/contact"
                   className="inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-3.5 text-[13px] font-bold text-primary-foreground shadow-[0_16px_48px_-12px_rgba(15,23,42,0.55)] transition hover:brightness-[1.06]"
                 >
-                  Book a consultation
+                  Book A Consultation
                   <ArrowRight className="h-4 w-4 opacity-90" aria-hidden />
                 </Link>
               </motion.div>
               <Link
                 href="/process"
-                className="inline-flex items-center rounded-xl border border-border/60 bg-background/70 px-6 py-3.5 text-[13px] font-bold text-foreground shadow-sm backdrop-blur-sm transition hover:border-accent/40 hover:bg-muted/40"
+                className="inline-flex items-center rounded-xl border border-border/70 bg-background/80 px-6 py-3.5 text-[13px] font-bold text-foreground shadow-sm backdrop-blur-sm transition hover:border-accent/40 hover:bg-muted/40"
               >
                 Operating model
               </Link>

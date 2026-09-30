@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Boxes, GitBranch, Hand, HelpCircle, ArrowRight } from 'lucide-react'
+import { Boxes, GitBranch, Hand, HelpCircle, ArrowRight, Search, Workflow, Lightbulb } from 'lucide-react'
 import { siteContainer, sectionY } from '@/lib/site-layout'
 import { SectionHeader } from '@/components/section/section-header'
 import { cn } from '@/lib/utils'
@@ -13,24 +13,32 @@ const problems = [
     title: 'Too many tools, no results',
     description: 'SaaS sprawl creates integration debt, unclear ownership, and reporting that never quite reconciles.',
     signal: 'Signal: tool inventory vs. outcomes',
+    tint: 'from-sky-500/12 via-background to-background',
+    iconBg: 'bg-sky-500/12 text-sky-700 dark:text-sky-300 border-sky-500/25',
   },
   {
     icon: Hand,
     title: 'Manual processes',
     description: 'High-touch workflows consume leadership attention, especially close cycles, compliance checks, and approval chains that should run themselves.',
     signal: 'Signal: hours per cycle × frequency',
+    tint: 'from-amber-500/12 via-background to-background',
+    iconBg: 'bg-amber-500/12 text-amber-700 dark:text-amber-300 border-amber-500/25',
   },
   {
     icon: HelpCircle,
     title: 'AI confusion',
     description: 'Teams struggle to separate feasible automation from vendor theater. Every pitch sounds transformative; nothing ships.',
     signal: 'Signal: pilot count vs. production count',
+    tint: 'from-violet-500/12 via-background to-background',
+    iconBg: 'bg-violet-500/12 text-violet-700 dark:text-violet-300 border-violet-500/25',
   },
   {
     icon: GitBranch,
     title: 'Poor workflows',
     description: 'Handoffs and exceptions are invisible, so improvement has no baseline and no accountability.',
     signal: 'Signal: exception rate × resolution time',
+    tint: 'from-teal-500/12 via-background to-background',
+    iconBg: 'bg-teal-500/12 text-teal-700 dark:text-teal-300 border-teal-500/25',
   },
 ]
 
@@ -44,6 +52,61 @@ const item = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
 }
 
+function ChallengesVisual() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.55 }}
+      className="relative mt-8 overflow-hidden rounded-2xl border border-border/60 bg-linear-to-br from-primary/5 via-card to-accent/8 p-5 shadow-[0_24px_64px_-36px_rgba(15,23,42,0.35)]"
+    >
+      <div className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full bg-accent/15 blur-3xl" aria-hidden />
+      <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/55">
+        How we approach it
+      </p>
+      <div className="relative mt-4 grid gap-2.5">
+        {[
+          { icon: Search, label: 'Map the real workflow', tone: 'bg-sky-500/15 text-sky-700 dark:text-sky-300' },
+          { icon: Workflow, label: 'Find the friction points', tone: 'bg-amber-500/15 text-amber-700 dark:text-amber-300' },
+          { icon: Lightbulb, label: 'Prescribe the right fix', tone: 'bg-teal-500/15 text-teal-700 dark:text-teal-300' },
+        ].map((step, i) => {
+          const Icon = step.icon
+          return (
+            <div
+              key={step.label}
+              className="flex items-center gap-3 rounded-xl border border-border/55 bg-background/90 px-3.5 py-3 shadow-sm"
+            >
+              <span className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-lg', step.tone)}>
+                <Icon className="h-4 w-4" strokeWidth={1.8} aria-hidden />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-[13px] font-bold text-foreground">{step.label}</p>
+                <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.16em] text-foreground/45">
+                  Step {String(i + 1).padStart(2, '0')}
+                </p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+      <div className="mt-4 flex items-end gap-1.5 px-1">
+        {[42, 58, 48, 72, 64, 86, 78, 94].map((h, i) => (
+          <div
+            key={i}
+            className="flex-1 rounded-sm bg-linear-to-t from-primary/25 via-accent/45 to-accent/70"
+            style={{ height: `${h * 0.45}px` }}
+            aria-hidden
+          />
+        ))}
+      </div>
+      <p className="mt-2 text-[11px] font-medium text-foreground/55">
+        Clarity first. Technology second.
+      </p>
+    </motion.div>
+  )
+}
+
 export function ProblemsSection() {
   return (
     <section className={`relative ${sectionY}`}>
@@ -51,8 +114,8 @@ export function ProblemsSection() {
 
       <div className={`relative ${siteContainer}`}>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-14 xl:gap-20">
-          {/* Left column — sticky header */}
-          <div className="lg:sticky lg:top-28 lg:self-start">
+          {/* Left column — sticky header + graphic to fill blank space */}
+          <div className="lg:sticky lg:top-32 lg:self-start">
             <SectionHeader
               index="02"
               eyebrow="Pain Points"
@@ -60,11 +123,12 @@ export function ProblemsSection() {
               description="These are the problems we see most often, and fix before recommending any technology."
               align="left"
             />
+            <ChallengesVisual />
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mt-8"
+              className="mt-6"
             >
               <Link
                 href="/services"
@@ -76,78 +140,40 @@ export function ProblemsSection() {
             </motion.div>
           </div>
 
-          {/* Right column — asymmetric card stack */}
+          {/* Right column — aligned 2×2 grid (Manual processes & AI confusion line up) */}
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
-            className="flex flex-col gap-3"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4"
           >
-            {/* Feature card — large, distinct */}
-            <motion.article
-              variants={item}
-              className="group relative overflow-hidden rounded-2xl border border-border/45 bg-linear-to-br from-primary/3 via-background to-accent/4 p-7 shadow-[0_28px_80px_-40px_rgba(15,23,42,0.3)] lg:p-8"
-            >
-              <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-accent/6 blur-3xl" />
-              <div className="relative flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-muted/40 text-accent shadow-inner">
-                  <Boxes className="h-6 w-6" strokeWidth={1.6} aria-hidden />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold tracking-tight text-foreground">{problems[0].title}</h3>
-                  <p className="mt-2.5 text-[14px] leading-[1.7] text-muted-foreground lg:text-[15px]">
-                    {problems[0].description}
+            {problems.map((p) => {
+              const Icon = p.icon
+              return (
+                <motion.article
+                  key={p.title}
+                  variants={item}
+                  className={cn(
+                    'group flex h-full flex-col rounded-2xl border border-border/60 bg-linear-to-br p-6 shadow-[0_16px_48px_-32px_rgba(15,23,42,0.28)] backdrop-blur-sm transition hover:border-accent/35 hover:shadow-md',
+                    p.tint,
+                  )}
+                >
+                  <div className={cn('flex h-12 w-12 items-center justify-center rounded-xl border', p.iconBg)}>
+                    <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden />
+                  </div>
+                  <h3 className="mt-4 text-[16px] font-bold tracking-tight text-foreground lg:text-[17px]">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-foreground/70 lg:text-[14px]">
+                    {p.description}
                   </p>
-                  <p className="mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground/30">
-                    {problems[0].signal}
+                  <p className="mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-foreground/50">
+                    {p.signal}
                   </p>
-                </div>
-              </div>
-            </motion.article>
-
-            {/* Two cards side by side */}
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[problems[1], problems[2]].map((p, i) => {
-                const Icon = p.icon
-                return (
-                  <motion.article
-                    key={p.title}
-                    variants={item}
-                    className={cn(
-                      'group rounded-2xl border border-border/45 bg-background/90 p-6 shadow-[0_16px_48px_-32px_rgba(15,23,42,0.25)] backdrop-blur-sm transition hover:border-accent/30',
-                      i === 1 && 'sm:translate-y-4',
-                    )}
-                  >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border/40 bg-muted/35 text-accent">
-                      <Icon className="h-5 w-5" strokeWidth={1.6} aria-hidden />
-                    </div>
-                    <h3 className="mt-4 text-[16px] font-bold tracking-tight">{p.title}</h3>
-                    <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{p.description}</p>
-                    <p className="mt-4 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-foreground/25">
-                      {p.signal}
-                    </p>
-                  </motion.article>
-                )
-              })}
-            </div>
-
-            {/* Full-width bottom card — horizontal layout */}
-            <motion.article
-              variants={item}
-              className="group relative overflow-hidden rounded-2xl border border-border/45 bg-linear-to-r from-muted/25 to-background p-6 shadow-md lg:flex lg:items-center lg:gap-8 lg:p-7"
-            >
-              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-background text-accent shadow-sm">
-                <GitBranch className="h-6 w-6" strokeWidth={1.6} aria-hidden />
-              </div>
-              <div className="mt-4 flex-1 lg:mt-0">
-                <h3 className="text-[16px] font-bold tracking-tight lg:text-[17px]">{problems[3].title}</h3>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-muted-foreground lg:text-[14px]">{problems[3].description}</p>
-              </div>
-              <div className="mt-4 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-foreground/25 lg:mt-0 lg:text-right">
-                Map → measure → improve
-              </div>
-            </motion.article>
+                </motion.article>
+              )
+            })}
           </motion.div>
         </div>
       </div>

@@ -227,7 +227,7 @@ export default function AboutPage() {
                         href="/contact"
                         className="inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-[13px] font-bold text-primary-foreground shadow-[0_16px_44px_-14px_rgba(15,23,42,0.55)] transition hover:brightness-105"
                       >
-                        Book a consultation
+                        Book A Consultation
                         <ArrowRight className="h-4 w-4 opacity-90" aria-hidden />
                       </Link>
                     </motion.div>
